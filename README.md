@@ -1,1 +1,1 @@
-# GO2FIT readme
+# GO2FIT readme file
