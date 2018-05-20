@@ -1,5 +1,4 @@
 # Vision Statement
- ###
 
 - GO2FIT is a tool that allows people to motivate each other into becoming more active, by allowing users to create and complete a variety of fitness challenges for redeemable points and prizes.
 
