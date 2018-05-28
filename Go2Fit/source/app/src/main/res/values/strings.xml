@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Go2Fit</string>
     <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="challenges">Challenges</string>
+    <string name="home">Home</string>
+    <string name="current_challenge">Current Challenge</string>
 </resources>
