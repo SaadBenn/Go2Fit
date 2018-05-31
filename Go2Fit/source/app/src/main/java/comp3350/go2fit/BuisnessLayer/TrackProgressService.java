@@ -1,15 +1,20 @@
-package comp3350.go2fit;
+package comp3350.go2fit.BuisnessLayer;
 
 import android.hardware.SensorEvent;
 import android.hardware.SensorManager;
-import android.widget.TextView;
+
+import comp3350.go2fit.Models.TrackProgressModel;
+import comp3350.go2fit.PersistenceLayer.TrackProgressPersistence;
+import comp3350.go2fit.PersistenceLayer.TrackProgressPersistenceStub;
 
 public class TrackProgressService {
     long previousTime;
-
+    TrackProgressPersistence database;
     public TrackProgressService()
     {
         previousTime = 0;
+        database = new TrackProgressPersistenceStub();
+        database.initializeDatabase();
     }
     public TrackProgressModel getAccelerometer(SensorEvent event, TrackProgressModel current, int goalSteps) {
         int numSteps = current.getNumSteps();
@@ -81,8 +86,19 @@ public class TrackProgressService {
     public double calculateCaloriesBurned(TrackProgressModel model)
     {
         double mileComplete = model.getDistance() / 1609.34; //take the number of meters walked divded by number of meters in a mile
-        double calories = (model.getUserWeight() * 0.53) * mileComplete;
+        double calories = (150 * 0.53) * mileComplete;
 
         return calories;
+    }
+
+
+    public TrackProgressModel getProgress(int userId)
+    {
+        return database.getProgress(userId);
+    }
+
+    public void updateDatabase(TrackProgressModel progress)
+    {
+        database.add(progress);
     }
 }

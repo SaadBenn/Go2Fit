@@ -19,6 +19,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import comp3350.go2fit.PresentationLayer.ChallengesFragement;
+import comp3350.go2fit.PresentationLayer.HomePageFragement;
+import comp3350.go2fit.PresentationLayer.TrackProgressUI;
+
 /**
  * Fragment to return the clicked tab.
  */

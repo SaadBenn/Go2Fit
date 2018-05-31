@@ -1,15 +1,28 @@
-package comp3350.go2fit;
+package comp3350.go2fit.Models;
 
 public class TrackProgressModel {
     private int numSteps;
     private int percentageComplete;
     private double distance;
-    private double userWeight;
-
+    private double calories;
+    private int id;
     public TrackProgressModel()
     {
         numSteps = 0;
         percentageComplete = 0;
+        distance = 0;
+        calories = 0;
+        id = 0;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    public int getId()
+    {
+        return id;
     }
 
     public void setNumSteps(int numSteps)
@@ -40,11 +53,13 @@ public class TrackProgressModel {
         return distance;
     }
 
-    public void setUserWeight(double userWeight) {
-        this.userWeight = userWeight;
+    public void setCalories(double calories)
+    {
+        this.calories = calories;
     }
 
-    public double getUserWeight() {
-        return userWeight;
+    public double getCalories()
+    {
+        return calories;
     }
 }

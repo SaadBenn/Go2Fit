@@ -1,4 +1,4 @@
-package comp3350.go2fit;
+package comp3350.go2fit.PresentationLayer;
 
 import android.support.v4.app.Fragment;
 import android.content.Context;
@@ -7,45 +7,64 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.os.SystemClock;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Chronometer;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.os.CountDownTimer;
-import android.app.AlertDialog;
 
-public class TrackProgressUI extends Fragment implements SensorEventListener{
+import comp3350.go2fit.R;
+import comp3350.go2fit.Models.TrackProgressModel;
+import comp3350.go2fit.BuisnessLayer.TrackProgressService;
+
+public class TrackProgressUI extends Fragment implements SensorEventListener {
     private SensorManager sensorManager;
     private TrackProgressModel progressModel;
     private TrackProgressService progressService;
-    private int numSteps;
     private int goalSteps;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
-        progressModel = new TrackProgressModel();
         progressService = new TrackProgressService();
 
-        numSteps = 0;
-        goalSteps = 1000;
-        /*
-        final TextView timerText = (TextView) getView().findViewById(R.id.timer_text);
+        progressModel = progressService.getProgress(1);
+
+        goalSteps = 100;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.track_progress, container, false);
+
+        //get the current users progress for the challenge
+        //and update the xml. If the user is just starting
+        //or has no progress, default values are 0
+        ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.track_progress_bar);
+        TextView numStepsText = (TextView) view.findViewById(R.id.text_progress);
+        TextView distanceText = (TextView) view.findViewById(R.id.distance_number);
+        TextView calorieText = (TextView) view.findViewById(R.id.calories_number);
+
+        progressBar.setProgress(progressModel.getPercentageComplete());
+
+        numStepsText.setText(progressModel.getNumSteps() + "/1000 Steps");
+
+        String distanceRounded = String.format("%.2f", progressModel.getDistance());//round to two decimal points
+        distanceText.setText(distanceRounded + "m");
+
+        String caloriesRounded = String.format("%.2f", progressModel.getCalories());//round to two decimal points
+        calorieText.setText(caloriesRounded);
+
+        final TextView timerText = (TextView) view.findViewById(R.id.timer_text);
 
         new CountDownTimer(2000000, 1000) { //Sets 10 second remaining
 
+            @Override
             public void onTick(long milliseconds) {
                 String hours = progressService.determineHours(milliseconds);
                 String minutes = progressService.determineMinutes(milliseconds);
@@ -54,19 +73,13 @@ public class TrackProgressUI extends Fragment implements SensorEventListener{
                 timerText.setText("Time Remaining: " + hours + ":" + minutes + ":" + seconds);
             }
 
+            @Override
             public void onFinish() {
                 timerText.setText("Challenge Over!");
             }
         }.start();
-*/
-        progressModel.setUserWeight(150);
-    }
-        @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
-        /*
+            /*
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) getView().findViewById(R.id.toolbar);
         toolbar.setTitle("Current Challenge Progress");
@@ -95,9 +108,9 @@ public class TrackProgressUI extends Fragment implements SensorEventListener{
 
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             //update number of steps
-            tempProgressModel = progressService.getAccelerometer(event, progressModel, goalSteps);
-            progressBar.setProgress(tempProgressModel.getPercentageComplete());
-            numStepsText.setText(tempProgressModel.getNumSteps() + "/1000 Steps");
+            progressService.getAccelerometer(event, progressModel, goalSteps);
+            progressBar.setProgress(progressModel.getPercentageComplete());
+            numStepsText.setText(progressModel.getNumSteps() + "/1000 Steps");
 
             //update distance
             String distanceRounded = String.format("%.2f", progressService.calculateDistance(progressModel));
@@ -106,6 +119,9 @@ public class TrackProgressUI extends Fragment implements SensorEventListener{
             //update calories
             String caloriesRounded = String.format("%.2f", progressService.calculateCaloriesBurned(progressModel));
             calorieText.setText(caloriesRounded);
+
+            //update the data database after each step recorded
+            progressService.updateDatabase(progressModel);
         }
 
     }

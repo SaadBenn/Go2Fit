@@ -2,6 +2,7 @@ package comp3350.go2fit;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.os.IResultReceiver;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -14,7 +15,6 @@ import android.view.MenuItem;
  * to navigate to them, as well as the options menu showing Settings.
  */
 public class MainActivity extends AppCompatActivity {
-
     /**
      * Creates the content view and toolbar, sets up the tab layout, and sets up a page adapter
      * to manage views in fragments. The user clicks a tab and navigates to the view fragment.
@@ -58,9 +58,7 @@ public class MainActivity extends AppCompatActivity {
             //nothing to see here...
             }
         });
-
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu_main) {
         getMenuInflater().inflate(R.menu.menu_main, menu_main);
