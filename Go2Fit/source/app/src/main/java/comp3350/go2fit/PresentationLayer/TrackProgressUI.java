@@ -45,39 +45,7 @@ public class TrackProgressUI extends Fragment implements SensorEventListener {
         //get the current users progress for the challenge
         //and update the xml. If the user is just starting
         //or has no progress, default values are 0
-        ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.track_progress_bar);
-        TextView numStepsText = (TextView) view.findViewById(R.id.text_progress);
-        TextView distanceText = (TextView) view.findViewById(R.id.distance_number);
-        TextView calorieText = (TextView) view.findViewById(R.id.calories_number);
 
-        progressBar.setProgress(progressModel.getPercentageComplete());
-
-        numStepsText.setText(progressModel.getNumSteps() + "/1000 Steps");
-
-        String distanceRounded = String.format("%.2f", progressModel.getDistance());//round to two decimal points
-        distanceText.setText(distanceRounded + "m");
-
-        String caloriesRounded = String.format("%.2f", progressModel.getCalories());//round to two decimal points
-        calorieText.setText(caloriesRounded);
-
-        final TextView timerText = (TextView) view.findViewById(R.id.timer_text);
-
-        new CountDownTimer(2000000, 1000) { //Sets 10 second remaining
-
-            @Override
-            public void onTick(long milliseconds) {
-                String hours = progressService.determineHours(milliseconds);
-                String minutes = progressService.determineMinutes(milliseconds);
-                String seconds = progressService.determineSeconds(milliseconds);
-
-                timerText.setText("Time Remaining: " + hours + ":" + minutes + ":" + seconds);
-            }
-
-            @Override
-            public void onFinish() {
-                timerText.setText("Challenge Over!");
-            }
-        }.start();
 
             /*
         setContentView(R.layout.activity_main);
