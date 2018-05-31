@@ -1,6 +1,7 @@
 package comp3350.go2fit;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,10 +14,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -27,12 +30,14 @@ import java.util.ArrayList;
 public class ChallengesFragement extends Fragment
 {
     private ChallengesModel challengesModel;
+    private ChallengeLogic challengeLogic;
 
 
     public ChallengesFragement()
     {
         // Required empty public constructor
         challengesModel = new ChallengesModel();
+        challengeLogic  = new ChallengeLogic();
 
     }
 
@@ -41,7 +46,7 @@ public class ChallengesFragement extends Fragment
     {
         View view = inflater.inflate(R.layout.fragment_challenges_fragement, container, false);
 
-        ListView listView = (ListView)view.findViewById(R.id.challengesList);
+        final ListView listView = (ListView)view.findViewById(R.id.challengesList);
 
         ArrayAdapter<String> listViewAdapter = new ArrayAdapter<>
         (
@@ -51,6 +56,22 @@ public class ChallengesFragement extends Fragment
         );
 
         listView.setAdapter(listViewAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                if(position == 0 || position == 1 || position == 2 || position == 3 ||position == 4)
+                {
+                    Intent intent = new Intent(getActivity(), ChallengeDetails.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
+        challengeLogic.selectChallenge(listView);
+
         // Inflate the layout for this fragment
         return view;
     }
