@@ -7,4 +7,10 @@
     <string name="challenges">Challenges</string>
     <string name="home">Home</string>
     <string name="current_challenge">Current Challenge</string>
+
+    <string-array name="challenge_types">
+        <item>Walking</item>
+        <item>Running</item>
+        <item>Biking</item>
+    </string-array>
 </resources>

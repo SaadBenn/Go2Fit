@@ -9,7 +9,7 @@ public class ChallengesModel
     public ChallengesModel()
     {
         this.challenges = new String[]{"run 10 km", "100 squats", "77 push-ups", "120 sit-ups", "Run from U of M to Pembina", "bike 25 km"
-                ,"squat 5000 pounds", "sprint for 500 meters", "wrestle chuck norris", "Over 9000 chin-ups"};
+                ,"squat 5000 pounds", "sprint for 500 meters", "wrestle chuck norris", "Over 9000 chin-ups", "Over 9000 chin-ups", "Over 9000 chin-ups", "Over 9000 chin-ups", "Over 9000 chin-ups", "Over 9000 chin-ups", "Over 9000 chin-ups", "Over 9000 chin-ups", "Over 9000 chin-ups", "Over 9000 chin-ups"};
 
         this.timeForChallenges = new String[]{"1 hour", "15 minutes", "10 minutes", "15 minutes", "30 minutes", "1 hour"};
 
