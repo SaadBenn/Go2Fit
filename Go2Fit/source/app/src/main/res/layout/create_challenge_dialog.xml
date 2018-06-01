@@ -14,7 +14,7 @@
         android:layout_marginStart="88dp"
         android:layout_marginTop="104dp"
         android:text="Challenge Type"
-        android:gravity="center"
+        android:gravity="center_vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,4 +34,78 @@
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toTopOf="parent"
         android:entries="@array/challenge_types" />
+
+    <TextView
+        android:id="@+id/distance"
+        android:layout_width="170dp"
+        android:layout_height="75dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="100dp"
+        android:text="Distance(in meters)"
+        android:gravity="center_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <EditText
+        android:id="@+id/edittext"
+        android:layout_width="226dp"
+        android:layout_height="75dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="76dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="96dp"
+        android:hint="100"
+        android:focusable="false"
+        android:inputType="text"
+        android:textIsSelectable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.906"
+        app:layout_constraintStart_toEndOf="@+id/distance"
+        app:layout_constraintTop_toBottomOf="@+id/spinner1" />
+
+    <DatePicker
+        android:id="@+id/timePicker1"
+        android:layout_width="226dp"
+        android:layout_height="75dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="76dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.906"
+        app:layout_constraintStart_toEndOf="@+id/time"
+        app:layout_constraintTop_toBottomOf="@+id/edittext" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="170dp"
+        android:layout_height="75dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="100dp"
+        android:gravity="center_vertical"
+        android:text="Timeframe"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/distance" />
+
+    <Button
+        android:id="@+id/done_button"
+        android:layout_width="174dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="80dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="50dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/time"
+        app:layout_constraintVertical_bias="1.0" />
+
 </android.support.constraint.ConstraintLayout>

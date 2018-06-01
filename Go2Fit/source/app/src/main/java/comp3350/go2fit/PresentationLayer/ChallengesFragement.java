@@ -7,8 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.content.Context;
 import android.view.View.OnClickListener;
 import android.app.Dialog;
+import java.util.HashMap;
+import java.util.Arrays;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +26,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import comp3350.go2fit.BuisnessLayer.ChallengesService;
+import comp3350.go2fit.PersistenceLayer.ChallengePersistence;
 import comp3350.go2fit.R;
 import comp3350.go2fit.Models.ChallengesModel;
 
@@ -32,44 +37,65 @@ import comp3350.go2fit.Models.ChallengesModel;
  */
 public class ChallengesFragement extends Fragment {
     private ChallengesModel challengesModel;
-
+    private ChallengesService challengesService;
+    private HashMap<Integer, ChallengesModel> allChallenges;
+    private ArrayList<String> challengeTypes;
+    ArrayAdapter<String> listViewAdapter;
 
     public ChallengesFragement() {
         // Required empty public constructor
         challengesModel = new ChallengesModel();
-
+        challengesService = new ChallengesService();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_challenges_fragement, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
+        this.allChallenges = challengesService.getAllChallenges();//call the service class and get all the challenges from db
+        this.challengeTypes = challengesService.getAllChallengeTypes(this.allChallenges);//get all the challenge types
 
-        ListView listView = (ListView) view.findViewById(R.id.challengesList);
+        View view = inflater.inflate(R.layout.fragment_challenges_fragement, container, false);
 
-        ArrayAdapter<String> listViewAdapter = new ArrayAdapter<>
+        ListView listView = (ListView)view.findViewById(R.id.challengesList);
+        this.listViewAdapter = new ArrayAdapter<>
                 (
-                        getActivity(),
+                        getContext(),
                         android.R.layout.simple_list_item_1,
-                        challengesModel.getChallenges()
+                        this.challengeTypes
                 );
 
         listView.setAdapter(listViewAdapter);
 
         Button button = (Button) view.findViewById(R.id.create_challenge);
-        button.setOnClickListener(new OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 openModalWindow(view);
             }
         });
+        // Inflate the layout for this fragment
         return view;
     }
 
+
     public void openModalWindow(View view) {
+        LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View layout = inflater.inflate(R.layout.create_challenge_dialog,null); // specify your xml layout here
 
         final Dialog dialog = new Dialog(getActivity());
         dialog.setContentView(R.layout.create_challenge_dialog);
-        dialog.setTitle("Hello");
+        dialog.setTitle("Create a challenge!");
         dialog.show();
+
+        Button button = (Button) layout.findViewById(R.id.done_button);
+
+        button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
     }
 }
