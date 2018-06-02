@@ -5,7 +5,7 @@ import android.hardware.SensorManager;
 
 import comp3350.go2fit.Models.TrackProgressModel;
 import comp3350.go2fit.PersistenceLayer.TrackProgressPersistence;
-import comp3350.go2fit.PersistenceLayer.TrackProgressPersistenceStub;
+import comp3350.go2fit.Application.Services;
 
 public class TrackProgressService {
     long previousTime;
@@ -13,8 +13,7 @@ public class TrackProgressService {
     public TrackProgressService()
     {
         previousTime = 0;
-        database = new TrackProgressPersistenceStub();
-        database.initializeDatabase();
+        database = Services.getTrackProgressPersistence();
     }
     public TrackProgressModel getAccelerometer(SensorEvent event, TrackProgressModel current, int goalSteps) {
         int numSteps = current.getNumSteps();

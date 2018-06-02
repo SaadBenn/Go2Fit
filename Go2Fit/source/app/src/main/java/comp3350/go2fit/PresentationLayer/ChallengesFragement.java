@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.content.Context;
 import android.view.View.OnClickListener;
 import android.app.Dialog;
@@ -40,7 +41,8 @@ public class ChallengesFragement extends Fragment {
     private ChallengesService challengesService;
     private HashMap<Integer, ChallengesModel> allChallenges;
     private ArrayList<String> challengeTypes;
-    ArrayAdapter<String> listViewAdapter;
+    private ArrayAdapter<String> listViewAdapter;
+    private Dialog dialog;
 
     public ChallengesFragement() {
         // Required empty public constructor
@@ -65,37 +67,50 @@ public class ChallengesFragement extends Fragment {
                 );
 
         listView.setAdapter(listViewAdapter);
-
         Button button = (Button) view.findViewById(R.id.create_challenge);
         button.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 openModalWindow(view);
+                Button doneButton = (Button) dialog.findViewById(R.id.done_button);
+
+                doneButton.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View view) {
+                        userInput();
+                        dialog.dismiss();
+                    }
+                });
             }
         });
+
+        LayoutInflater newInflator = LayoutInflater.from(this.getActivity());
+        View layout = newInflator.inflate(R.layout.create_challenge_dialog,null); // specify your xml layout here
         // Inflate the layout for this fragment
         return view;
     }
 
 
-    public void openModalWindow(View view) {
-        LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View layout = inflater.inflate(R.layout.create_challenge_dialog,null); // specify your xml layout here
-
-        final Dialog dialog = new Dialog(getActivity());
+    public void openModalWindow(View view)
+    {
+        dialog = new Dialog(getActivity());
         dialog.setContentView(R.layout.create_challenge_dialog);
         dialog.setTitle("Create a challenge!");
         dialog.show();
+    }
 
-        Button button = (Button) layout.findViewById(R.id.done_button);
+    public void userInput()
+    {
+        Spinner spinner = (Spinner) dialog.findViewById(R.id.spinner1);
+        String text = spinner.getSelectedItem().toString();
 
-        button.setOnClickListener(new View.OnClickListener() {
+        ChallengesModel model = new ChallengesModel();
+        model.setChallengeType(text);
 
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
+        challengesService.addChallenge(model);
+        challengeTypes.add(text);
+        listViewAdapter.notifyDataSetChanged();
+        System.out.println(text);
     }
 }

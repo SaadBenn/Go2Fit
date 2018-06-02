@@ -1,4 +1,4 @@
-package comp3350.go2fit;
+package comp3350.go2fit.Application;
 /*
  * Copyright (C) 2016 Google Inc.
  *
