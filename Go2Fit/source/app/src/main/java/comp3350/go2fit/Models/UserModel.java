@@ -1,9 +1,9 @@
 package comp3350.go2fit.Models;
 
 public class UserModel {
-    int currentChallengeId;
-    String name;
-    int id;
+    private int currentChallengeId;
+    private String name;
+    private int id;
 
     public UserModel()
     {

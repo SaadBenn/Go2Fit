@@ -126,19 +126,11 @@ public class ChallengesFragement extends Fragment {
         Spinner spinner = (Spinner) dialog.findViewById(R.id.spinner1);
         String text = spinner.getSelectedItem().toString();
 
-        EditText distance = (EditText) dialog.findViewById(R.id.edittext);
-        String distanceValue = distance.getText().toString();
+        EditText steps = (EditText) dialog.findViewById(R.id.edittext);
+        String stepsValue = steps.getText().toString();
 
         //ensure the distance entered is valid
-        boolean validDistance = challengesService.verifyDistance(distanceValue);
-
-        NumberPicker numberPickerHours = (NumberPicker) dialog.findViewById(R.id.timePicker1);
-        NumberPicker numberPickerMinutes = (NumberPicker) dialog.findViewById(R.id.timePicker);
-
-        int hours = numberPickerHours.getValue();
-        int minutes = numberPickerMinutes.getValue();
-
-        boolean validTime = challengesService.verifyTime(hours, minutes);
+        boolean validDistance = challengesService.verifyDistance(stepsValue);
 
         boolean allValid = false;
         if(validDistance)
@@ -148,8 +140,16 @@ public class ChallengesFragement extends Fragment {
         else
         {
             allValid = false;
-            distance.setError("You must enter a valid distance");
+            steps.setError("You must enter a valid number!");
         }
+
+        NumberPicker numberPickerHours = (NumberPicker) dialog.findViewById(R.id.timePicker1);
+        NumberPicker numberPickerMinutes = (NumberPicker) dialog.findViewById(R.id.timePicker);
+
+        int hours = numberPickerHours.getValue();
+        int minutes = numberPickerMinutes.getValue();
+
+        boolean validTime = challengesService.verifyTime(hours, minutes);
 
         long milliseconds = 0;
         if(validTime)
@@ -169,14 +169,19 @@ public class ChallengesFragement extends Fragment {
             ChallengesModel model = new ChallengesModel();
 
             model.setChallengeType(text);
-            model.setStepsRequired(Integer.parseInt(distanceValue));
+            model.setStepsRequired(Integer.parseInt(stepsValue));
             model.setTime(milliseconds);
+
+            int points = challengesService.determinePoints(Integer.parseInt(stepsValue), milliseconds);
+            model.setPoints(points);
 
             challengesService.addChallenge(model);
             challengeTypes.add(text);
             listViewAdapter.notifyDataSetChanged();
 
             dialog.dismiss();
+
+            Messages.notify(this.getActivity(), "You created a challenge worth " + points + " points!");
         }
     }
 }

@@ -119,6 +119,7 @@ public class TrackProgressService {
     {
         return userDatabase.getUser(userId);
     }
+
     public ChallengesModel getChallenge(int id)
     {
         return challengePersistence.getChallenge(id);

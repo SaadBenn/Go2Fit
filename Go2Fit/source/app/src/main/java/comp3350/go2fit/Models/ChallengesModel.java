@@ -5,6 +5,7 @@ public class ChallengesModel
     private String challengeType;
     private int stepsRequired;
     private long time;
+    private int points;
     private int id;
 
     public ChallengesModel()
@@ -38,6 +39,16 @@ public class ChallengesModel
     {
         return time;
     }
+
+    public void setPoints(int points)
+    {
+        this.points = points;
+    }
+    public int getPoints()
+    {
+        return points;
+    }
+
     public void setId(int id)
     {
         this.id = id;

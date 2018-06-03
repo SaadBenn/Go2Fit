@@ -5,6 +5,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import comp3350.go2fit.Models.ChallengesModel;
 import comp3350.go2fit.PersistenceLayer.ChallengePersistence;
@@ -48,6 +49,11 @@ public class ChallengesService
     public void addChallenge(ChallengesModel challengesModel)
     {
         challengesDatabase.add(challengesModel);
+    }
+
+    public int determinePoints(int steps, long time)
+    {
+        return ((steps * 2) - (int)(TimeUnit.MILLISECONDS.toMinutes(time)));
     }
 
     public ArrayList<String> getAllChallengeTypes(HashMap map)

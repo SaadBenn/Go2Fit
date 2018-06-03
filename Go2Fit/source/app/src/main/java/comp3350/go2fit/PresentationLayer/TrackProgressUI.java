@@ -24,11 +24,13 @@ public class TrackProgressUI extends Fragment implements SensorEventListener {
     private TrackProgressModel progressModel;
     private TrackProgressService progressService;
     private int goalSteps;
+    private long time;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //try to get stuff from db...
         try
         {
             //setup sensor and logic class
@@ -36,9 +38,10 @@ public class TrackProgressUI extends Fragment implements SensorEventListener {
             progressService = new TrackProgressService();
 
             //get the current user
-            UserModel user = progressService.getUser(3);
+            UserModel user = progressService.getUser(2);
             //Determine the challenge the current user is doing
             goalSteps = progressService.getChallenge(user.getCurrentChallenge()).getStepsRequired();
+            time = progressService.getChallenge(user.getCurrentChallenge()).getTime();
 
             //now starting challenge
             if(progressService.getProgress(user.getId()) == null)
@@ -69,7 +72,7 @@ public class TrackProgressUI extends Fragment implements SensorEventListener {
 
         final TextView timerText = (TextView) view.findViewById(R.id.timer_text);
 
-        new CountDownTimer(4500000, 1000) { //Sets 10 second remaining
+        new CountDownTimer(time, 1000) { //Sets 10 second remaining
 
             public void onTick(long milliseconds) {
                 String hours = progressService.determineHours(milliseconds);
@@ -104,6 +107,7 @@ public class TrackProgressUI extends Fragment implements SensorEventListener {
         TextView distanceText = (TextView) getView().findViewById(R.id.distance_number);
         TextView calorieText = (TextView) getView().findViewById(R.id.calories_number);
 
+        //try and update db...
         try {
             if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
                 //update number of steps

@@ -15,6 +15,7 @@ public class UserPersistenceStub implements UserPersistence{
 
     public void initializeDatabase() {
 
+        //create 4 users
         UserModel tempData1 = new UserModel();
         UserModel tempData2 = new UserModel();
         UserModel tempData3 = new UserModel();
@@ -36,7 +37,7 @@ public class UserPersistenceStub implements UserPersistence{
         users.put(tempData3.getId(), tempData3);
         nextId++;
 
-        //tempData4.setCurrentChallenge(3);
+        tempData4.setCurrentChallenge(3);
         tempData4.setId(nextId);
         users.put(tempData4.getId(), tempData4);
         nextId++;
