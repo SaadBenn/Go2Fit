@@ -23,20 +23,28 @@ public class ChallengePersistenceStub implements ChallengePersistence{
 
 
         tempData1.setChallengeType("Walking");
-        tempData1.setId(nextId++);
+        tempData1.setStepsRequired(500);
+        tempData1.setId(nextId);
         challenge.put(tempData1.getId(), tempData1);
+        nextId++;
 
         tempData2.setChallengeType("Running");
-        tempData2.setId(nextId++);
+        tempData2.setStepsRequired(1000);
+        tempData2.setId(nextId);
         challenge.put(tempData2.getId(), tempData2);
+        nextId++;
 
         tempData3.setChallengeType("yfty");
-        tempData3.setId(nextId++);
+        tempData3.setStepsRequired(100);
+        tempData3.setId(nextId);
         challenge.put(tempData3.getId(), tempData3);
+        nextId++;
 
         tempData4.setChallengeType("asdfg");
+        tempData4.setStepsRequired(5000);
         tempData4.setId(nextId);
-        challenge.put(nextId, tempData4);
+        challenge.put(tempData4.getId(), tempData4);
+        nextId++;
         // print to the console
         System.out.println("Initialized the database of Goal Info.");
     }
@@ -45,11 +53,13 @@ public class ChallengePersistenceStub implements ChallengePersistence{
 
     public void add(ChallengesModel challengeModel)
     {
-        challengeModel.setId(nextId++);
+        System.out.println("ID IS: "+nextId);
+        challengeModel.setId(nextId);
         this.challenge.put(challengeModel.getId(), challengeModel);
+        nextId++;
     }
 
-    public ChallengesModel getProgress(int userId)
+    public ChallengesModel getChallenge(int userId)
     {
         return challenge.get(userId);
     }

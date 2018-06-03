@@ -8,6 +8,8 @@
     <string name="home">Home</string>
     <string name="current_challenge">Current Challenge</string>
     <string name="distance">Distance</string>
+    <string name="fatalError">Fatal error</string>
+    <string name="warning">Warning</string>
 
     <string-array name="challenge_types">
         <item>Walking</item>

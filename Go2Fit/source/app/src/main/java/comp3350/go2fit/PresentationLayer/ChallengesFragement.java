@@ -7,10 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.content.Context;
 import android.view.View.OnClickListener;
 import android.app.Dialog;
+
+import java.sql.Time;
 import java.util.HashMap;
 import java.util.Arrays;
 import android.support.design.widget.FloatingActionButton;
@@ -26,7 +30,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
+import comp3350.go2fit.Application.Services;
 import comp3350.go2fit.BuisnessLayer.ChallengesService;
 import comp3350.go2fit.PersistenceLayer.ChallengePersistence;
 import comp3350.go2fit.R;
@@ -58,6 +64,7 @@ public class ChallengesFragement extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_challenges_fragement, container, false);
 
+        //populat the list view with the challenges
         ListView listView = (ListView)view.findViewById(R.id.challengesList);
         this.listViewAdapter = new ArrayAdapter<>
                 (
@@ -67,11 +74,15 @@ public class ChallengesFragement extends Fragment {
                 );
 
         listView.setAdapter(listViewAdapter);
+
+        //When the create challenge button is clicked, open the dialog
         Button button = (Button) view.findViewById(R.id.create_challenge);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openModalWindow(view);
+
+                //when the done button is pressed in the dialog
                 Button doneButton = (Button) dialog.findViewById(R.id.done_button);
 
                 doneButton.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +90,6 @@ public class ChallengesFragement extends Fragment {
                     @Override
                     public void onClick(View view) {
                         userInput();
-                        dialog.dismiss();
                     }
                 });
             }
@@ -97,6 +107,17 @@ public class ChallengesFragement extends Fragment {
         dialog = new Dialog(getActivity());
         dialog.setContentView(R.layout.create_challenge_dialog);
         dialog.setTitle("Create a challenge!");
+
+        //Set the time picker with 24 values, representing hours
+        NumberPicker numberPickerHours = (NumberPicker) dialog.findViewById(R.id.timePicker1);
+        numberPickerHours.setMinValue(0);
+        numberPickerHours.setMaxValue(24);
+
+        //Set the time picker with 24 values, representing hours
+        NumberPicker numberPickerMinutes = (NumberPicker) dialog.findViewById(R.id.timePicker);
+        numberPickerMinutes.setMinValue(0);
+        numberPickerMinutes.setMaxValue(60);
+
         dialog.show();
     }
 
@@ -105,12 +126,57 @@ public class ChallengesFragement extends Fragment {
         Spinner spinner = (Spinner) dialog.findViewById(R.id.spinner1);
         String text = spinner.getSelectedItem().toString();
 
-        ChallengesModel model = new ChallengesModel();
-        model.setChallengeType(text);
+        EditText distance = (EditText) dialog.findViewById(R.id.edittext);
+        String distanceValue = distance.getText().toString();
 
-        challengesService.addChallenge(model);
-        challengeTypes.add(text);
-        listViewAdapter.notifyDataSetChanged();
-        System.out.println(text);
+        //ensure the distance entered is valid
+        boolean validDistance = challengesService.verifyDistance(distanceValue);
+
+        NumberPicker numberPickerHours = (NumberPicker) dialog.findViewById(R.id.timePicker1);
+        NumberPicker numberPickerMinutes = (NumberPicker) dialog.findViewById(R.id.timePicker);
+
+        int hours = numberPickerHours.getValue();
+        int minutes = numberPickerMinutes.getValue();
+
+        boolean validTime = challengesService.verifyTime(hours, minutes);
+
+        boolean allValid = false;
+        if(validDistance)
+        {
+            allValid = true;
+        }
+        else
+        {
+            allValid = false;
+            distance.setError("You must enter a valid distance");
+        }
+
+        long milliseconds = 0;
+        if(validTime)
+        {
+            milliseconds = TimeUnit.MINUTES.toMillis(minutes) + TimeUnit.HOURS.toMillis(hours);
+            System.out.println("MILLISECONDS: "+milliseconds);
+            allValid = true;
+        }
+        else
+        {
+            allValid = false;
+            Messages.warning(this.getActivity(), "You cannot have a time of 0!");
+        }
+
+        if(allValid)
+        {
+            ChallengesModel model = new ChallengesModel();
+
+            model.setChallengeType(text);
+            model.setStepsRequired(Integer.parseInt(distanceValue));
+            model.setTime(milliseconds);
+
+            challengesService.addChallenge(model);
+            challengeTypes.add(text);
+            listViewAdapter.notifyDataSetChanged();
+
+            dialog.dismiss();
+        }
     }
 }

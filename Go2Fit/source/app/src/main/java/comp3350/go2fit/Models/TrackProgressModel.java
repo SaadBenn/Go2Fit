@@ -6,13 +6,13 @@ public class TrackProgressModel {
     private double distance;
     private double calories;
     private int id;
+    private int userId;
     public TrackProgressModel()
     {
         numSteps = 0;
         percentageComplete = 0;
         distance = 0;
         calories = 0;
-        id = 0;
     }
 
     public void setId(int id)
@@ -61,5 +61,14 @@ public class TrackProgressModel {
     public double getCalories()
     {
         return calories;
+    }
+
+    public void setUserId(int userId)
+    {
+        this.userId = userId;
+    }
+    public int getUserId()
+    {
+        return userId;
     }
 }

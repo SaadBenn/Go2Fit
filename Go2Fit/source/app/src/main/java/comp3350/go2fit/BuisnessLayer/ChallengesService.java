@@ -23,6 +23,23 @@ public class ChallengesService
 
     }
 
+    public boolean verifyDistance(String distance)
+    {
+        boolean flag = false;
+
+        //check to see if the user input is only digits
+        if(distance.matches("^[0-9]+$"))
+        {
+            flag = true;
+        }
+        return flag;
+    }
+
+    public boolean verifyTime(int hours, int minutes)
+    {
+        return hours > 0 || minutes > 0;
+    }
+
     public HashMap getAllChallenges()
     {
         return challengesDatabase.getAllChallenges();

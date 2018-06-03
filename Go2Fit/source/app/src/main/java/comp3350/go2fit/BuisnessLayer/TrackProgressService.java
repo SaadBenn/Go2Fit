@@ -3,17 +3,26 @@ package comp3350.go2fit.BuisnessLayer;
 import android.hardware.SensorEvent;
 import android.hardware.SensorManager;
 
+import comp3350.go2fit.Models.ChallengesModel;
 import comp3350.go2fit.Models.TrackProgressModel;
+import comp3350.go2fit.Models.UserModel;
+import comp3350.go2fit.PersistenceLayer.ChallengePersistence;
+import comp3350.go2fit.PersistenceLayer.ChallengePersistenceStub;
 import comp3350.go2fit.PersistenceLayer.TrackProgressPersistence;
 import comp3350.go2fit.Application.Services;
+import comp3350.go2fit.PersistenceLayer.UserPersistence;
 
 public class TrackProgressService {
     long previousTime;
     TrackProgressPersistence database;
+    UserPersistence userDatabase;
+    ChallengePersistence challengePersistence;
     public TrackProgressService()
     {
         previousTime = 0;
         database = Services.getTrackProgressPersistence();
+        userDatabase = Services.getUserPersistence();
+        challengePersistence = Services.getChallengePersistence();
     }
     public TrackProgressModel getAccelerometer(SensorEvent event, TrackProgressModel current, int goalSteps) {
         int numSteps = current.getNumSteps();
@@ -84,7 +93,7 @@ public class TrackProgressService {
 
     public double calculateCaloriesBurned(TrackProgressModel model)
     {
-        double mileComplete = model.getDistance() / 1609.34; //take the number of meters walked divded by number of meters in a mile
+        double mileComplete = model.getDistance() / 1609.34; //take the number of meters walked divided by number of meters in a mile
         double calories = (150 * 0.53) * mileComplete;
 
         return calories;
@@ -98,6 +107,20 @@ public class TrackProgressService {
 
     public void updateDatabase(TrackProgressModel progress)
     {
+        database.update(progress);
+    }
+
+    public void addProgress(TrackProgressModel progress)
+    {
         database.add(progress);
+    }
+
+    public UserModel getUser(int userId)
+    {
+        return userDatabase.getUser(userId);
+    }
+    public ChallengesModel getChallenge(int id)
+    {
+        return challengePersistence.getChallenge(id);
     }
 }

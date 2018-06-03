@@ -22,9 +22,12 @@ public class TrackProgressPersistenceStub implements TrackProgressPersistence {
         tempData.setDistance(21.3);
         tempData.setCalories(0.65);
         tempData.setNumSteps(70);
-        tempData.setPercentageComplete(70);
-        tempData.setId(1);
-        progress.put(1, tempData);
+        tempData.setPercentageComplete(14);
+        tempData.setUserId(0);
+        tempData.setId(nextId);
+        progress.put(tempData.getId(), tempData);
+
+        nextId++;
 
         // print to the console
         System.out.println("Initialized the database of Goal Info.");
@@ -34,8 +37,14 @@ public class TrackProgressPersistenceStub implements TrackProgressPersistence {
 
     public void add(TrackProgressModel userProgress)
     {
-        userProgress.setId(nextId++);
-        this.progress.put(userProgress.getId(), userProgress);
+        userProgress.setId(nextId);
+        this.progress.put(userProgress.getUserId(), userProgress);
+        nextId++;
+    }
+
+    public void update(TrackProgressModel userProgress)
+    {
+        this.progress.put(userProgress.getUserId(), userProgress);
     }
 
     public TrackProgressModel getProgress(int userId)
