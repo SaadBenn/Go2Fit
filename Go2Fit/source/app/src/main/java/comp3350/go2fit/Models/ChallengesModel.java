@@ -9,13 +9,17 @@ public class ChallengesModel
 
     public ChallengesModel()
     {
-
+        challengeType = null;
+        stepsRequired = -1;
+        time = -1;
+        id = -1;
     }
 
     public void setChallengeType(String challengeType)
     {
         this.challengeType = challengeType;
     }
+    
     public String getChallengeType()
     {
         return challengeType;
@@ -25,6 +29,7 @@ public class ChallengesModel
     {
         this.stepsRequired = stepsRequired;
     }
+    
     public int getStepsRequired()
     {
         return this.stepsRequired;
@@ -34,14 +39,17 @@ public class ChallengesModel
     {
         this.time = time;
     }
+    
     public long getTime()
     {
         return time;
     }
+    
     public void setId(int id)
     {
         this.id = id;
     }
+    
     public int getId()
     {
         return id;
