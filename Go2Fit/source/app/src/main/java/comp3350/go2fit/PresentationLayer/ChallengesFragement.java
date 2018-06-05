@@ -50,7 +50,6 @@ import comp3350.go2fit.Models.ChallengesModel;
 public class ChallengesFragement extends Fragment {
     private ChallengePersistenceStub challengeStub;
     private ChallengesModel challengesModel;
-
     private ChallengesService challengesService;
     private HashMap<Integer, ChallengesModel> allChallenges;
     private ArrayList<String> challengeTypes;
@@ -84,8 +83,6 @@ public class ChallengesFragement extends Fragment {
                 );
 
         listView.setAdapter(listViewAdapter);
-
-        //When the create challenge button is clicked, open the dialog
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
