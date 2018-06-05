@@ -9,6 +9,7 @@ public interface TrackProgressPersistence {
     void initializeDatabase();
     void closeStubDatabase();
     void add(final TrackProgressModel progress);
+    void update(TrackProgressModel progress);
     TrackProgressModel getProgress(int userId);
     void clearStubDatabase();
 }

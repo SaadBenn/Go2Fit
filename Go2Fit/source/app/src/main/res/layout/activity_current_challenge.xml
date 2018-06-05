@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_current_challenge"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PresentationLayer.CurrentChallenge"
+    tools:layout_editor_absoluteY="25dp"
+    android:background="@drawable/background1">
+
+
+    <TextView
+        android:id="@+id/Type"
+        android:layout_width="275dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="488dp"
+        android:layout_marginEnd="116dp"
+        android:layout_marginRight="116dp"
+        android:text="Type of challenge: "
+        android:textSize="35sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/Id"
+        android:layout_width="275dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="424dp"
+        android:layout_marginEnd="112dp"
+        android:layout_marginRight="112dp"
+        android:text="Points of the challenge: "
+        android:textSize="35sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        style="@android:style/Widget.Material.Light.Button.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:background="@android:color/holo_blue_dark"
+        android:text="Star challenge"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="279dp" />
+
+
+</android.support.constraint.ConstraintLayout>

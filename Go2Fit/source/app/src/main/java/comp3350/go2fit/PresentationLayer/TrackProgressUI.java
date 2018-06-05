@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.os.CountDownTimer;
 
+import comp3350.go2fit.Models.UserModel;
 import comp3350.go2fit.R;
 import comp3350.go2fit.Models.TrackProgressModel;
 import comp3350.go2fit.BuisnessLayer.TrackProgressService;
@@ -23,17 +24,44 @@ public class TrackProgressUI extends Fragment implements SensorEventListener {
     private TrackProgressModel progressModel;
     private TrackProgressService progressService;
     private int goalSteps;
+    private long time;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
-        progressService = new TrackProgressService();
+        //try to get stuff from db...
+        try
+        {
+            //setup sensor and logic class
+            sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+            progressService = new TrackProgressService();
 
-        progressModel = progressService.getProgress(1);
+            //get the current user
+            UserModel user = progressService.getUser(2);
+            //Determine the challenge the current user is doing
+            goalSteps = progressService.getChallenge(user.getCurrentChallenge()).getStepsRequired();
+            time = progressService.getChallenge(user.getCurrentChallenge()).getTime();
 
-        goalSteps = 100;
+            //now starting challenge
+            if(progressService.getProgress(user.getId()) == null)
+            {
+                progressModel = new TrackProgressModel();
+                progressModel.setUserId(user.getId());
+                progressService.addProgress(progressModel);
+            }
+            else
+            {
+                //the challenge may have started already, so get the progress info for the user
+                progressModel = progressService.getProgress(user.getId());
+            }
+        }
+        catch (Exception e)
+        {
+            sensorManager.unregisterListener(this);
+            Messages.fatalError(this.getActivity(), e.getMessage());
+        }
+
     }
 
     @Override
@@ -42,19 +70,24 @@ public class TrackProgressUI extends Fragment implements SensorEventListener {
 
         View view = inflater.inflate(R.layout.track_progress, container, false);
 
-        //get the current users progress for the challenge
-        //and update the xml. If the user is just starting
-        //or has no progress, default values are 0
+        final TextView timerText = (TextView) view.findViewById(R.id.timer_text);
 
+        new CountDownTimer(time, 1000) { //Sets 10 second remaining
 
-            /*
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) getView().findViewById(R.id.toolbar);
-        toolbar.setTitle("Current Challenge Progress");
-        setSupportActionBar(toolbar);
-        */
+            public void onTick(long milliseconds) {
+                String hours = progressService.determineHours(milliseconds);
+                String minutes = progressService.determineMinutes(milliseconds);
+                String seconds = progressService.determineSeconds(milliseconds);
 
-        return inflater.inflate(R.layout.track_progress, container, false);
+                timerText.setText("Time Remaining: " + hours + ":" + minutes + ":" + seconds);
+            }
+
+            public void onFinish() {
+                timerText.setText("Challenge Over!");
+            }
+        }.start();
+
+        return view;
     }
 
     /*
@@ -74,22 +107,29 @@ public class TrackProgressUI extends Fragment implements SensorEventListener {
         TextView distanceText = (TextView) getView().findViewById(R.id.distance_number);
         TextView calorieText = (TextView) getView().findViewById(R.id.calories_number);
 
-        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            //update number of steps
-            progressService.getAccelerometer(event, progressModel, goalSteps);
-            progressBar.setProgress(progressModel.getPercentageComplete());
-            numStepsText.setText(progressModel.getNumSteps() + "/1000 Steps");
+        //try and update db...
+        try {
+            if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+                //update number of steps
+                progressService.getAccelerometer(event, progressModel, goalSteps);
+                progressBar.setProgress(progressModel.getPercentageComplete());
+                numStepsText.setText(progressModel.getNumSteps() + "/" + goalSteps + " Steps");
 
-            //update distance
-            String distanceRounded = String.format("%.2f", progressService.calculateDistance(progressModel));
-            distanceText.setText(distanceRounded + "m");
+                //update distance
+                String distanceRounded = String.format("%.2f", progressService.calculateDistance(progressModel));
+                distanceText.setText(distanceRounded + "m");
 
-            //update calories
-            String caloriesRounded = String.format("%.2f", progressService.calculateCaloriesBurned(progressModel));
-            calorieText.setText(caloriesRounded);
+                //update calories
+                String caloriesRounded = String.format("%.2f", progressService.calculateCaloriesBurned(progressModel));
+                calorieText.setText(caloriesRounded);
 
-            //update the data database after each step recorded
-            progressService.updateDatabase(progressModel);
+                //update the data database after each step recorded
+                progressService.updateDatabase(progressModel);
+            }
+        }
+        catch (Exception e)
+        {
+            Messages.fatalError(this.getActivity(), e.getMessage());
         }
 
     }

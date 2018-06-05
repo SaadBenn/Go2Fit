@@ -1,55 +1,114 @@
 package comp3350.go2fit.Models;
 
-public class ChallengesModel
+import android.os.Parcelable;
+import android.os.Parcel;
+
+public class ChallengesModel implements Parcelable
 {
-    private String [] challenges;
-    private String [] timeForChallenges;
-    private String [] pointsForChallenges;
+    private String challengeName;
+    private String challengeType;
+    private int stepsRequired;
+    private long time;
+    private int points;
+    private int id;
 
     public ChallengesModel()
     {
-        this.challenges = new String[]{"run 10 km", "100 squats", "77 push-ups", "120 sit-ups", "Run from U of M to Pembina", "bike 25 km"
-                ,"squat 5000 pounds", "sprint for 500 meters", "wrestle chuck norris", "Over 9000 chin-ups", "Over 9000 chin-ups", "Over 9000 chin-ups", "Over 9000 chin-ups", "Over 9000 chin-ups", "Over 9000 chin-ups", "Over 9000 chin-ups", "Over 9000 chin-ups", "Over 9000 chin-ups", "Over 9000 chin-ups"};
 
-        this.timeForChallenges = new String[]{"1 hour", "15 minutes", "10 minutes", "15 minutes", "30 minutes", "1 hour"};
-
-        this. pointsForChallenges = new String[]{"40 points", "30 points", "25 points", "25 points", "30 points", "100 points"};
+    }
+    public ChallengesModel(String challengeName, String challengeType, int stepsRequired, long time, int points)
+    {
+        this.challengeName = challengeName;
+        this.challengeType = challengeType;
+        this.stepsRequired = stepsRequired;
+        this.time = time;
+        this.points = points;
     }
 
-    public String getChallenge(int position)
-    {
-        assert(position >= 0);
-        assert(position <= challenges.length);
-
-        return this.challenges[position];
-    }
-    public String getTimeOfChallenge(int position)
-    {
-        assert(position >= 0);
-        assert(position <= timeForChallenges.length);
-
-        return this.timeForChallenges[position];
-    }
-    public String getPointsOfChallenge(int position)
-    {
-        assert(position >= 0);
-        assert(position <= pointsForChallenges.length);
-
-        return this.pointsForChallenges[position];
+    protected ChallengesModel(Parcel in) {
+        challengeType = in.readString();
+        id = in.readInt();
     }
 
-    public String[] getChallenges()
-    {
-        return this.challenges;
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(challengeType);
+        dest.writeInt(id);
     }
 
-    public String[] getTimes()
+    public void setChallengeName(String challengeName)
     {
-        return this.timeForChallenges;
+        this.challengeName = challengeName;
+    }
+    public String getChallengeName()
+    {
+        return challengeName;
     }
 
-    public String[] getPoints()
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<ChallengesModel> CREATOR = new Creator<ChallengesModel>() {
+        @Override
+        public ChallengesModel createFromParcel(Parcel in) {
+            return new ChallengesModel(in);
+        }
+
+        @Override
+        public ChallengesModel[] newArray(int size) {
+            return new ChallengesModel[size];
+        }
+    };
+
+    public void setChallengeType(String challengeType)
     {
-        return this.pointsForChallenges;
+        this.challengeType = challengeType;
+    }
+    
+    public String getChallengeType()
+    {
+        return challengeType;
+    }
+
+    public void setStepsRequired(int stepsRequired)
+    {
+        this.stepsRequired = stepsRequired;
+    }
+    
+    public int getStepsRequired()
+    {
+        return this.stepsRequired;
+    }
+
+    public void setTime(long time)
+    {
+        this.time = time;
+    }
+    
+    public long getTime()
+    {
+        return time;
+    }
+
+    public void setPoints(int points)
+    {
+        this.points = points;
+    }
+    public int getPoints()
+    {
+        return points;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+    
+    public int getId()
+    {
+        return id;
     }
 }

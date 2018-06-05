@@ -17,33 +17,40 @@
         android:layout_marginStart="0dp"
         android:layout_marginLeft="0dp">
 
+
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="638dp"
+            android:layout_height="119dp"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/challengesList" />
+
 
         <ListView
             android:id="@+id/challengesList"
             android:layout_width="match_parent"
-            android:layout_height="820dp"
+            android:layout_height="700dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginBottom="3dp"
+            android:layout_marginTop="50dp"
             app:layout_constraintBottom_toTopOf="@+id/toolbar3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"></ListView>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.287"></ListView>
+
 
         <Button
             android:id="@+id/create_challenge"
@@ -54,12 +61,13 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:text="Create Challenge"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="@+id/toolbar3"
-            app:layout_constraintTop_toBottomOf="@+id/challengesList" />
+            app:layout_constraintTop_toTopOf="@+id/toolbar3" />
 
     </android.support.constraint.ConstraintLayout>
 
