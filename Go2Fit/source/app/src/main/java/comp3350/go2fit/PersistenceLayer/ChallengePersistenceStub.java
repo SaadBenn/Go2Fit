@@ -59,7 +59,13 @@ public class ChallengePersistenceStub implements ChallengePersistence{
         nextId++;
     }
 
+<<<<<<< HEAD
     public ChallengesModel getChallenge(int userId)
+=======
+    public String getChallengeType(int userId){ return challenge.get(userId).getChallengeType();}
+
+    public ChallengesModel getProgress(int userId)
+>>>>>>> display_challenge
     {
         return challenge.get(userId);
     }
