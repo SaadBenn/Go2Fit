@@ -60,7 +60,7 @@ public class ChallengesFragement extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         this.allChallenges = challengesService.getAllChallenges();//call the service class and get all the challenges from db
-        this.challengeTypes = challengesService.getAllChallengeTypes(this.allChallenges);//get all the challenge types
+        this.challengeTypes = challengesService.getAllChallengeNames(this.allChallenges);//get all the challenge types
 
         View view = inflater.inflate(R.layout.fragment_challenges_fragement, container, false);
 
@@ -123,6 +123,9 @@ public class ChallengesFragement extends Fragment {
 
     public void userInput()
     {
+        EditText challengeName = (EditText) dialog.findViewById(R.id.challenge_name);
+        String name = challengeName.getText().toString();
+
         Spinner spinner = (Spinner) dialog.findViewById(R.id.spinner1);
         String text = spinner.getSelectedItem().toString();
 
@@ -166,17 +169,12 @@ public class ChallengesFragement extends Fragment {
 
         if(allValid)
         {
-            ChallengesModel model = new ChallengesModel();
-
-            model.setChallengeType(text);
-            model.setStepsRequired(Integer.parseInt(stepsValue));
-            model.setTime(milliseconds);
-
             int points = challengesService.determinePoints(Integer.parseInt(stepsValue), milliseconds);
-            model.setPoints(points);
+
+            ChallengesModel model = new ChallengesModel(name, text, Integer.parseInt(stepsValue), milliseconds, points);
 
             challengesService.addChallenge(model);
-            challengeTypes.add(text);
+            challengeTypes.add(name);
             listViewAdapter.notifyDataSetChanged();
 
             dialog.dismiss();

@@ -56,7 +56,7 @@ public class ChallengesService
         return ((steps * 2) - (int)(TimeUnit.MILLISECONDS.toMinutes(time)));
     }
 
-    public ArrayList<String> getAllChallengeTypes(HashMap map)
+    public ArrayList<String> getAllChallengeNames(HashMap map)
     {
         Set<Integer> set=map.keySet();
 
@@ -65,7 +65,7 @@ public class ChallengesService
         for(Integer value : set)
         {
             ChallengesModel model = (ChallengesModel)map.get(value);
-            values.add(model.getChallengeType());
+            values.add(model.getChallengeName());
             count++;
         }
         return values;

@@ -22,6 +22,7 @@ public class ChallengePersistenceStub implements ChallengePersistence{
         ChallengesModel tempData4 = new ChallengesModel();
 
 
+        tempData1.setChallengeName("Saads epic challenge!");
         tempData1.setChallengeType("Walking");
         tempData1.setStepsRequired(500);
         tempData1.setTime(876543);
@@ -29,6 +30,7 @@ public class ChallengePersistenceStub implements ChallengePersistence{
         challenge.put(tempData1.getId(), tempData1);
         nextId++;
 
+        tempData2.setChallengeName("Eddies IMPOSSIBLE challenge!!!");
         tempData2.setChallengeType("Running");
         tempData2.setStepsRequired(1000);
         tempData2.setTime(123456);
@@ -36,6 +38,7 @@ public class ChallengePersistenceStub implements ChallengePersistence{
         challenge.put(tempData2.getId(), tempData2);
         nextId++;
 
+        tempData3.setChallengeName("Soni's ultimate challenge!");
         tempData3.setChallengeType("yfty");
         tempData3.setStepsRequired(100);
         tempData3.setTime(1223232);
@@ -43,6 +46,7 @@ public class ChallengePersistenceStub implements ChallengePersistence{
         challenge.put(tempData3.getId(), tempData3);
         nextId++;
 
+        tempData4.setChallengeName("Shuo's INSANE challenge!!!");
         tempData4.setChallengeType("asdfg");
         tempData4.setStepsRequired(5000);
         tempData4.setTime(12345699);
