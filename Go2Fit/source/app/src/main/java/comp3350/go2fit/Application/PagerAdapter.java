@@ -22,6 +22,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import comp3350.go2fit.PresentationLayer.ChallengesFragement;
 import comp3350.go2fit.PresentationLayer.HomePageFragement;
 import comp3350.go2fit.PresentationLayer.TrackProgressUI;
+import comp3350.go2fit.PresentationLayer.SetGoalsUI;
 
 /**
  * Fragment to return the clicked tab.
@@ -44,6 +45,8 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
                 return new ChallengesFragement();
             case 2:
                 return new TrackProgressUI();
+            case 3:
+                return new SetGoalsUI();
             default:
                 return null;
         }

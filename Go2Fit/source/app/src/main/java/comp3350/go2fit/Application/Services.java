@@ -6,12 +6,16 @@ import comp3350.go2fit.PersistenceLayer.TrackProgressPersistence;
 import comp3350.go2fit.PersistenceLayer.TrackProgressPersistenceStub;
 import comp3350.go2fit.PersistenceLayer.UserPersistence;
 import comp3350.go2fit.PersistenceLayer.UserPersistenceStub;
+import comp3350.go2fit.PersistenceLayer.SetGoalPersistence;
+import comp3350.go2fit.PersistenceLayer.SetGoalPersistenceStub;
+
 
 public class Services
 {
     private static ChallengePersistence challengePersistence = null;
     private static TrackProgressPersistence trackProgressPersistence = null;
     private static UserPersistence userPersistence = null;
+    private static SetGoalPersistence setGoalPersistence = null;
 
     public static synchronized ChallengePersistence getChallengePersistence()
     {
@@ -36,13 +40,23 @@ public class Services
     }
 
     public static synchronized UserPersistence getUserPersistence()
+{
+    if(userPersistence == null)
     {
-        if(userPersistence == null)
+        userPersistence = new UserPersistenceStub();
+        userPersistence.initializeDatabase();
+    }
+
+    return userPersistence;
+}
+    public static synchronized SetGoalPersistence getSetGoalPersistence()
+    {
+        if(setGoalPersistence == null)
         {
-            userPersistence = new UserPersistenceStub();
-            userPersistence.initializeDatabase();
+            setGoalPersistence = new SetGoalPersistenceStub();
+            setGoalPersistence.initializeDatabase();
         }
 
-        return userPersistence;
+        return setGoalPersistence;
     }
 }
