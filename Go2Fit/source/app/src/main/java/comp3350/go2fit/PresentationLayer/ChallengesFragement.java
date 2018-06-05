@@ -1,11 +1,13 @@
 package comp3350.go2fit.PresentationLayer;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.content.Context;
 import android.view.View.OnClickListener;
@@ -28,6 +30,7 @@ import java.util.ArrayList;
 
 import comp3350.go2fit.BuisnessLayer.ChallengesService;
 import comp3350.go2fit.PersistenceLayer.ChallengePersistence;
+import comp3350.go2fit.PersistenceLayer.ChallengePersistenceStub;
 import comp3350.go2fit.R;
 import comp3350.go2fit.Models.ChallengesModel;
 
@@ -36,6 +39,7 @@ import comp3350.go2fit.Models.ChallengesModel;
  * A simple {@link Fragment} subclass.
  */
 public class ChallengesFragement extends Fragment {
+    private ChallengePersistenceStub challengeStub;
     private ChallengesModel challengesModel;
     private ChallengesService challengesService;
     private HashMap<Integer, ChallengesModel> allChallenges;
@@ -44,8 +48,10 @@ public class ChallengesFragement extends Fragment {
 
     public ChallengesFragement() {
         // Required empty public constructor
-        challengesModel = new ChallengesModel();
+        challengesModel   = new ChallengesModel();
         challengesService = new ChallengesService();
+        challengeStub     = new ChallengePersistenceStub();
+        challengeStub.initializeDatabase();
     }
 
     @Override
@@ -66,6 +72,28 @@ public class ChallengesFragement extends Fragment {
 
         listView.setAdapter(listViewAdapter);
 
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                if (position >= 0)
+                {
+
+                    //creating challengeModel based on the item pressed in the challenge list
+                    challengesModel.setChallengeType(challengeStub.getChallengeType(position));
+                    challengesModel.setId(position);
+
+
+                    Intent intent = new Intent(getActivity(), CurrentChallenge.class);
+                    intent.putExtra("Current Challenge", challengesModel);
+
+                    startActivity(intent);
+                }
+            }
+        });
+
+
         Button button = (Button) view.findViewById(R.id.create_challenge);
         button.setOnClickListener(new View.OnClickListener() {
 
@@ -79,7 +107,8 @@ public class ChallengesFragement extends Fragment {
     }
 
 
-    public void openModalWindow(View view) {
+    public void openModalWindow(View view)
+    {
         LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.create_challenge_dialog,null); // specify your xml layout here
 

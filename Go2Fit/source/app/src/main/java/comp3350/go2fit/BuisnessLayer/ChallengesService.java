@@ -1,5 +1,6 @@
 package comp3350.go2fit.BuisnessLayer;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -28,11 +29,13 @@ import java.util.Set;
 import comp3350.go2fit.Models.ChallengesModel;
 import comp3350.go2fit.PersistenceLayer.ChallengePersistence;
 import comp3350.go2fit.PersistenceLayer.ChallengePersistenceStub;
+import comp3350.go2fit.PresentationLayer.TrackProgressUI;
 
 
 public class ChallengesService
 {
     private ChallengePersistence challengesDatabase;
+
     public ChallengesService()
     {
         challengesDatabase = new ChallengePersistenceStub();
@@ -62,6 +65,5 @@ public class ChallengesService
         }
         return values;
     }
-
 
 }

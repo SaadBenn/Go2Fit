@@ -48,6 +48,8 @@ public class ChallengePersistenceStub implements ChallengePersistence{
         this.challenge.put(userProgress.getId(), userProgress);
     }
 
+    public String getChallengeType(int userId){ return challenge.get(userId).getChallengeType();}
+
     public ChallengesModel getProgress(int userId)
     {
         return challenge.get(userId);
