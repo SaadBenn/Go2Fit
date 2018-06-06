@@ -74,6 +74,8 @@ public class ChallengePersistenceStub implements ChallengePersistence{
 
     public String getChallengeType(int userId){ return challenge.get(userId).getChallengeType();}
 
+    public String getChallengeName(int userId){ return  challenge.get(userId).getChallengeName();}
+
     public ChallengesModel getProgress(int userId)
 
     {
@@ -85,4 +87,5 @@ public class ChallengePersistenceStub implements ChallengePersistence{
     }
 
     public void clearStubDatabase() { challenge.clear(); }
+
 }

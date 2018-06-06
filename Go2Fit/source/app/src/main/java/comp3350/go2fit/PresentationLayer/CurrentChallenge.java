@@ -47,7 +47,7 @@ public class CurrentChallenge extends AppCompatActivity
 
         ChallengesModel currentChallenge = intent.getParcelableExtra("Current Challenge");
 
-        String challengeType = currentChallenge.getChallengeType();
+        String challengeType = currentChallenge.getChallengeName();
         int id               = currentChallenge.getId();
 
 

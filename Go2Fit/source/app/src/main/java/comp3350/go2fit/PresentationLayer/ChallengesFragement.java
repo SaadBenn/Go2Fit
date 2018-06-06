@@ -49,7 +49,6 @@ import comp3350.go2fit.Models.ChallengesModel;
  */
 public class ChallengesFragement extends Fragment {
     private ChallengePersistenceStub challengeStub;
-    private ChallengesModel challengesModel;
     private ChallengesService challengesService;
     private HashMap<Integer, ChallengesModel> allChallenges;
     private ArrayList<String> challengeTypes;
@@ -58,7 +57,6 @@ public class ChallengesFragement extends Fragment {
 
     public ChallengesFragement() {
         // Required empty public constructor
-        challengesModel   = new ChallengesModel();
         challengesService = new ChallengesService();
         challengeStub     = new ChallengePersistenceStub();
         challengeStub.initializeDatabase();
@@ -91,13 +89,11 @@ public class ChallengesFragement extends Fragment {
                 if (position >= 0)
                 {
 
-                    //creating challengeModel based on the item pressed in the challenge list
-                    challengesModel.setChallengeType(challengeStub.getChallengeType(position));
-                    challengesModel.setId(position);
+                    System.out.println("THE CHALLENGE IS: " +allChallenges.get(0).getChallengeName());
 
 
                     Intent intent = new Intent(getActivity(), CurrentChallenge.class);
-                    intent.putExtra("Current Challenge", challengesModel);
+                    intent.putExtra("Current Challenge",  allChallenges.get(position));
 
                     startActivity(intent);
                 }
@@ -115,9 +111,9 @@ public class ChallengesFragement extends Fragment {
                 Button doneButton = (Button) dialog.findViewById(R.id.done_button);
 
                 doneButton.setOnClickListener(new View.OnClickListener() {
-
                     @Override
-                    public void onClick(View view) {
+                    public void onClick(View view)
+                    {
                         userInput();
                     }
                 });

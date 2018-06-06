@@ -12,43 +12,28 @@ public class ChallengesModel implements Parcelable
     private int points;
     private int id;
 
-    public ChallengesModel()
+    public  ChallengesModel()
     {
 
     }
+
     public ChallengesModel(String challengeName, String challengeType, int stepsRequired, long time, int points)
     {
         this.challengeName = challengeName;
         this.challengeType = challengeType;
         this.stepsRequired = stepsRequired;
-        this.time = time;
-        this.points = points;
+        this.time          = time;
+        this.points        = points;
     }
+
 
     protected ChallengesModel(Parcel in) {
+        challengeName = in.readString();
         challengeType = in.readString();
+        stepsRequired = in.readInt();
+        time = in.readLong();
+        points = in.readInt();
         id = in.readInt();
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(challengeType);
-        dest.writeInt(id);
-    }
-
-    public void setChallengeName(String challengeName)
-    {
-        this.challengeName = challengeName;
-    }
-    public String getChallengeName()
-    {
-        return challengeName;
-    }
-
-
-    @Override
-    public int describeContents() {
-        return 0;
     }
 
     public static final Creator<ChallengesModel> CREATOR = new Creator<ChallengesModel>() {
@@ -63,6 +48,14 @@ public class ChallengesModel implements Parcelable
         }
     };
 
+    public void setChallengeName(String challengeName)
+    {
+        this.challengeName = challengeName;
+    }
+    public String getChallengeName()
+    {
+        return this.challengeName;
+    }
     public void setChallengeType(String challengeType)
     {
         this.challengeType = challengeType;
@@ -110,5 +103,20 @@ public class ChallengesModel implements Parcelable
     public int getId()
     {
         return id;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(challengeName);
+        dest.writeString(challengeType);
+        dest.writeInt(stepsRequired);
+        dest.writeLong(time);
+        dest.writeInt(points);
+        dest.writeInt(id);
     }
 }
