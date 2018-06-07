@@ -2,6 +2,7 @@ package comp3350.go2fit.PersistenceLayer;
 
 import java.util.HashMap;
 
+import comp3350.go2fit.Models.TrackProgressModel;
 import comp3350.go2fit.Models.UserModel;
 
 public class UserPersistenceStub implements UserPersistence{
@@ -66,6 +67,11 @@ public class UserPersistenceStub implements UserPersistence{
     public UserModel getUser(int userId)
     {
         return users.get(userId);
+    }
+
+    public void update(UserModel user)
+    {
+        this.users.put(user.getId(), user);
     }
 
     public void clearStubDatabase() { users.clear(); }

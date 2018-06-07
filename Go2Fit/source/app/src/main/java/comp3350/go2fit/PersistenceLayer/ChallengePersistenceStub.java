@@ -39,7 +39,7 @@ public class ChallengePersistenceStub implements ChallengePersistence{
         nextId++;
 
         tempData3.setChallengeName("Soni's ultimate challenge!");
-        tempData3.setChallengeType("yfty");
+        tempData3.setChallengeType("Walking");
         tempData3.setStepsRequired(100);
         tempData3.setTime(1223232);
         tempData3.setId(nextId);
@@ -47,7 +47,7 @@ public class ChallengePersistenceStub implements ChallengePersistence{
         nextId++;
 
         tempData4.setChallengeName("Shuo's INSANE challenge!!!");
-        tempData4.setChallengeType("asdfg");
+        tempData4.setChallengeType("Running");
         tempData4.setStepsRequired(5000);
         tempData4.setTime(12345699);
         tempData4.setId(nextId);

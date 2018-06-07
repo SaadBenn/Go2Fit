@@ -3,11 +3,13 @@ package comp3350.go2fit.Models;
 public class UserModel {
     private int currentChallengeId;
     private String name;
+    private boolean challengeStarted;
     private int id;
 
     public UserModel()
     {
         currentChallengeId = 0;
+        challengeStarted = false;
         id = 0;
     }
 
@@ -27,6 +29,15 @@ public class UserModel {
     public String getName()
     {
         return name;
+    }
+
+    public void setChallengeStarted(boolean challengeStarted)
+    {
+        this.challengeStarted = challengeStarted;
+    }
+
+    public boolean getChallengeStarted() {
+        return challengeStarted;
     }
 
     public void setId(int id)

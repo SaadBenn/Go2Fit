@@ -14,15 +14,10 @@ import comp3350.go2fit.PersistenceLayer.UserPersistence;
 
 public class TrackProgressService {
     long previousTime;
-    TrackProgressPersistence database;
-    UserPersistence userDatabase;
-    ChallengePersistence challengePersistence;
+
     public TrackProgressService()
     {
         previousTime = 0;
-        database = Services.getTrackProgressPersistence();
-        userDatabase = Services.getUserPersistence();
-        challengePersistence = Services.getChallengePersistence();
     }
     public TrackProgressModel getAccelerometer(SensorEvent event, TrackProgressModel current, int goalSteps) {
         int numSteps = current.getNumSteps();
@@ -97,31 +92,5 @@ public class TrackProgressService {
         double calories = (150 * 0.53) * mileComplete;
 
         return calories;
-    }
-
-
-    public TrackProgressModel getProgress(int userId)
-    {
-        return database.getProgress(userId);
-    }
-
-    public void updateDatabase(TrackProgressModel progress)
-    {
-        database.update(progress);
-    }
-
-    public void addProgress(TrackProgressModel progress)
-    {
-        database.add(progress);
-    }
-
-    public UserModel getUser(int userId)
-    {
-        return userDatabase.getUser(userId);
-    }
-
-    public ChallengesModel getChallenge(int id)
-    {
-        return challengePersistence.getChallenge(id);
     }
 }

@@ -14,6 +14,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.os.CountDownTimer;
 
+import comp3350.go2fit.BuisnessLayer.DatabaseManagers.ChallengeManager;
+import comp3350.go2fit.BuisnessLayer.DatabaseManagers.ProgressManager;
+import comp3350.go2fit.BuisnessLayer.DatabaseManagers.UserManager;
 import comp3350.go2fit.Models.UserModel;
 import comp3350.go2fit.R;
 import comp3350.go2fit.Models.TrackProgressModel;
@@ -23,6 +26,9 @@ public class TrackProgressUI extends Fragment implements SensorEventListener {
     private SensorManager sensorManager;
     private TrackProgressModel progressModel;
     private TrackProgressService progressService;
+    private ProgressManager progressManager;
+    private UserManager userManager;
+    private ChallengeManager challengeManager;
     private int goalSteps;
     private long time;
 
@@ -30,37 +36,12 @@ public class TrackProgressUI extends Fragment implements SensorEventListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //try to get stuff from db...
-        try
-        {
-            //setup sensor and logic class
-            sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
-            progressService = new TrackProgressService();
-
-            //get the current user
-            UserModel user = progressService.getUser(2);
-            //Determine the challenge the current user is doing
-            goalSteps = progressService.getChallenge(user.getCurrentChallenge()).getStepsRequired();
-            time = progressService.getChallenge(user.getCurrentChallenge()).getTime();
-
-            //now starting challenge
-            if(progressService.getProgress(user.getId()) == null)
-            {
-                progressModel = new TrackProgressModel();
-                progressModel.setUserId(user.getId());
-                progressService.addProgress(progressModel);
-            }
-            else
-            {
-                //the challenge may have started already, so get the progress info for the user
-                progressModel = progressService.getProgress(user.getId());
-            }
-        }
-        catch (Exception e)
-        {
-            sensorManager.unregisterListener(this);
-            Messages.fatalError(this.getActivity(), e.getMessage());
-        }
+        //setup sensor and logic class
+        sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+        progressService = new TrackProgressService();
+        progressManager = new ProgressManager();
+        userManager = new UserManager();
+        challengeManager = new ChallengeManager();
 
     }
 
@@ -124,7 +105,7 @@ public class TrackProgressUI extends Fragment implements SensorEventListener {
                 calorieText.setText(caloriesRounded);
 
                 //update the data database after each step recorded
-                progressService.updateDatabase(progressModel);
+                progressManager.updateDatabase(progressModel);
             }
         }
         catch (Exception e)
@@ -142,11 +123,35 @@ public class TrackProgressUI extends Fragment implements SensorEventListener {
     @Override
     public void onResume() {
         super.onResume();
-        // register this class as a listener for the orientation and
-        // accelerometer sensors
-        sensorManager.registerListener(this,
-                sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
-                SensorManager.SENSOR_DELAY_NORMAL);
+        //If the user is currently in a challenge
+        if(userManager.getUser(2).getChallengeStarted()) {
+            UserModel user = userManager.getUser(2);
+
+            goalSteps = challengeManager.getChallenge(user.getCurrentChallenge()).getStepsRequired();
+            time = challengeManager.getChallenge(user.getCurrentChallenge()).getTime();
+
+            //now starting challenge
+            if(progressManager.getProgress(user.getId()) == null)
+            {
+                progressModel = new TrackProgressModel();
+                progressModel.setUserId(user.getId());
+                progressManager.addProgress(progressModel);
+            }
+            else
+            {
+                //the challenge may have started already, so get the progress info for the user
+                progressModel = progressManager.getProgress(user.getId());
+            }
+
+
+            sensorManager.registerListener(this,
+                    sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+                    SensorManager.SENSOR_DELAY_NORMAL);
+        }
+        //if the user is not in a challenge, then do not display any progress info
+        else {
+            sensorManager.unregisterListener(this);
+        }
     }
 
     @Override

@@ -27,52 +27,29 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import comp3350.go2fit.Models.ChallengesModel;
+import comp3350.go2fit.Models.UserModel;
 import comp3350.go2fit.PersistenceLayer.ChallengePersistence;
 
 import comp3350.go2fit.Application.Services;
 
 import comp3350.go2fit.PersistenceLayer.ChallengePersistenceStub;
+import comp3350.go2fit.PersistenceLayer.UserPersistence;
 import comp3350.go2fit.PresentationLayer.TrackProgressUI;
 
 
 public class ChallengesService
 {
-    private ChallengePersistence challengesDatabase;
-
-    public ChallengesService()
+    public void verifyDistance(String distance) throws NumberFormatException
     {
-        challengesDatabase = Services.getChallengePersistence();
-    }
-    public void selectChallenge(ListView listView)
-    {
-
+        Integer.parseInt(distance);
     }
 
-    public boolean verifyDistance(String distance)
+    public void verifyTime(int hours, int minutes)
     {
-        boolean flag = false;
-
-        //check to see if the user input is only digits
-        if(distance.matches("^[0-9]+$"))
+        if(hours <= 0 && minutes <= 0)
         {
-            flag = true;
+            throw new IllegalArgumentException("Time cannot be 0!");
         }
-        return flag;
-    }
-
-    public boolean verifyTime(int hours, int minutes)
-    {
-        return hours > 0 || minutes > 0;
-    }
-
-    public HashMap getAllChallenges()
-    {
-        return challengesDatabase.getAllChallenges();
-    }
-
-    public void addChallenge(ChallengesModel challengesModel)
-    {
-        challengesDatabase.add(challengesModel);
     }
 
     public int determinePoints(int steps, long time)
@@ -83,7 +60,6 @@ public class ChallengesService
     public ArrayList<String> getAllChallengeNames(HashMap map)
     {
         Set<Integer> set=map.keySet();
-
         ArrayList<String> values = new ArrayList<>();
         int count = 0;
         for(Integer value : set)
