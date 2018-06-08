@@ -35,16 +35,22 @@ public class TrackProgressPersistenceStub implements TrackProgressPersistence {
 
     public void closeStubDatabase() { System.out.println("Closing the database"); }
 
-    public void add(TrackProgressModel userProgress)
+    public boolean add(TrackProgressModel userProgress)
     {
+        boolean result = false;
         userProgress.setId(nextId);
         this.progress.put(userProgress.getUserId(), userProgress);
+        result = true;
         nextId++;
+        return result;
     }
 
-    public void update(TrackProgressModel userProgress)
+    public boolean update(TrackProgressModel userProgress)
     {
+        boolean result = false;
         this.progress.put(userProgress.getUserId(), userProgress);
+        result = true;
+        return result;
     }
 
     public TrackProgressModel getProgress(int userId)
