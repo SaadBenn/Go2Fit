@@ -10,6 +10,6 @@ public interface UserPersistence {
     void add(final UserModel progress);
     HashMap getAllChallenges();
     UserModel getUser(int userId);
-    void update(UserModel user);
+    boolean update(UserModel user);
     void clearStubDatabase();
 }

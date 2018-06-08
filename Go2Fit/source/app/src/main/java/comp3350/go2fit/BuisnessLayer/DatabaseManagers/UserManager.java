@@ -18,7 +18,7 @@ public class UserManager implements UserManagerInterface {
     }
     public boolean updateUser(UserModel user)
     {
-        boolean result = userDatabase.update(user);
+        return userDatabase.update(user);
     }
 
 }
