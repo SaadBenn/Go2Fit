@@ -4,5 +4,5 @@ import comp3350.go2fit.Models.TrackProgressModel;
 
 public interface ProgressManagerInterface {
     TrackProgressModel getProgress(int userId);
-    void updateDatabase(TrackProgressModel progress);
+    boolean updateDatabase(TrackProgressModel progress);
 }
