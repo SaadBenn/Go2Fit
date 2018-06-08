@@ -69,9 +69,12 @@ public class UserPersistenceStub implements UserPersistence{
         return users.get(userId);
     }
 
-    public void update(UserModel user)
+    public boolean update(UserModel user)
     {
+        boolean result = false;
         this.users.put(user.getId(), user);
+        result = true;
+        return result;
     }
 
     public void clearStubDatabase() { users.clear(); }
