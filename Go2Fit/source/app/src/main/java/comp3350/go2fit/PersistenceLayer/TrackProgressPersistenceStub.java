@@ -1,8 +1,6 @@
 package comp3350.go2fit.PersistenceLayer;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import comp3350.go2fit.Models.TrackProgressModel;
 
