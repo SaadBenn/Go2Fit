@@ -17,13 +17,15 @@ public class ProgressManager implements ProgressManagerInterface {
         return database.getProgress(userId);
     }
 
-    public void updateDatabase(TrackProgressModel progress)
+    public boolean updateDatabase(TrackProgressModel progress)
     {
-        database.update(progress);
+        boolean result = database.update(progress);
+        return result;
     }
-    public void addProgress(TrackProgressModel progress)
+    public boolean addProgress(TrackProgressModel progress)
     {
-        database.add(progress);
+        boolean result = database.add(progress);
+        return result;
     }
 
 }
