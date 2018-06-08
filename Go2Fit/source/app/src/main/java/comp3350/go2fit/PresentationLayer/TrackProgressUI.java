@@ -51,23 +51,6 @@ public class TrackProgressUI extends Fragment implements SensorEventListener {
 
         View view = inflater.inflate(R.layout.track_progress, container, false);
 
-        final TextView timerText = (TextView) view.findViewById(R.id.timer_text);
-
-        new CountDownTimer(time, 1000) { //Sets 10 second remaining
-
-            public void onTick(long milliseconds) {
-                String hours = progressService.determineHours(milliseconds);
-                String minutes = progressService.determineMinutes(milliseconds);
-                String seconds = progressService.determineSeconds(milliseconds);
-
-                timerText.setText("Time Remaining: " + hours + ":" + minutes + ":" + seconds);
-            }
-
-            public void onFinish() {
-                timerText.setText("Challenge Over!");
-            }
-        }.start();
-
         return view;
     }
 
@@ -82,35 +65,36 @@ public class TrackProgressUI extends Fragment implements SensorEventListener {
     @Override
     public void onSensorChanged(SensorEvent event) {
         //Variables for modifying different UI elements
-        TrackProgressModel tempProgressModel = new TrackProgressModel();
         ProgressBar progressBar = (ProgressBar) getView().findViewById(R.id.track_progress_bar);
         TextView numStepsText = (TextView) getView().findViewById(R.id.text_progress);
         TextView distanceText = (TextView) getView().findViewById(R.id.distance_number);
         TextView calorieText = (TextView) getView().findViewById(R.id.calories_number);
 
-        //try and update db...
-        try {
-            if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-                //update number of steps
-                progressService.getAccelerometer(event, progressModel, goalSteps);
-                progressBar.setProgress(progressModel.getPercentageComplete());
-                numStepsText.setText(progressModel.getNumSteps() + "/" + goalSteps + " Steps");
+        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+            //update number of steps
+            int numSteps = progressService.getAccelerometer(event, progressModel.getNumSteps(), goalSteps);
+            numStepsText.setText(progressModel.getNumSteps() + "/" + goalSteps + " Steps");
+            progressModel.setNumSteps(numSteps);
 
-                //update distance
-                String distanceRounded = String.format("%.2f", progressService.calculateDistance(progressModel));
-                distanceText.setText(distanceRounded + "m");
+            //update progress
+            int progress = progressService.determineProgress(numSteps, goalSteps);
+            progressBar.setProgress(progress);
+            progressModel.setPercentageComplete(progress);
 
-                //update calories
-                String caloriesRounded = String.format("%.2f", progressService.calculateCaloriesBurned(progressModel));
-                calorieText.setText(caloriesRounded);
+            //update distance
+            double distance = progressService.calculateDistance(numSteps);
+            String distanceRounded = String.format("%.2f", distance);
+            distanceText.setText(distanceRounded + "m");
+            progressModel.setDistance(distance);
 
-                //update the data database after each step recorded
-                progressManager.updateDatabase(progressModel);
-            }
-        }
-        catch (Exception e)
-        {
-            Messages.fatalError(this.getActivity(), e.getMessage());
+            //update calories
+            double calories = progressService.calculateCaloriesBurned(distance);
+            String caloriesRounded = String.format("%.2f", calories);
+            calorieText.setText(caloriesRounded);
+            progressModel.setCalories(calories);
+
+            //update the data database after each step recorded
+            progressManager.updateDatabase(progressModel);
         }
 
     }
@@ -120,6 +104,8 @@ public class TrackProgressUI extends Fragment implements SensorEventListener {
 
     }
 
+    //we must do this in the onResume function because it is the only way to
+    //start a challenge once onCreate has been called.
     @Override
     public void onResume() {
         super.onResume();
@@ -135,6 +121,7 @@ public class TrackProgressUI extends Fragment implements SensorEventListener {
             {
                 progressModel = new TrackProgressModel();
                 progressModel.setUserId(user.getId());
+
                 progressManager.addProgress(progressModel);
             }
             else
@@ -147,6 +134,23 @@ public class TrackProgressUI extends Fragment implements SensorEventListener {
             sensorManager.registerListener(this,
                     sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
                     SensorManager.SENSOR_DELAY_NORMAL);
+
+            final TextView timerText = (TextView) getView().findViewById(R.id.timer_text);
+
+            new CountDownTimer(time, 1000) { //Sets 10 second remaining
+
+                public void onTick(long milliseconds) {
+                    String hours = progressService.determineHours(milliseconds);
+                    String minutes = progressService.determineMinutes(milliseconds);
+                    String seconds = progressService.determineSeconds(milliseconds);
+
+                    timerText.setText("Time Remaining: " + hours + ":" + minutes + ":" + seconds);
+                }
+
+                public void onFinish() {
+                    timerText.setText("Challenge Over!");
+                }
+            }.start();
         }
         //if the user is not in a challenge, then do not display any progress info
         else {

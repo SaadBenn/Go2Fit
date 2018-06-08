@@ -19,8 +19,9 @@ public class TrackProgressService {
     {
         previousTime = 0;
     }
-    public TrackProgressModel getAccelerometer(SensorEvent event, TrackProgressModel current, int goalSteps) {
-        int numSteps = current.getNumSteps();
+
+    public int getAccelerometer(SensorEvent event, int currentSteps, int goalSteps) {
+        int numSteps = currentSteps;
 
         float[] values = event.values;
         // Movement
@@ -35,14 +36,17 @@ public class TrackProgressService {
         if (accelationSquareRoot >= 2 && actualTime - previousTime > 0.5) //
         {
             numSteps++;
-            current.setNumSteps(numSteps);
-
-            double percentage = ((double) current.getNumSteps() / goalSteps);
-            current.setPercentageComplete((int)(percentage * 100));
             previousTime = actualTime;
         }
 
-        return current;
+        return numSteps;
+    }
+
+    public int determineProgress(int numSteps, int goalSteps)
+    {
+        double percentage = ((double) numSteps / goalSteps);
+        return (int)(percentage * 100);
+
     }
 
     public String determineHours(long milliseconds)
@@ -77,18 +81,17 @@ public class TrackProgressService {
         return seconds;
     }
 
-    public double calculateDistance(TrackProgressModel model)
+    public double calculateDistance(int numSteps)
     {
-        double distanceFeet = model.getNumSteps() * 2.3; //number of steps * 2.3 feet per step
+        double distanceFeet = numSteps * 2.3; //number of steps * 2.3 feet per step
         double distanceMeters = distanceFeet * 0.3048; //convert the distance in feet to meters...simpler this way
 
-        model.setDistance(distanceMeters);
         return distanceMeters;
     }
 
-    public double calculateCaloriesBurned(TrackProgressModel model)
+    public double calculateCaloriesBurned(double distance)
     {
-        double mileComplete = model.getDistance() / 1609.34; //take the number of meters walked divided by number of meters in a mile
+        double mileComplete = distance / 1609.34; //take the number of meters walked divided by number of meters in a mile
         double calories = (150 * 0.53) * mileComplete;
 
         return calories;

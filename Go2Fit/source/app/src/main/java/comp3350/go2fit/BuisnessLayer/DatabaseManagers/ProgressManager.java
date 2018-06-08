@@ -12,7 +12,7 @@ public class ProgressManager {
         database = Services.getTrackProgressPersistence();
     }
 
-    public TrackProgressModel getProgress(int userId)
+    public TrackProgressModel getProgress(int userId) throws NullPointerException
     {
         return database.getProgress(userId);
     }

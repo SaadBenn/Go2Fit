@@ -83,7 +83,7 @@ public class ChallengesFragement extends Fragment {
         }
         catch(NullPointerException e)
         {
-
+            Messages.fatalError(this.getActivity(), e.getMessage());
         }
 
 

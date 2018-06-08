@@ -1,12 +1,16 @@
 package comp3350.go2fit.PresentationLayer;
 
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+//import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import comp3350.go2fit.Application.PagerAdapter;
 import comp3350.go2fit.BuisnessLayer.DatabaseManagers.UserManager;
 import comp3350.go2fit.Models.ChallengesModel;
 import comp3350.go2fit.Models.UserModel;
@@ -14,11 +18,9 @@ import comp3350.go2fit.R;
 
 public class CurrentChallenge extends AppCompatActivity
 {
-    private UserManager userManager;
-
     public CurrentChallenge()
     {
-        userManager = new UserManager();
+
     }
 
     @Override
@@ -26,6 +28,7 @@ public class CurrentChallenge extends AppCompatActivity
     {
 
         super.onCreate(savedInstanceState);
+        final UserManager userManager = new UserManager();
         setContentView(R.layout.activity_current_challenge);
 
         Intent intent = getIntent();
@@ -58,7 +61,12 @@ public class CurrentChallenge extends AppCompatActivity
 
 
         /** Called when the user touches the button */
-        Button button= (Button)findViewById(R.id.button);
+        final Button button= (Button)findViewById(R.id.button);
+
+        if(!userManager.getUser(2).getChallengeStarted())
+        {
+            button.setEnabled(true);
+        }
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view)
@@ -68,6 +76,12 @@ public class CurrentChallenge extends AppCompatActivity
                 user.setCurrentChallenge(currentChallenge.getId());
                 user.setChallengeStarted(true);
                 userManager.updateUser(user);
+
+                Messages.notify(CurrentChallenge.this,"You have just started a challenge! " +
+                                        "Head over to the progress page to see your current progress!");
+
+                button.setEnabled(false);
+
             }
         });
     }
