@@ -60,7 +60,7 @@ public class ChallengesModel implements Parcelable
     {
         this.challengeType = challengeType;
     }
-    
+
     public String getChallengeType()
     {
         return challengeType;
@@ -70,7 +70,7 @@ public class ChallengesModel implements Parcelable
     {
         this.stepsRequired = stepsRequired;
     }
-    
+
     public int getStepsRequired()
     {
         return this.stepsRequired;
@@ -80,7 +80,7 @@ public class ChallengesModel implements Parcelable
     {
         this.time = time;
     }
-    
+
     public long getTime()
     {
         return time;
@@ -99,7 +99,7 @@ public class ChallengesModel implements Parcelable
     {
         this.id = id;
     }
-    
+
     public int getId()
     {
         return id;
