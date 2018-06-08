@@ -4,8 +4,6 @@ import comp3350.go2fit.Models.SetGoalModel;
 import comp3350.go2fit.BuisnessLayer.SetGoalLogic;
 import comp3350.go2fit.R;
 import android.support.v4.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,8 +53,6 @@ public class SetGoalsUI extends Fragment implements CompoundButton.OnCheckedChan
         Object[] data=logicclass.getData();
 
 
-
-
         ArrayAdapter<Integer> stepsview=new ArrayAdapter<>(getActivity(),R.layout.support_simple_spinner_dropdown_item,(Integer[])data[0]);
         ArrayAdapter<String> timeview=new ArrayAdapter<>(getActivity(),R.layout.support_simple_spinner_dropdown_item,(String[])data[1]);
         ArrayAdapter<String> periodview=new ArrayAdapter<>(getActivity(),R.layout.support_simple_spinner_dropdown_item,(String[])data[2]);
@@ -81,7 +77,7 @@ public class SetGoalsUI extends Fragment implements CompoundButton.OnCheckedChan
             @Override
             public void onClick(View view)
             {
-                logicclass.setgoal(setmodel);
+                logicclass.setGoal(setmodel);
 
             }
         });
@@ -94,7 +90,7 @@ public class SetGoalsUI extends Fragment implements CompoundButton.OnCheckedChan
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b)
     {
-        modeselected=logicclass.modeselected(walk_btn,run_btn);
+        modeselected=logicclass.modeSelected(walk_btn,run_btn);
 
     }
 
