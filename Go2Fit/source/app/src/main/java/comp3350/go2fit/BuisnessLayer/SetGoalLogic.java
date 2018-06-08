@@ -6,7 +6,7 @@ import android.widget.Switch;
 import comp3350.go2fit.Application.Services;
 import comp3350.go2fit.PersistenceLayer.SetGoalPersistence;
 
-public class SetGoalLogic
+public class SetGoalLogic implements SetGoalLogicInterface
 {
     SetGoalPersistence db;
 
@@ -26,7 +26,7 @@ public class SetGoalLogic
         return data;
     }
 
-    public String modeselected(Switch one,Switch two)
+    public String modeSelected(Switch one,Switch two)
     {
         String result="";
         if(one.isChecked())
@@ -45,11 +45,9 @@ public class SetGoalLogic
         return result;
     }
 
-    public void setgoal(SetGoalModel model)
+    public void setGoal(SetGoalModel model)
     {
         db.addgoal(model);
     }
-
-
 
 }

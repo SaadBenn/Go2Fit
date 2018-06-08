@@ -6,7 +6,7 @@ import comp3350.go2fit.Application.Services;
 import comp3350.go2fit.Models.ChallengesModel;
 import comp3350.go2fit.PersistenceLayer.ChallengePersistence;
 
-public class ChallengeManager {
+public class ChallengeManager implements ChallengeManagerInterface {
     private ChallengePersistence challengesDatabase;
 
     public ChallengeManager()

@@ -12,7 +12,7 @@ import comp3350.go2fit.PersistenceLayer.TrackProgressPersistence;
 import comp3350.go2fit.Application.Services;
 import comp3350.go2fit.PersistenceLayer.UserPersistence;
 
-public class TrackProgressService {
+public class TrackProgressService implements TrackProgressServiceInterface {
     long previousTime;
 
     public TrackProgressService()
@@ -70,6 +70,7 @@ public class TrackProgressService {
         }
         return minutes;
     }
+
     public String determineSeconds(long milliseconds)
     {
         String seconds = Integer.toString((int)(milliseconds / 1000) % 60);
