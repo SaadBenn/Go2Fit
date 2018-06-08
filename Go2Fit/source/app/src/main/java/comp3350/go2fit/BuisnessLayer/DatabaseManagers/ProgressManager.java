@@ -19,13 +19,11 @@ public class ProgressManager implements ProgressManagerInterface {
 
     public boolean updateDatabase(TrackProgressModel progress)
     {
-        boolean result = database.update(progress);
-        return result;
+        return database.update(progress);
     }
     public boolean addProgress(TrackProgressModel progress)
     {
-        boolean result = database.add(progress);
-        return result;
+        return database.add(progress);
     }
 
 }

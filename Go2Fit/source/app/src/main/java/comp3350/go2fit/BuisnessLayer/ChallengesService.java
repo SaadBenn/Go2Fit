@@ -10,17 +10,19 @@ import comp3350.go2fit.Models.ChallengesModel;
 
 public class ChallengesService implements ChallengesServiceInterface
 {
-    public void verifyDistance(String distance) throws NumberFormatException
+    public boolean verifyDistance(String distance) throws NumberFormatException
     {
         Integer.parseInt(distance);
+        return true;
     }
 
-    public void verifyTime(int hours, int minutes)
+    public boolean verifyTime(int hours, int minutes)
     {
         if(hours <= 0 && minutes <= 0)
         {
             throw new IllegalArgumentException("Time cannot be 0!");
         }
+        return true;
     }
 
     public int determinePoints(int steps, long time)
