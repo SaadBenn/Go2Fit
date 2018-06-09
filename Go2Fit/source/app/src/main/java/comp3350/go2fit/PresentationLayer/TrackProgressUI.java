@@ -24,6 +24,7 @@ import comp3350.go2fit.BuisnessLayer.TrackProgressService;
 
 public class TrackProgressUI extends Fragment implements SensorEventListener {
     private SensorManager sensorManager;
+    private long previousTime;
     private TrackProgressModel progressModel;
     private TrackProgressService progressService;
     private ProgressManager progressManager;
@@ -72,7 +73,7 @@ public class TrackProgressUI extends Fragment implements SensorEventListener {
 
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             //update number of steps
-            int numSteps = progressService.getAccelerometer(event, progressModel.getNumSteps(), goalSteps);
+            int numSteps = determineStep(event, progressModel.getNumSteps(), goalSteps);
             numStepsText.setText(progressModel.getNumSteps() + "/" + goalSteps + " Steps");
             progressModel.setNumSteps(numSteps);
 
@@ -163,5 +164,30 @@ public class TrackProgressUI extends Fragment implements SensorEventListener {
         // unregister listener
         super.onPause();
         sensorManager.unregisterListener(this);
+    }
+
+    public int determineStep(SensorEvent event, int currentSteps, int goalSteps) {
+        int numSteps = currentSteps;
+
+        float[] values = event.values;
+
+        //Determine if movement
+        float xAxis = values[0];
+        float yAxis = values[1];
+        float zAxis = values[2];
+
+        float squareRoot = (xAxis * xAxis + yAxis
+                * yAxis + zAxis * zAxis)
+                / (SensorManager.GRAVITY_EARTH * SensorManager.GRAVITY_EARTH);
+
+        long actualTime = System.currentTimeMillis()/1000;;
+
+        if (squareRoot >= 2 && actualTime - previousTime > 0.5) //
+        {
+            numSteps++;
+            previousTime = actualTime;
+        }
+
+        return numSteps;
     }
 }

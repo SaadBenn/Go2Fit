@@ -1,43 +1,38 @@
 package comp3350.go2fit.PersistenceLayer;
 
 import comp3350.go2fit.Models.SetGoalModel;
+
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class SetGoalPersistenceStub implements SetGoalPersistence{
 
-    private String[] period;
-    private Integer[] steps;
-    private String[] time;
-    private ArrayList<SetGoalModel> goalset;
+    private HashMap<Integer, SetGoalModel> setGoals;
+    private Integer nextId = 0;
 
     public SetGoalPersistenceStub()
     {
-
+        setGoals = new HashMap<>();
     }
 
     public void initializeDatabase()
     {
-        period=new String[]{"Today","Weekly","Monthly"};
-        steps=new Integer[]{1000,2000,3000};
-        time=new String[]{"1 hour","2 hours"};
-        goalset=new ArrayList<SetGoalModel>();
+        SetGoalModel temp = new SetGoalModel("Walking", 1000, "1", "Weekly");
+        temp.setId(nextId);
+        setGoals.put(temp.getId(), temp);
+        nextId++;
     }
 
-    public String[] getPeriod()
+    public void addGoal(SetGoalModel model)
     {
-        return period;
-    }
-    public String[] getTime() {
-        return time;
-    }
-    public Integer[] getSteps()
-    {
-        return steps;
+        model.setId(nextId);
+        setGoals.put(model.getId(), model);
+        nextId++;
     }
 
-    public void addgoal(SetGoalModel model)
+    public SetGoalModel getGoal(int id)
     {
-        goalset.add(model);
+        return setGoals.get(id);
     }
 }
