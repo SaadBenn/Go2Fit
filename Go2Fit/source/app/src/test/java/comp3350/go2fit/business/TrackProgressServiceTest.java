@@ -51,11 +51,4 @@ public class TrackProgressServiceTest extends TestCase {
         System.out.println("Finished test distanceAndCalories");
 
     }
-
-
-
-
-
-
-
 }

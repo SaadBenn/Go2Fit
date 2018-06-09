@@ -49,5 +49,19 @@ public class ProgressManagerTest extends TestCase {
 
         System.out.println("Finished testProcessManager: check add");
     }
+
+    @Test
+    public void testUpdateDatabase() {
+        TrackProgressModel data = new TrackProgressModel();
+        data.setDistance(100);
+        data.setCalories(20);
+        data.setNumSteps(10);
+        data.setPercentageComplete(2);
+        data.setUserId(0);
+        data.setId(0);
+        progressManager = new ProgressManager();
+        boolean result = progressManager.updateDatabase(data);
+        assertTrue(result);
+    }
 }
 

@@ -6,6 +6,6 @@ import comp3350.go2fit.Models.ChallengesModel;
 
 public interface ChallengeManagerInterface {
     HashMap getAllChallenges();
-    void addChallenge(ChallengesModel challengesModel);
+    boolean addChallenge(ChallengesModel challengesModel);
     ChallengesModel getChallenge(int id);
 }

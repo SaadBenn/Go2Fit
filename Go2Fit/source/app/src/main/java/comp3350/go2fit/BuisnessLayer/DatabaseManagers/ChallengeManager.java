@@ -19,9 +19,9 @@ public class ChallengeManager implements ChallengeManagerInterface {
         return challengesDatabase.getAllChallenges();
     }
 
-    public void addChallenge(ChallengesModel challengesModel)
+    public boolean addChallenge(ChallengesModel challengesModel)
     {
-        challengesDatabase.add(challengesModel);
+        return challengesDatabase.add(challengesModel);
     }
 
     public ChallengesModel getChallenge(int id) throws NullPointerException

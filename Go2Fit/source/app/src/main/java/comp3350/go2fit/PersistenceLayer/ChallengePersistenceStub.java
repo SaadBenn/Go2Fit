@@ -59,12 +59,13 @@ public class ChallengePersistenceStub implements ChallengePersistence{
 
     public void closeStubDatabase() { System.out.println("Closing the database"); }
 
-    public void add(ChallengesModel challengeModel)
+    public boolean add(ChallengesModel challengeModel)
     {
         System.out.println("ID IS: "+nextId);
         challengeModel.setId(nextId);
         this.challenge.put(challengeModel.getId(), challengeModel);
         nextId++;
+        return true;
     }
 
     public ChallengesModel getChallenge(int userId)
