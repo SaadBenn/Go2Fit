@@ -18,7 +18,9 @@ public class TrackProgressServiceTest extends TestCase {
     }
 
     @Test
-    public void verifyCalc() {
+    public void testVerifyCalc() {
+
+        System.out.println("Starting test verifyCalc");
 
         int actual = trackProgressService.determineProgress(100, 200);
         int expected = 50;
@@ -27,11 +29,15 @@ public class TrackProgressServiceTest extends TestCase {
 
         assertTrue(trackProgressService.determineHours(1) instanceof String);
         assertTrue(trackProgressService.determineMinutes(1) instanceof String);
-        assertTrue(trackProgressService.determineSeconds(1) instanceof String);
+        assertTrue(trackProgressService.determineSeconds(1000) instanceof String);
+
+        System.out.println("Finished test ");
     }
 
     @Test
     public void testDistanceAndCalories() {
+
+        System.out.println("Starting test distanceAndCalories");
 
         double actual = trackProgressService.calculateDistance(100);
         double expected = 70.104;
@@ -41,6 +47,9 @@ public class TrackProgressServiceTest extends TestCase {
         expected = 5.927895907639157;
 
         assertEquals(expected, actual);
+
+        System.out.println("Finished test distanceAndCalories");
+
     }
 
 
