@@ -1,5 +1,6 @@
 package comp3350.go2fit.PresentationLayer;
 
+import comp3350.go2fit.BuisnessLayer.DatabaseManagers.SetGoalManager;
 import comp3350.go2fit.Models.SetGoalModel;
 import comp3350.go2fit.BuisnessLayer.SetGoalLogic;
 import comp3350.go2fit.R;
@@ -24,6 +25,7 @@ public class SetGoalsUI extends Fragment implements CompoundButton.OnCheckedChan
     Switch run_btn;
     SetGoalModel setmodel;
     SetGoalLogic logicclass;
+    SetGoalManager setGoalManager;
     String modeselected;
     Integer stepselected;
     String timeselected;
@@ -33,6 +35,7 @@ public class SetGoalsUI extends Fragment implements CompoundButton.OnCheckedChan
     public SetGoalsUI()
     {
         logicclass=new SetGoalLogic();
+        setGoalManager = new SetGoalManager();
     }
 
     @Override
@@ -81,7 +84,7 @@ public class SetGoalsUI extends Fragment implements CompoundButton.OnCheckedChan
             @Override
             public void onClick(View view)
             {
-                logicclass.setgoal(setmodel);
+                setGoalManager.setgoal(setmodel);
 
             }
         });

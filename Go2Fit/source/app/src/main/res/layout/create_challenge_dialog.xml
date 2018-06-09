@@ -39,7 +39,7 @@
         android:layout_marginRight="76dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="76dp"
-        android:background="@android:drawable/btn_dropdown"
+        android:background="@android:color/holo_blue_dark"
         android:entries="@array/challenge_types"
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,6 +56,7 @@
         android:layout_marginRight="76dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="92dp"
+        android:background="@drawable/border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.807"
         app:layout_constraintStart_toEndOf="@+id/textView6"
@@ -85,6 +86,7 @@
         android:hint="0"
         android:inputType="text"
         android:textIsSelectable="true"
+        android:background="@drawable/border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.875"
         app:layout_constraintStart_toEndOf="@+id/distance"
@@ -127,7 +129,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/distance" />
 
-    <Button
+    <Button style="@style/Widget.AppCompat.Button.Colored"
         android:id="@+id/done_button"
         android:layout_width="174dp"
         android:layout_height="80dp"
@@ -138,6 +140,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="50dp"
         android:text="Create!"
+        android:background="@android:color/holo_blue_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

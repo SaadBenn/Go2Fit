@@ -44,12 +44,4 @@ public class SetGoalLogic
         }
         return result;
     }
-
-    public void setgoal(SetGoalModel model)
-    {
-        db.addgoal(model);
-    }
-
-
-
 }

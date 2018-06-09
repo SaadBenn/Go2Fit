@@ -67,6 +67,10 @@ public class CurrentChallenge extends AppCompatActivity
         {
             button.setEnabled(true);
         }
+        else
+        {
+            button.setEnabled(false);
+        }
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view)
