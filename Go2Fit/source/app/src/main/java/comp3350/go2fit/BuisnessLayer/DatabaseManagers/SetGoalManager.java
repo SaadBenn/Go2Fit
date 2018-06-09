@@ -14,7 +14,11 @@ public class SetGoalManager {
 
     public void setgoal(SetGoalModel model)
     {
-        db.addgoal(model);
+        db.addGoal(model);
+    }
+    public SetGoalModel getGoal(int id)
+    {
+        return db.getGoal(id);
     }
 
 }

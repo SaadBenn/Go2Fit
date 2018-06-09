@@ -5,14 +5,9 @@ import comp3350.go2fit.Models.SetGoalModel;
 public interface SetGoalPersistence {
 
     public void initializeDatabase();
-    public String[] getPeriod();
 
-    public String[] getTime();
-
-    public Integer[] getSteps();
-
-
-    public void addgoal(SetGoalModel model);
+    public void addGoal(SetGoalModel model);
+    public SetGoalModel getGoal(int id);
 
 }
 

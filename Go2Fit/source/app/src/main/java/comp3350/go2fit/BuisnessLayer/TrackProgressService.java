@@ -20,28 +20,6 @@ public class TrackProgressService {
         previousTime = 0;
     }
 
-    public int getAccelerometer(SensorEvent event, int currentSteps, int goalSteps) {
-        int numSteps = currentSteps;
-
-        float[] values = event.values;
-        // Movement
-        float x = values[0];
-        float y = values[1];
-        float z = values[2];
-
-        float accelationSquareRoot = (x * x + y * y + z * z)
-                / (SensorManager.GRAVITY_EARTH * SensorManager.GRAVITY_EARTH);
-        long actualTime = System.currentTimeMillis()/1000;;
-
-        if (accelationSquareRoot >= 2 && actualTime - previousTime > 0.5) //
-        {
-            numSteps++;
-            previousTime = actualTime;
-        }
-
-        return numSteps;
-    }
-
     public int determineProgress(int numSteps, int goalSteps)
     {
         double percentage = ((double) numSteps / goalSteps);
