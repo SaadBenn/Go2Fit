@@ -9,15 +9,21 @@ import comp3350.go2fit.business.UserManagerTest;
 import comp3350.go2fit.business.ChallengeManagerTest;
 import comp3350.go2fit.business.ChallengesServiceTest;
 import comp3350.go2fit.business.TrackProgressServiceTest;
+import comp3350.go2fit.objects.ChallengesModelTest;
+import comp3350.go2fit.objects.TrackProgressModelTest;
+import comp3350.go2fit.objects.UserModelTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        // TODO
+
         ProgressManagerTest.class,
         UserManagerTest.class,
         ChallengeManagerTest.class,
         ChallengesServiceTest.class,
-        TrackProgressServiceTest.class
+        TrackProgressServiceTest.class,
+        ChallengesModelTest.class,
+        TrackProgressModelTest.class,
+        UserModelTest.class
 })
 
 public class AllTests { }
