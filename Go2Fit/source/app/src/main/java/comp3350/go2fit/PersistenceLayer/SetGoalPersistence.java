@@ -4,10 +4,10 @@ import comp3350.go2fit.Models.SetGoalModel;
 
 public interface SetGoalPersistence {
 
-    public void initializeDatabase();
+    void initializeDatabase();
 
-    public void addGoal(SetGoalModel model);
-    public SetGoalModel getGoal(int id);
+    boolean addGoal(SetGoalModel model);
+    SetGoalModel getGoal(int id);
 
 }
 

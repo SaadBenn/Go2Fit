@@ -34,12 +34,10 @@ public class ChallengesService implements ChallengesServiceInterface
     {
         Set<Integer> set=map.keySet();
         ArrayList<String> values = new ArrayList<>();
-        int count = 0;
         for(Integer value : set)
         {
             ChallengesModel model = (ChallengesModel)map.get(value);
             values.add(model.getChallengeName());
-            count++;
         }
         return values;
     }

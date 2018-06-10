@@ -4,7 +4,7 @@ import comp3350.go2fit.Application.Services;
 import comp3350.go2fit.Models.SetGoalModel;
 import comp3350.go2fit.PersistenceLayer.SetGoalPersistence;
 
-public class SetGoalManager {
+public class SetGoalManager implements SetGoalManagerInterface {
     SetGoalPersistence db;
 
     public SetGoalManager()
@@ -12,9 +12,9 @@ public class SetGoalManager {
         db = Services.getSetGoalPersistence();
     }
 
-    public void setgoal(SetGoalModel model)
+    public boolean setgoal(SetGoalModel model)
     {
-        db.addGoal(model);
+        return db.addGoal(model);
     }
     public SetGoalModel getGoal(int id)
     {

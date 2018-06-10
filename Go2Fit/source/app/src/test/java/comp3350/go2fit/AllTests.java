@@ -12,6 +12,7 @@ import comp3350.go2fit.business.TrackProgressServiceTest;
 import comp3350.go2fit.objects.ChallengesModelTest;
 import comp3350.go2fit.objects.TrackProgressModelTest;
 import comp3350.go2fit.objects.UserModelTest;
+import comp3350.go2fit.business.SetGoalManagerTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
@@ -23,7 +24,8 @@ import comp3350.go2fit.objects.UserModelTest;
         TrackProgressServiceTest.class,
         ChallengesModelTest.class,
         TrackProgressModelTest.class,
-        UserModelTest.class
+        UserModelTest.class,
+        SetGoalManagerTest.class
 })
 
 public class AllTests { }

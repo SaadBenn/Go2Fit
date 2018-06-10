@@ -24,11 +24,14 @@ public class SetGoalPersistenceStub implements SetGoalPersistence{
         nextId++;
     }
 
-    public void addGoal(SetGoalModel model)
+    public boolean addGoal(SetGoalModel model)
     {
+        boolean result = false;
         model.setId(nextId);
         setGoals.put(model.getId(), model);
+        result = true;
         nextId++;
+        return result;
     }
 
     public SetGoalModel getGoal(int id)
