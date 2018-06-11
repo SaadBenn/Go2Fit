@@ -4,16 +4,20 @@ import java.util.HashMap;
 
 import comp3350.go2fit.Models.UserModel;
 
-public class UserPersistenceStub implements UserPersistence{
+/**user persistence stub**/
+public class UserPersistenceStub implements UserPersistence
+{
     private HashMap<Integer, UserModel> users;
     private Integer nextId;
 
-    public UserPersistenceStub() {
+    public UserPersistenceStub()
+    {
         users = new HashMap<Integer, UserModel>();
         nextId = 0;
     }
 
-    public void initializeDatabase() {
+    public void initializeDatabase()
+    {
 
         //create 4 users
         UserModel tempData1 = new UserModel();
@@ -41,11 +45,10 @@ public class UserPersistenceStub implements UserPersistence{
         tempData4.setId(nextId);
         users.put(tempData4.getId(), tempData4);
         nextId++;
+
         // print to the console
         System.out.println("Initialized the database of Goal Info.");
     }
-
-    public void closeStubDatabase() { System.out.println("Closing the database"); }
 
     public void add(UserModel userModel)
     {
@@ -54,18 +57,13 @@ public class UserPersistenceStub implements UserPersistence{
         nextId++;
     }
 
-    public UserModel getProgress(int userId)
-    {
-        return users.get(userId);
-    }
-
     public HashMap<Integer, UserModel> getAllChallenges() {
-        return users;
+        return this.users;
     }
 
     public UserModel getUser(int userId)
     {
-        return users.get(userId);
+        return this.users.get(userId);
     }
 
     public boolean update(UserModel user)
@@ -76,5 +74,8 @@ public class UserPersistenceStub implements UserPersistence{
         return result;
     }
 
-    public void clearStubDatabase() { users.clear(); }
+    public void clearStubDatabase()
+    {
+        this.users.clear();
+    }
 }

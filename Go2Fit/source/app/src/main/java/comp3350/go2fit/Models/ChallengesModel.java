@@ -3,20 +3,20 @@ package comp3350.go2fit.Models;
 import android.os.Parcelable;
 import android.os.Parcel;
 
+/**Challenges Model**/
 public class ChallengesModel implements Parcelable
 {
     private String challengeName;
     private String challengeType;
-    private int stepsRequired;
-    private long time;
-    private int points;
-    private int id;
+    private long   time;
+    private int    stepsRequired;
+    private int    points;
+    private int    id;
 
-    public  ChallengesModel()
-    {
+    /**Empty constructor**/
+    public  ChallengesModel() { }
 
-    }
-
+    /**Constructor overloading**/
     public ChallengesModel(String challengeName, String challengeType, int stepsRequired, long time, int points)
     {
         this.challengeName = challengeName;
@@ -26,49 +26,40 @@ public class ChallengesModel implements Parcelable
         this.points        = points;
     }
 
-
-    protected ChallengesModel(Parcel in) {
+    protected ChallengesModel(Parcel in)
+    {
         challengeName = in.readString();
         challengeType = in.readString();
         stepsRequired = in.readInt();
-        time = in.readLong();
-        points = in.readInt();
-        id = in.readInt();
+        time          = in.readLong();
+        points        = in.readInt();
+        id            = in.readInt();
     }
 
-    public static final Creator<ChallengesModel> CREATOR = new Creator<ChallengesModel>() {
+    public static final Creator<ChallengesModel> CREATOR = new Creator<ChallengesModel>()
+    {
         @Override
-        public ChallengesModel createFromParcel(Parcel in) {
+        public ChallengesModel createFromParcel(Parcel in)
+        {
             return new ChallengesModel(in);
         }
 
         @Override
-        public ChallengesModel[] newArray(int size) {
+        public ChallengesModel[] newArray(int size)
+        {
             return new ChallengesModel[size];
         }
     };
 
-    public void setChallengeName(String challengeName)
-    {
-        this.challengeName = challengeName;
-    }
+    /**Accessors**/
     public String getChallengeName()
     {
         return this.challengeName;
     }
-    public void setChallengeType(String challengeType)
-    {
-        this.challengeType = challengeType;
-    }
 
     public String getChallengeType()
     {
-        return challengeType;
-    }
-
-    public void setStepsRequired(int stepsRequired)
-    {
-        this.stepsRequired = stepsRequired;
+        return this.challengeType;
     }
 
     public int getStepsRequired()
@@ -76,23 +67,46 @@ public class ChallengesModel implements Parcelable
         return this.stepsRequired;
     }
 
+    public long getTime()
+    {
+        return this.time;
+    }
+
+    public int getPoints()
+    {
+        return this.points;
+    }
+
+    public int getId()
+    {
+        return this.id;
+    }
+
+    /**Mutators**/
+
+    public void setChallengeName(String challengeName)
+    {
+        this.challengeName = challengeName;
+    }
+
+    public void setChallengeType(String challengeType)
+    {
+        this.challengeType = challengeType;
+    }
+
+    public void setStepsRequired(int stepsRequired)
+    {
+        this.stepsRequired = stepsRequired;
+    }
+
     public void setTime(long time)
     {
         this.time = time;
     }
 
-    public long getTime()
-    {
-        return time;
-    }
-
     public void setPoints(int points)
     {
         this.points = points;
-    }
-    public int getPoints()
-    {
-        return points;
     }
 
     public void setId(int id)
@@ -100,18 +114,15 @@ public class ChallengesModel implements Parcelable
         this.id = id;
     }
 
-    public int getId()
-    {
-        return id;
-    }
-
     @Override
-    public int describeContents() {
+    public int describeContents()
+    {
         return 0;
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(Parcel dest, int flags)
+    {
         dest.writeString(challengeName);
         dest.writeString(challengeType);
         dest.writeInt(stepsRequired);

@@ -12,19 +12,20 @@ import comp3350.go2fit.PersistenceLayer.TrackProgressPersistence;
 import comp3350.go2fit.Application.Services;
 import comp3350.go2fit.PersistenceLayer.UserPersistence;
 
-public class TrackProgressService implements TrackProgressServiceInterface {
+/**Track progress service implementation**/
+public class TrackProgressService implements TrackProgressServiceInterface
+{
     long previousTime;
 
     public TrackProgressService()
     {
-        previousTime = 0;
+        this.previousTime = 0;
     }
 
     public int determineProgress(int numSteps, int goalSteps)
     {
         double percentage = ((double) numSteps / goalSteps);
         return (int)(percentage * 100);
-
     }
 
     public String determineHours(long milliseconds)

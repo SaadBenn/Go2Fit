@@ -4,12 +4,13 @@ import java.util.HashMap;
 
 import comp3350.go2fit.Models.UserModel;
 
-public interface UserPersistence {
-    void initializeDatabase();
-    void closeStubDatabase();
-    void add(final UserModel progress);
-    HashMap getAllChallenges();
+/**user persistence interface**/
+public interface UserPersistence
+{
+    void      initializeDatabase();
+    void      add(final UserModel progress);
+    boolean   update(UserModel user);
     UserModel getUser(int userId);
-    boolean update(UserModel user);
-    void clearStubDatabase();
+    HashMap   getAllChallenges();
+    void      clearStubDatabase();
 }

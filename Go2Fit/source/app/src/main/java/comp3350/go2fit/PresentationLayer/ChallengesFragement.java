@@ -31,14 +31,16 @@ import comp3350.go2fit.Models.ChallengesModel;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ChallengesFragement extends Fragment {
+public class ChallengesFragement extends Fragment
+{
     private ChallengesService challengesService;
     private ChallengeManager challengeManager;
     private ArrayList<String> challengeTypes;
     private ArrayAdapter<String> listViewAdapter;
     private Dialog dialog;
 
-    public ChallengesFragement() {
+    public ChallengesFragement()
+    {
         // Required empty public constructor
         challengesService = new ChallengesService();
         challengeManager = new ChallengeManager();
@@ -51,8 +53,11 @@ public class ChallengesFragement extends Fragment {
 
         //ensure that there is valid challenges in db
         try {
-            final HashMap<Integer, ChallengesModel> allChallenges = challengeManager.getAllChallenges();//call the service class and get all the challenges from db
-            this.challengeTypes = challengesService.getAllChallengeNames(allChallenges);//get all the challenge types
+            //call the service class and get all the challenges from db
+            final HashMap<Integer, ChallengesModel> allChallenges = challengeManager.getAllChallenges();
+
+            //get all the challenge types
+            this.challengeTypes = challengesService.getAllChallengeNames(allChallenges);
 
             //populat the list view with the challenges
             ListView listView = (ListView) view.findViewById(R.id.challengesList);
@@ -81,7 +86,6 @@ public class ChallengesFragement extends Fragment {
         {
             Messages.fatalError(this.getActivity(), e.getMessage());
         }
-
 
         Button button = (Button) view.findViewById(R.id.create_challenge);
         button.setOnClickListener(new View.OnClickListener() {
@@ -126,7 +130,6 @@ public class ChallengesFragement extends Fragment {
         numberPickerMinutes.setMaxValue(60);
 
         dialog.show();
-
     }
 
     public void userInput()

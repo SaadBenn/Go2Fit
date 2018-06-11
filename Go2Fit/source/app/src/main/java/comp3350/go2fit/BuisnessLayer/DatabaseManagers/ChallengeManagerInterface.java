@@ -4,8 +4,10 @@ import java.util.HashMap;
 
 import comp3350.go2fit.Models.ChallengesModel;
 
-public interface ChallengeManagerInterface {
-    HashMap getAllChallenges();
-    boolean addChallenge(ChallengesModel challengesModel);
+/**Challenge manager interface**/
+public interface ChallengeManagerInterface
+{
+    HashMap         getAllChallenges();
     ChallengesModel getChallenge(int id);
+    boolean         addChallenge(ChallengesModel challengesModel);
 }

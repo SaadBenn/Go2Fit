@@ -4,12 +4,15 @@ import java.util.HashMap;
 
 import comp3350.go2fit.Models.TrackProgressModel;
 
-public class TrackProgressPersistenceStub implements TrackProgressPersistence {
+/**track progress persistence stub**/
+public class TrackProgressPersistenceStub implements TrackProgressPersistence
+{
 
     private HashMap<Integer, TrackProgressModel> progress;
     private Integer nextId = 0;
 
-    public TrackProgressPersistenceStub() {
+    public TrackProgressPersistenceStub()
+    {
         progress= new HashMap<Integer, TrackProgressModel>();
     }
 
@@ -31,8 +34,6 @@ public class TrackProgressPersistenceStub implements TrackProgressPersistence {
         System.out.println("Initialized the database of Goal Info.");
     }
 
-    public void closeStubDatabase() { System.out.println("Closing the database"); }
-
     public boolean add(TrackProgressModel userProgress)
     {
         boolean result = false;
@@ -48,13 +49,12 @@ public class TrackProgressPersistenceStub implements TrackProgressPersistence {
         boolean result = false;
         this.progress.put(userProgress.getUserId(), userProgress);
         result = true;
+
         return result;
     }
 
     public TrackProgressModel getProgress(int userId)
     {
-        return progress.get(userId);
+        return this.progress.get(userId);
     }
-
-    public void clearStubDatabase() { progress.clear(); }
 }

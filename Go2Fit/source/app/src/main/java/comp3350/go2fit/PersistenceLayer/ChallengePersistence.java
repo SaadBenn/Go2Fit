@@ -4,13 +4,15 @@ import java.util.HashMap;
 
 import comp3350.go2fit.Models.ChallengesModel;
 
-public interface ChallengePersistence {
-    void initializeDatabase();
+/**Challenge persistence interface**/
+public interface ChallengePersistence
+{
+    void clearStubDatabase();
     void closeStubDatabase();
+    void initializeDatabase();
     boolean add(final ChallengesModel progress);
     String getChallengeType(int userId);
     String getChallengeName(int userId);
     ChallengesModel getChallenge(int userId);
     HashMap getAllChallenges();
-    void clearStubDatabase();
 }

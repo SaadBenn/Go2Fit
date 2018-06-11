@@ -1,33 +1,27 @@
 package comp3350.go2fit.Models;
 
-public class TrackProgressModel {
-    private int numSteps;
-    private int percentageComplete;
+/**Track progress model**/
+public class TrackProgressModel
+{
     private double distance;
     private double calories;
-    private int id;
-    private int userId;
+    private int    id;
+    private int    userId;
+    private int    numSteps;
+    private int    percentageComplete;
+
     public TrackProgressModel()
     {
-        numSteps = 0;
-        percentageComplete = 0;
-        distance = 0;
-        calories = 0;
+        this.percentageComplete = 0;
+        this.numSteps = 0;
+        this.distance = 0;
+        this.calories = 0;
     }
 
-    public void setId(int id)
-    {
-        this.id = id;
-    }
-
+    /**Accessors**/
     public int getId()
     {
-        return id;
-    }
-
-    public void setNumSteps(int numSteps)
-    {
-        this.numSteps = numSteps;
+        return this.id;
     }
 
     public int getNumSteps()
@@ -35,27 +29,14 @@ public class TrackProgressModel {
         return this.numSteps;
     }
 
-    public void setPercentageComplete(int percentageComplete)
-    {
-        this.percentageComplete = percentageComplete;
-    }
-
     public int getPercentageComplete()
     {
         return this.percentageComplete;
     }
 
-    public void setDistance(double distance) {
-        this.distance = distance;
-    }
-
-    public double getDistance() {
-        return distance;
-    }
-
-    public void setCalories(double calories)
+    public double getDistance()
     {
-        this.calories = calories;
+        return distance;
     }
 
     public double getCalories()
@@ -63,12 +44,39 @@ public class TrackProgressModel {
         return calories;
     }
 
-    public void setUserId(int userId)
-    {
-        this.userId = userId;
-    }
     public int getUserId()
     {
         return userId;
+    }
+
+    /**Mutators**/
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    public void setNumSteps(int numSteps)
+    {
+        this.numSteps = numSteps;
+    }
+
+    public void setPercentageComplete(int percentageComplete)
+    {
+        this.percentageComplete = percentageComplete;
+    }
+
+    public void setDistance(double distance)
+    {
+        this.distance = distance;
+    }
+
+    public void setCalories(double calories)
+    {
+        this.calories = calories;
+    }
+
+    public void setUserId(int userId)
+    {
+        this.userId = userId;
     }
 }

@@ -4,60 +4,68 @@ import android.widget.Switch;
 
 import java.sql.Time;
 
-public class SetGoalModel {
-    private String mode;
+
+/**Set goal model**/
+public class SetGoalModel
+{
+    private String  mode;
     private Integer steps;
-    private String time;
-    private String period;
-    private int id;
+    private String  time;
+    private String  period;
+    private int     id;
 
     public SetGoalModel(String mode,Integer steps,String time,String period)
     {
-        this.mode=mode;
-        this.steps=steps;
-        this.time=time;
-        this.period=period;
+        this.mode   = mode;
+        this.steps  = steps;
+        this.time   = time;
+        this.period = period;
     }
-    public String getMode() {
-        return mode;
 
+    /**Accessors**/
+    public String getMode()
+    {
+        return this.mode;
     }
+
+    public Integer getSteps()
+    {
+        return this.steps;
+    }
+
+    public String  getTime()
+    {
+        return this.time;
+    }
+
+    public String getPeriod()
+    {
+        return this.period;
+    }
+
+    public int getId()
+    {
+        return this.id;
+    }
+
+    /**Mutators**/
     public void setSteps(int steps)
     {
         this.steps = steps;
-    }
-    public Integer getSteps()
-
-    {
-        return steps;
     }
 
     public void setTime(String time)
     {
         this.time = time;
     }
-    public String  getTime()
-    {
-        return time;
-    }
 
     public void setPeriod(String period)
     {
         this.period = period;
-    }
-    public String getPeriod()
-    {
-        return period;
     }
 
     public void setId(int id)
     {
         this.id = id;
     }
-    public int getId()
-    {
-        return id;
-    }
-
-
 }

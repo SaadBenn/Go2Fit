@@ -16,17 +16,14 @@ import comp3350.go2fit.Models.ChallengesModel;
 import comp3350.go2fit.Models.UserModel;
 import comp3350.go2fit.R;
 
+/**Current challenge**/
 public class CurrentChallenge extends AppCompatActivity
 {
-    public CurrentChallenge()
-    {
-
-    }
+    public CurrentChallenge() {}
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-
         super.onCreate(savedInstanceState);
         final UserManager userManager = new UserManager();
         setContentView(R.layout.activity_current_challenge);
@@ -37,9 +34,9 @@ public class CurrentChallenge extends AppCompatActivity
 
         String challengeName = currentChallenge.getChallengeName();
         String challengeType = currentChallenge.getChallengeType();
-        int numSteps = currentChallenge.getStepsRequired();
-        int numPoints = currentChallenge.getPoints();
-        long time = currentChallenge.getTime();
+        int    numSteps      = currentChallenge.getStepsRequired();
+        int    numPoints     = currentChallenge.getPoints();
+        long   time          = currentChallenge.getTime();
 
         TextView name = (TextView) findViewById(R.id.name);
         name.setText(challengeName);
@@ -56,9 +53,6 @@ public class CurrentChallenge extends AppCompatActivity
         TextView timeAmount = (TextView) findViewById(R.id.time);
         timeAmount.setText(points.getText() + Integer.toString(numPoints));
 
-        //TextView Id = findViewById(R.id.Id);
-        //Id.setText("" + id);
-
 
         /** Called when the user touches the button */
         final Button button= (Button)findViewById(R.id.button);
@@ -71,7 +65,8 @@ public class CurrentChallenge extends AppCompatActivity
         {
             button.setEnabled(false);
         }
-        button.setOnClickListener(new View.OnClickListener(){
+        button.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View view)
             {
@@ -85,9 +80,7 @@ public class CurrentChallenge extends AppCompatActivity
                                         "Head over to the progress page to see your current progress!");
 
                 button.setEnabled(false);
-
             }
         });
     }
-
 }

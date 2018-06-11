@@ -4,26 +4,28 @@ import comp3350.go2fit.Application.Services;
 import comp3350.go2fit.Models.TrackProgressModel;
 import comp3350.go2fit.PersistenceLayer.TrackProgressPersistence;
 
-public class ProgressManager implements ProgressManagerInterface {
+/**Progress Manager**/
+public class ProgressManager implements ProgressManagerInterface
+{
     TrackProgressPersistence database;
 
     public ProgressManager()
     {
-        database = Services.getTrackProgressPersistence();
+        this.database = Services.getTrackProgressPersistence();
     }
 
     public TrackProgressModel getProgress(int userId) throws NullPointerException
     {
-        return database.getProgress(userId);
+        return this.database.getProgress(userId);
     }
 
     public boolean updateDatabase(TrackProgressModel progress)
     {
-        return database.update(progress);
-    }
-    public boolean addProgress(TrackProgressModel progress)
-    {
-        return database.add(progress);
+        return this.database.update(progress);
     }
 
+    public boolean addProgress(TrackProgressModel progress)
+    {
+        return this.database.add(progress);
+    }
 }

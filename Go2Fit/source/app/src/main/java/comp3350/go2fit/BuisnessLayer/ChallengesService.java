@@ -8,6 +8,8 @@ import java.util.concurrent.TimeUnit;
 
 import comp3350.go2fit.Models.ChallengesModel;
 
+
+/**Challenges service**/
 public class ChallengesService implements ChallengesServiceInterface
 {
     public boolean verifyDistance(String distance) throws NumberFormatException
@@ -32,7 +34,7 @@ public class ChallengesService implements ChallengesServiceInterface
 
     public ArrayList<String> getAllChallengeNames(HashMap map)
     {
-        Set<Integer> set=map.keySet();
+        Set<Integer> set = map.keySet();
         ArrayList<String> values = new ArrayList<>();
         for(Integer value : set)
         {
@@ -41,5 +43,4 @@ public class ChallengesService implements ChallengesServiceInterface
         }
         return values;
     }
-
 }

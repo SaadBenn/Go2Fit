@@ -4,21 +4,21 @@ import comp3350.go2fit.Application.Services;
 import comp3350.go2fit.Models.UserModel;
 import comp3350.go2fit.PersistenceLayer.UserPersistence;
 
-public class UserManager implements UserManagerInterface {
-
+/**User manager**/
+public class UserManager implements UserManagerInterface
+{
     private UserPersistence userDatabase;
 
     public UserManager()
     {
-        userDatabase = Services.getUserPersistence();
+        this.userDatabase = Services.getUserPersistence();
     }
     public UserModel getUser(int userId)
     {
-        return userDatabase.getUser(userId);
+        return this.userDatabase.getUser(userId);
     }
     public boolean updateUser(UserModel user)
     {
-        return userDatabase.update(user);
+        return this.userDatabase.update(user);
     }
-
 }

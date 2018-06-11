@@ -24,21 +24,22 @@ import comp3350.go2fit.PresentationLayer.HomePageFragement;
 import comp3350.go2fit.PresentationLayer.TrackProgressUI;
 import comp3350.go2fit.PresentationLayer.SetGoalsUI;
 
-/**
- * Fragment to return the clicked tab.
- */
-public class PagerAdapter extends FragmentStatePagerAdapter {
+/**Fragment to return the clicked tab**/
+public class PagerAdapter extends FragmentStatePagerAdapter
+{
     int mNumOfTabs;
 
-    public PagerAdapter(FragmentManager fm, int NumOfTabs) {
+    public PagerAdapter(FragmentManager fm, int NumOfTabs)
+    {
         super(fm);
         this.mNumOfTabs = NumOfTabs;
     }
 
     @Override
-    public Fragment getItem(int position) {
-
-        switch (position) {
+    public Fragment getItem(int position)
+    {
+        switch (position)
+        {
             case 0:
                 return new HomePageFragement();
             case 1:
@@ -53,7 +54,8 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     }
 
     @Override
-    public int getCount() {
+    public int getCount()
+    {
         return mNumOfTabs;
     }
 }

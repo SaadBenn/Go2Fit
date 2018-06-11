@@ -6,14 +6,15 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class SetGoalPersistenceStub implements SetGoalPersistence{
-
+/**set goal persistence stub**/
+public class SetGoalPersistenceStub implements SetGoalPersistence
+{
     private HashMap<Integer, SetGoalModel> setGoals;
     private Integer nextId = 0;
 
     public SetGoalPersistenceStub()
     {
-        setGoals = new HashMap<>();
+        this.setGoals = new HashMap<>();
     }
 
     public void initializeDatabase()
@@ -28,7 +29,7 @@ public class SetGoalPersistenceStub implements SetGoalPersistence{
     {
         boolean result = false;
         model.setId(nextId);
-        setGoals.put(model.getId(), model);
+        this.setGoals.put(model.getId(), model);
         result = true;
         nextId++;
         return result;
@@ -36,6 +37,6 @@ public class SetGoalPersistenceStub implements SetGoalPersistence{
 
     public SetGoalModel getGoal(int id)
     {
-        return setGoals.get(id);
+        return this.setGoals.get(id);
     }
 }

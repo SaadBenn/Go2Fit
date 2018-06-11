@@ -11,11 +11,14 @@ import android.os.Process;
 
 import comp3350.go2fit.R;
 
-public class StartUp extends AppCompatActivity {
 
+/**The start up to the application**/
+public class StartUp extends AppCompatActivity
+{
     public Button startButton;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_start_up);
@@ -29,12 +32,14 @@ public class StartUp extends AppCompatActivity {
         });
     }
 
-    public void startApp() {
+    public void startApp()
+    {
         Intent startApp = new Intent(this, MainActivity.class);
         startActivity(startApp);
     }
 
-    public void exitApp(View v) {
+    public void exitApp(View v)
+    {
         moveTaskToBack(true);
         Process.killProcess(Process.myPid());
         System.exit(1);

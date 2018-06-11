@@ -5,16 +5,20 @@ import java.util.HashMap;
 
 import comp3350.go2fit.Models.ChallengesModel;
 
-public class ChallengePersistenceStub implements ChallengePersistence{
+/**challenges persistence stub**/
+public class ChallengePersistenceStub implements ChallengePersistence
+{
     private HashMap<Integer, ChallengesModel> challenge;
     private Integer nextId;
 
-    public ChallengePersistenceStub() {
-        challenge = new HashMap<Integer, ChallengesModel>();
-        nextId = 0;
+    public ChallengePersistenceStub()
+    {
+        this.challenge = new HashMap<Integer, ChallengesModel>();
+        this.nextId = 0;
     }
 
-    public void initializeDatabase() {
+    public void initializeDatabase()
+    {
 
         ChallengesModel tempData1 = new ChallengesModel();
         ChallengesModel tempData2 = new ChallengesModel();
@@ -53,11 +57,15 @@ public class ChallengePersistenceStub implements ChallengePersistence{
         tempData4.setId(nextId);
         challenge.put(tempData4.getId(), tempData4);
         nextId++;
+
         // print to the console
         System.out.println("Initialized the database of Goal Info.");
     }
 
-    public void closeStubDatabase() { System.out.println("Closing the database"); }
+    public void closeStubDatabase()
+    {
+        System.out.println("Closing the database");
+    }
 
     public boolean add(ChallengesModel challengeModel)
     {
@@ -68,25 +76,34 @@ public class ChallengePersistenceStub implements ChallengePersistence{
         return true;
     }
 
+    /**Accessors**/
     public ChallengesModel getChallenge(int userId)
     {
-        return challenge.get(userId);
+        return this.challenge.get(userId);
     }
 
-    public String getChallengeType(int userId){ return challenge.get(userId).getChallengeType();}
+    public String getChallengeType(int userId)
+    {
+        return this.challenge.get(userId).getChallengeType();
+    }
 
-    public String getChallengeName(int userId){ return  challenge.get(userId).getChallengeName();}
+    public String getChallengeName(int userId)
+    {
+        return  this.challenge.get(userId).getChallengeName();
+    }
 
     public ChallengesModel getProgress(int userId)
-
     {
-        return challenge.get(userId);
+        return this.challenge.get(userId);
     }
 
-    public HashMap<Integer, ChallengesModel> getAllChallenges() {
-        return challenge;
+    public HashMap<Integer, ChallengesModel> getAllChallenges()
+    {
+        return this.challenge;
     }
 
-    public void clearStubDatabase() { challenge.clear(); }
-
+    public void clearStubDatabase()
+    {
+        this.challenge.clear();
+    }
 }

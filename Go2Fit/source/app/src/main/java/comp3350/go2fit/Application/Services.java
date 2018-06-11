@@ -9,6 +9,7 @@ import comp3350.go2fit.PersistenceLayer.UserPersistenceStub;
 import comp3350.go2fit.PersistenceLayer.SetGoalPersistence;
 import comp3350.go2fit.PersistenceLayer.SetGoalPersistenceStub;
 
+/**Services Class**/
 
 public class Services
 {

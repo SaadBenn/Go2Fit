@@ -15,7 +15,8 @@ import comp3350.go2fit.R;
  * This app offers three view fragments and three tabs below the app bar
  * to navigate to them, as well as the options menu showing Settings.
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
     /**
      * Creates the content view and toolbar, sets up the tab layout, and sets up a page adapter
      * to manage views in fragments. The user clicks a tab and navigates to the view fragment.
@@ -23,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
      * @param savedInstanceState Saved instance.
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -39,11 +41,11 @@ public class MainActivity extends AppCompatActivity {
         layout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager tabs = (ViewPager) findViewById(R.id.pager);
-        final PagerAdapter adapter = new PagerAdapter
-                (getSupportFragmentManager(), layout.getTabCount());
+        final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), layout.getTabCount());
         tabs.setAdapter(adapter);
         tabs.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(layout));
-        layout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        layout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener()
+        {
 
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -51,27 +53,32 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
+            public void onTabUnselected(TabLayout.Tab tab)
+            {
             //nothing to see here...
             }
 
             @Override
-            public void onTabReselected(TabLayout.Tab tab) {
+            public void onTabReselected(TabLayout.Tab tab)
+            {
             //nothing to see here...
             }
         });
 
     }
     @Override
-    public boolean onCreateOptionsMenu(Menu menu_main) {
+    public boolean onCreateOptionsMenu(Menu menu_main)
+    {
         getMenuInflater().inflate(R.menu.menu_main, menu_main);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_settings)
+        {
             return true;
         }
         return super.onOptionsItemSelected(item);

@@ -4,21 +4,23 @@ import comp3350.go2fit.Application.Services;
 import comp3350.go2fit.Models.SetGoalModel;
 import comp3350.go2fit.PersistenceLayer.SetGoalPersistence;
 
-public class SetGoalManager implements SetGoalManagerInterface {
+/**Set goal manager**/
+public class SetGoalManager implements SetGoalManagerInterface
+{
     SetGoalPersistence db;
 
     public SetGoalManager()
     {
-        db = Services.getSetGoalPersistence();
+        this.db = Services.getSetGoalPersistence();
     }
 
-    public boolean setgoal(SetGoalModel model)
+    public boolean setGoal(SetGoalModel model)
     {
-        return db.addGoal(model);
+        return this.db.addGoal(model);
     }
+
     public SetGoalModel getGoal(int id)
     {
-        return db.getGoal(id);
+        return this.db.getGoal(id);
     }
-
 }

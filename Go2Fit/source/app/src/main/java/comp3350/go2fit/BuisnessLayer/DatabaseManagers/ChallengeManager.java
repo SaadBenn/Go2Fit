@@ -6,27 +6,28 @@ import comp3350.go2fit.Application.Services;
 import comp3350.go2fit.Models.ChallengesModel;
 import comp3350.go2fit.PersistenceLayer.ChallengePersistence;
 
-public class ChallengeManager implements ChallengeManagerInterface {
+/**Challenge Manager **/
+public class ChallengeManager implements ChallengeManagerInterface
+{
     private ChallengePersistence challengesDatabase;
 
     public ChallengeManager()
     {
-        challengesDatabase = Services.getChallengePersistence();
+        this.challengesDatabase = Services.getChallengePersistence();
     }
 
     public HashMap getAllChallenges() throws NullPointerException
     {
-        return challengesDatabase.getAllChallenges();
-    }
-
-    public boolean addChallenge(ChallengesModel challengesModel)
-    {
-        return challengesDatabase.add(challengesModel);
+        return this.challengesDatabase.getAllChallenges();
     }
 
     public ChallengesModel getChallenge(int id) throws NullPointerException
     {
-        return challengesDatabase.getChallenge(id);
+        return this.challengesDatabase.getChallenge(id);
     }
 
+    public boolean addChallenge(ChallengesModel challengesModel)
+    {
+        return this.challengesDatabase.add(challengesModel);
+    }
 }

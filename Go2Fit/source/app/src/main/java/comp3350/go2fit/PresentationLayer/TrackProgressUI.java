@@ -22,100 +22,98 @@ import comp3350.go2fit.R;
 import comp3350.go2fit.Models.TrackProgressModel;
 import comp3350.go2fit.BuisnessLayer.TrackProgressService;
 
-public class TrackProgressUI extends Fragment implements SensorEventListener {
-    private SensorManager sensorManager;
-    private long previousTime;
-    private TrackProgressModel progressModel;
+/**track progress UI**/
+public class TrackProgressUI extends Fragment implements SensorEventListener
+{
+    private SensorManager        sensorManager;
+    private TrackProgressModel   progressModel;
     private TrackProgressService progressService;
-    private ProgressManager progressManager;
-    private UserManager userManager;
-    private ChallengeManager challengeManager;
-    private int goalSteps;
-    private long time;
+    private ProgressManager      progressManager;
+    private UserManager          userManager;
+    private ChallengeManager     challengeManager;
+    private long                 previousTime;
+    private long                 time;
+    private int                  goalSteps;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
 
         //setup sensor and logic class
-        sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
-        progressService = new TrackProgressService();
-        progressManager = new ProgressManager();
-        userManager = new UserManager();
-        challengeManager = new ChallengeManager();
-
+        this.sensorManager    = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+        this.progressService  = new TrackProgressService();
+        this.progressManager  = new ProgressManager();
+        this.userManager      = new UserManager();
+        this.challengeManager = new ChallengeManager();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
         View view = inflater.inflate(R.layout.track_progress, container, false);
 
         return view;
     }
 
-    /*
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-*/
-    @Override
-    public void onSensorChanged(SensorEvent event) {
+    public void onSensorChanged(SensorEvent event)
+    {
         //Variables for modifying different UI elements
         ProgressBar progressBar = (ProgressBar) getView().findViewById(R.id.track_progress_bar);
-        TextView numStepsText = (TextView) getView().findViewById(R.id.text_progress);
-        TextView distanceText = (TextView) getView().findViewById(R.id.distance_number);
-        TextView calorieText = (TextView) getView().findViewById(R.id.calories_number);
+        TextView numStepsText   = (TextView) getView().findViewById(R.id.text_progress);
+        TextView distanceText   = (TextView) getView().findViewById(R.id.distance_number);
+        TextView calorieText    = (TextView) getView().findViewById(R.id.calories_number);
 
-        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
+        {
             //update number of steps
             int numSteps = determineStep(event, progressModel.getNumSteps(), goalSteps);
+
             numStepsText.setText(progressModel.getNumSteps() + "/" + goalSteps + " Steps");
             progressModel.setNumSteps(numSteps);
 
             //update progress
             int progress = progressService.determineProgress(numSteps, goalSteps);
+
             progressBar.setProgress(progress);
             progressModel.setPercentageComplete(progress);
 
             //update distance
-            double distance = progressService.calculateDistance(numSteps);
+            double distance        = progressService.calculateDistance(numSteps);
             String distanceRounded = String.format("%.2f", distance);
+
             distanceText.setText(distanceRounded + "m");
             progressModel.setDistance(distance);
 
             //update calories
-            double calories = progressService.calculateCaloriesBurned(distance);
+            double calories        = progressService.calculateCaloriesBurned(distance);
             String caloriesRounded = String.format("%.2f", calories);
+
             calorieText.setText(caloriesRounded);
             progressModel.setCalories(calories);
 
             //update the data database after each step recorded
             progressManager.updateDatabase(progressModel);
         }
-
     }
 
     @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-    }
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {}
 
     //we must do this in the onResume function because it is the only way to
     //start a challenge once onCreate has been called.
     @Override
-    public void onResume() {
+    public void onResume()
+    {
         super.onResume();
         //If the user is currently in a challenge
-        if(userManager.getUser(2).getChallengeStarted()) {
+        if(userManager.getUser(2).getChallengeStarted())
+        {
             UserModel user = userManager.getUser(2);
 
             goalSteps = challengeManager.getChallenge(user.getCurrentChallenge()).getStepsRequired();
-            time = challengeManager.getChallenge(user.getCurrentChallenge()).getTime();
+            time      = challengeManager.getChallenge(user.getCurrentChallenge()).getTime();
 
             //now starting challenge
             if(progressManager.getProgress(user.getId()) == null)
@@ -140,15 +138,17 @@ public class TrackProgressUI extends Fragment implements SensorEventListener {
 
             new CountDownTimer(time, 1000) { //Sets 10 second remaining
 
-                public void onTick(long milliseconds) {
-                    String hours = progressService.determineHours(milliseconds);
+                public void onTick(long milliseconds)
+                {
+                    String hours   = progressService.determineHours(milliseconds);
                     String minutes = progressService.determineMinutes(milliseconds);
                     String seconds = progressService.determineSeconds(milliseconds);
 
                     timerText.setText("Time Remaining: " + hours + ":" + minutes + ":" + seconds);
                 }
 
-                public void onFinish() {
+                public void onFinish()
+                {
                     timerText.setText("Challenge Over!");
                 }
             }.start();
@@ -160,15 +160,16 @@ public class TrackProgressUI extends Fragment implements SensorEventListener {
     }
 
     @Override
-    public void onPause() {
+    public void onPause()
+    {
         // unregister listener
         super.onPause();
         sensorManager.unregisterListener(this);
     }
 
-    public int determineStep(SensorEvent event, int currentSteps, int goalSteps) {
-        int numSteps = currentSteps;
-
+    public int determineStep(SensorEvent event, int currentSteps, int goalSteps)
+    {
+        int numSteps   = currentSteps;
         float[] values = event.values;
 
         //Determine if movement
@@ -187,7 +188,6 @@ public class TrackProgressUI extends Fragment implements SensorEventListener {
             numSteps++;
             previousTime = actualTime;
         }
-
         return numSteps;
     }
 }
