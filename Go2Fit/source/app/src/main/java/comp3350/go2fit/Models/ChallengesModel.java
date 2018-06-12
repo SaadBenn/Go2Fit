@@ -4,7 +4,7 @@ import android.os.Parcelable;
 import android.os.Parcel;
 
 /**Challenges Model**/
-public class ChallengesModel implements Parcelable
+public class ChallengesModel
 {
     private String challengeName;
     private String challengeType;
@@ -25,31 +25,6 @@ public class ChallengesModel implements Parcelable
         this.time          = time;
         this.points        = points;
     }
-
-    protected ChallengesModel(Parcel in)
-    {
-        challengeName = in.readString();
-        challengeType = in.readString();
-        stepsRequired = in.readInt();
-        time          = in.readLong();
-        points        = in.readInt();
-        id            = in.readInt();
-    }
-
-    public static final Creator<ChallengesModel> CREATOR = new Creator<ChallengesModel>()
-    {
-        @Override
-        public ChallengesModel createFromParcel(Parcel in)
-        {
-            return new ChallengesModel(in);
-        }
-
-        @Override
-        public ChallengesModel[] newArray(int size)
-        {
-            return new ChallengesModel[size];
-        }
-    };
 
     /**Accessors**/
     public String getChallengeName()
@@ -112,22 +87,5 @@ public class ChallengesModel implements Parcelable
     public void setId(int id)
     {
         this.id = id;
-    }
-
-    @Override
-    public int describeContents()
-    {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags)
-    {
-        dest.writeString(challengeName);
-        dest.writeString(challengeType);
-        dest.writeInt(stepsRequired);
-        dest.writeLong(time);
-        dest.writeInt(points);
-        dest.writeInt(id);
     }
 }

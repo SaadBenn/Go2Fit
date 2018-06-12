@@ -13,6 +13,7 @@ import android.widget.TextView;
 import comp3350.go2fit.Application.PagerAdapter;
 import comp3350.go2fit.BuisnessLayer.DatabaseManagers.UserManager;
 import comp3350.go2fit.Models.ChallengesModel;
+import comp3350.go2fit.Models.ChallengesModelParceable;
 import comp3350.go2fit.Models.UserModel;
 import comp3350.go2fit.R;
 
@@ -30,13 +31,15 @@ public class CurrentChallenge extends AppCompatActivity
 
         Intent intent = getIntent();
 
-        final ChallengesModel currentChallenge = intent.getParcelableExtra("Current Challenge");
+        final ChallengesModelParceable currentChallenge = intent.getParcelableExtra("Current Challenge");
 
-        String challengeName = currentChallenge.getChallengeName();
-        String challengeType = currentChallenge.getChallengeType();
-        int    numSteps      = currentChallenge.getStepsRequired();
-        int    numPoints     = currentChallenge.getPoints();
-        long   time          = currentChallenge.getTime();
+        System.out.println("ASDADADADADADAD"+currentChallenge.getModel().getChallengeName());
+
+        String challengeName = currentChallenge.getModel().getChallengeName();
+        String challengeType = currentChallenge.getModel().getChallengeType();
+        int    numSteps      = currentChallenge.getModel().getStepsRequired();
+        int    numPoints     = currentChallenge.getModel().getPoints();
+        long   time          = currentChallenge.getModel().getTime();
 
         TextView name = (TextView) findViewById(R.id.name);
         name.setText(challengeName);
@@ -72,7 +75,7 @@ public class CurrentChallenge extends AppCompatActivity
             {
                 // click handling code
                 UserModel user = userManager.getUser(2);
-                user.setCurrentChallenge(currentChallenge.getId());
+                user.setCurrentChallenge(currentChallenge.getModel().getId());
                 user.setChallengeStarted(true);
                 userManager.updateUser(user);
 

@@ -25,6 +25,7 @@ import java.util.concurrent.TimeUnit;
 
 import comp3350.go2fit.BuisnessLayer.DatabaseManagers.ChallengeManager;
 import comp3350.go2fit.BuisnessLayer.ChallengesService;
+import comp3350.go2fit.Models.ChallengesModelParceable;
 import comp3350.go2fit.R;
 import comp3350.go2fit.Models.ChallengesModel;
 
@@ -76,7 +77,8 @@ public class ChallengesFragement extends Fragment
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     if (position >= 0) {
                         Intent intent = new Intent(getActivity(), CurrentChallenge.class);
-                        intent.putExtra("Current Challenge", allChallenges.get(position));
+                        ChallengesModelParceable parceable = new ChallengesModelParceable(allChallenges.get(position));
+                        intent.putExtra("Current Challenge", parceable);
 
                         startActivity(intent);
                     }
