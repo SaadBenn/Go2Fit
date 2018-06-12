@@ -2,18 +2,19 @@
 package comp3350.go2fit.PersistenceLayer;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import comp3350.go2fit.Models.ChallengesModel;
 
 /**challenges persistence stub**/
 public class ChallengePersistenceStub implements ChallengePersistence
 {
-    private HashMap<Integer, ChallengesModel> challenge;
+    private LinkedHashMap<Integer, ChallengesModel> challenge;
     private Integer nextId;
 
     public ChallengePersistenceStub()
     {
-        this.challenge = new HashMap<Integer, ChallengesModel>();
+        this.challenge = new LinkedHashMap<>();
         this.nextId = 0;
     }
 
@@ -97,7 +98,7 @@ public class ChallengePersistenceStub implements ChallengePersistence
         return this.challenge.get(userId);
     }
 
-    public HashMap<Integer, ChallengesModel> getAllChallenges()
+    public LinkedHashMap<Integer, ChallengesModel> getAllChallenges()
     {
         return this.challenge;
     }

@@ -3,6 +3,7 @@ package comp3350.go2fit.BuisnessLayer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -32,7 +33,7 @@ public class ChallengesService implements ChallengesServiceInterface
         return ((steps * 2) - (int)(TimeUnit.MILLISECONDS.toMinutes(time)));
     }
 
-    public ArrayList<String> getAllChallengeNames(HashMap map)
+    public ArrayList<String> getAllChallengeNames(LinkedHashMap map)
     {
         Set<Integer> set = map.keySet();
         ArrayList<String> values = new ArrayList<>();

@@ -20,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.concurrent.TimeUnit;
 
 import comp3350.go2fit.BuisnessLayer.DatabaseManagers.ChallengeManager;
@@ -54,7 +55,7 @@ public class ChallengesFragement extends Fragment
         //ensure that there is valid challenges in db
         try {
             //call the service class and get all the challenges from db
-            final HashMap<Integer, ChallengesModel> allChallenges = challengeManager.getAllChallenges();
+            final LinkedHashMap<Integer, ChallengesModel> allChallenges = challengeManager.getAllChallenges();
 
             //get all the challenge types
             this.challengeTypes = challengesService.getAllChallengeNames(allChallenges);

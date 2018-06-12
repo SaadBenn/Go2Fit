@@ -1,6 +1,7 @@
 package comp3350.go2fit.BuisnessLayer.DatabaseManagers;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import comp3350.go2fit.Application.Services;
 import comp3350.go2fit.Models.ChallengesModel;
@@ -16,7 +17,7 @@ public class ChallengeManager implements ChallengeManagerInterface
         this.challengesDatabase = Services.getChallengePersistence();
     }
 
-    public HashMap getAllChallenges() throws NullPointerException
+    public LinkedHashMap getAllChallenges() throws NullPointerException
     {
         return this.challengesDatabase.getAllChallenges();
     }
