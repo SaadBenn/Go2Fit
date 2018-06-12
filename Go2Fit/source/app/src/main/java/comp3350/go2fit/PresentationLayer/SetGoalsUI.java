@@ -68,6 +68,9 @@ public class SetGoalsUI extends Fragment implements CompoundButton.OnCheckedChan
                 UserManager userManager = new UserManager();
                 UserModel model = userManager.getUser(2);
                 setGoalManager.setGoal(setmodel);
+
+                Messages.notify(getActivity(), "Your goal has been set!" +
+                        "");
             }
         });
 
