@@ -33,6 +33,7 @@ the challenge, and see it added to the list. This class makes use of the Challen
 in the database, and the ChallengesService class in order to perform verification.
 
 The third class is called SetGoalsUI, which allows a user to set a specific goal the want to achieve. It makes use of the SetGoalManager class which adds the goal to the stub database. 
+
 Our persistence layer has 4 stub databases and 4 database interfaces. The stub databases are ChallengePersistenceStub which stores all 
 available challenges, SetGoalPersistenceStub which stores the goals for a user, TrackProgressPersistenceStub which tracks the progress 
 for a users current challenge, and UserPersistenceStub which stores users. Each has a respective interface.
