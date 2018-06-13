@@ -83,21 +83,6 @@ public class ChallengePersistenceStub implements ChallengePersistence
         return this.challenge.get(userId);
     }
 
-    public String getChallengeType(int userId)
-    {
-        return this.challenge.get(userId).getChallengeType();
-    }
-
-    public String getChallengeName(int userId)
-    {
-        return  this.challenge.get(userId).getChallengeName();
-    }
-
-    public ChallengesModel getProgress(int userId)
-    {
-        return this.challenge.get(userId);
-    }
-
     public LinkedHashMap<Integer, ChallengesModel> getAllChallenges()
     {
         return this.challenge;

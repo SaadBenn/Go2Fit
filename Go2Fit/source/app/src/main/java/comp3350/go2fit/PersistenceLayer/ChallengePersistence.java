@@ -12,8 +12,6 @@ public interface ChallengePersistence
     void closeStubDatabase();
     void initializeDatabase();
     boolean add(final ChallengesModel progress);
-    String getChallengeType(int userId);
-    String getChallengeName(int userId);
     ChallengesModel getChallenge(int userId);
     LinkedHashMap getAllChallenges();
 }
