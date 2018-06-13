@@ -25,7 +25,7 @@ public class SetGoalManagerTest extends TestCase {
         System.out.println("\nStarting testSetGoalManager: verifying add method");
 
         setGoalModel = new SetGoalModel("mode", 100, "1200", "period");
-        boolean result = setGoalManager.setgoal(setGoalModel);
+        boolean result = setGoalManager.setGoal(setGoalModel);
         assertTrue(result);
 
         System.out.println("\nFinished testSetGoalManager: verification of add method");

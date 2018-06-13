@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.concurrent.TimeUnit;
 
 import comp3350.go2fit.BuisnessLayer.ChallengesService;
@@ -48,7 +49,7 @@ public class ChallengesServiceTest extends TestCase {
     public void testGetAllChallengeNames(){
         System.out.println("Starting testGetAllChallengeNames: check for correct names");
 
-        HashMap<Integer, ChallengesModel> testMap = new HashMap<>();
+        LinkedHashMap<Integer, ChallengesModel> testMap = new LinkedHashMap<>();
         ChallengesModel model1 = new ChallengesModel();
         ChallengesModel model2 = new ChallengesModel();
         ChallengesModel model3 = new ChallengesModel();
