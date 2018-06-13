@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import comp3350.go2fit.Application.PagerAdapter;
 import comp3350.go2fit.BuisnessLayer.DatabaseManagers.UserManager;
+import comp3350.go2fit.BuisnessLayer.TrackProgressService;
 import comp3350.go2fit.Models.ChallengesModel;
 import comp3350.go2fit.Models.ChallengesModelParceable;
 import comp3350.go2fit.Models.UserModel;
@@ -53,8 +54,13 @@ public class CurrentChallenge extends AppCompatActivity
         TextView points = (TextView) findViewById(R.id.points);
         points.setText(points.getText() + Integer.toString(numPoints));
 
+        TrackProgressService service = new TrackProgressService();
+        String hours = service.determineHours(time);
+        String minutes = service.determineMinutes(time);
+        String seconds = service.determineSeconds(time);
+
         TextView timeAmount = (TextView) findViewById(R.id.time);
-        timeAmount.setText(points.getText() + Integer.toString(numPoints));
+        timeAmount.setText(hours + ":" + minutes + ":" + seconds);
 
 
         /** Called when the user touches the button */
