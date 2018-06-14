@@ -40,3 +40,5 @@ for a users current challenge, and UserPersistenceStub which stores users. Each 
 
 Inline-style: 
 ![alt text](https://code.cs.umanitoba.ca/comp3350-summer2018/Go2Fit/blob/master/ArchitctureDrawing.png "Architecture")
+[logo]: https://code.cs.umanitoba.ca/comp3350-summer2018/Go2Fit/blob/master/ArchitctureDrawing.png "Logo Title Text 2"
+
