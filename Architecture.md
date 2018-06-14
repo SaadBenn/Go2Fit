@@ -38,5 +38,4 @@ Our persistence layer has 4 stub databases and 4 database interfaces. The stub d
 available challenges, SetGoalPersistenceStub which stores the goals for a user, TrackProgressPersistenceStub which tracks the progress 
 for a users current challenge, and UserPersistenceStub which stores users. Each has a respective interface.
 
-[![Alt text](https://code.cs.umanitoba.ca/comp3350-summer2018/Go2Fit/blob/master/ArchitctureDrawing.png)](https://code.cs.umanitoba.ca/comp3350-summer2018/Go2Fit/blob/master/ArchitctureDrawing.png)
-
+![alt text](https://code.cs.umanitoba.ca/comp3350-summer2018/Go2Fit/blob/master/ArchitctureDrawing.png "Logo Title Text 1")
