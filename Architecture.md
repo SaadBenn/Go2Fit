@@ -41,4 +41,4 @@ for a users current challenge, and UserPersistenceStub which stores users. Each 
 Our Business layer has 4 classes that stricltly deal with managing the database. They pass our model objects to it and retrieve model objects from it. We also have two more classes that deal
 with logic, and all the logic in those classes are related. For example, our TrackProgressService class has logic related to tracking a challenge.
 
-![](https://code.cs.umanitoba.ca/comp3350-summer2018/Go2Fit/blob/master/ArchitctureDrawing.png)
+![](ArchitctureDrawing.png)
