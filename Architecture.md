@@ -52,5 +52,5 @@ The details page is fully functional, but will later get some TLC to improve its
 and another challenge cannot be started until this one is finished. If you go back to the challenges page, there is a create challenge button that opens a dialog window, where you can createa  custom
 challenge. That challenge will be added to the list of challenges and can be completed. The Current Progress page initially shows nothing but an empty progress bar and 0 values. This is because no challenge
 has been started. Once you start a challenge, go back to the Current Progress page, which will start tracking your steps(just move the phone around), showing you the distance youve travelled, calories burned, 
-and the time remaining. The set goals page allows you to set your own personal goals. This page currently just takes the user input and stores the goal in the database when the button is pressed. This page will
-be worked on more in iteration 2.
+and the time remaining. The set goals page allows you to set your own personal goals. This page currently just takes the user input and stores the goal in the database when the button is pressed. **This page will
+be worked on more in iteration 2.**
