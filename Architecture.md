@@ -37,3 +37,6 @@ The third class is called SetGoalsUI, which allows a user to set a specific goal
 Our persistence layer has 4 stub databases and 4 database interfaces. The stub databases are ChallengePersistenceStub which stores all 
 available challenges, SetGoalPersistenceStub which stores the goals for a user, TrackProgressPersistenceStub which tracks the progress 
 for a users current challenge, and UserPersistenceStub which stores users. Each has a respective interface.
+
+Inline-style: 
+![alt text](https://code.cs.umanitoba.ca/comp3350-summer2018/Go2Fit/blob/master/ArchitctureDrawing.png "Architecture")
