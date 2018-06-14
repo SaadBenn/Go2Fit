@@ -38,4 +38,7 @@ Our persistence layer has 4 stub databases and 4 database interfaces. The stub d
 available challenges, SetGoalPersistenceStub which stores the goals for a user, TrackProgressPersistenceStub which tracks the progress 
 for a users current challenge, and UserPersistenceStub which stores users. Each has a respective interface.
 
-![alt text](https://code.cs.umanitoba.ca/comp3350-summer2018/Go2Fit/blob/master/ArchitctureDrawing.png "Logo Title Text 1")
+Our Business layer has 4 classes that stricltly deal with managing the database. They pass our model objects to it and retrieve model objects from it. We also have two more classes that deal
+with logic, and all the logic in those classes are related. For example, our TrackProgressService class has logic related to tracking a challenge.
+
+![](https://code.cs.umanitoba.ca/comp3350-summer2018/Go2Fit/blob/master/ArchitctureDrawing.png)
