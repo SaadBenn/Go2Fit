@@ -39,5 +39,4 @@ available challenges, SetGoalPersistenceStub which stores the goals for a user, 
 for a users current challenge, and UserPersistenceStub which stores users. Each has a respective interface.
 
 ![](https://code.cs.umanitoba.ca/comp3350-summer2018/Go2Fit/blob/master/ArchitctureDrawing.png)
-[logo]: https://code.cs.umanitoba.ca/comp3350-summer2018/Go2Fit/blob/master/ArchitctureDrawing.png
 
