@@ -7,10 +7,13 @@ public class UserModel
     private int     currentChallengeId;
     private boolean challengeStarted;
     private String  name;
+    private String  password;
+    private int     totalPoints;
 
     public UserModel()
     {
         this.currentChallengeId = 0;
+        this.totalPoints = 0;
         this.challengeStarted   = false;
         this.id = 0;
     }
@@ -36,6 +39,16 @@ public class UserModel
         return this.id;
     }
 
+    public String getPassword()
+    {
+        return this.password;
+    }
+
+    public int getTotalPoints()
+    {
+        return this.totalPoints;
+    }
+
     /**Mutators**/
     public void setCurrentChallenge(int currentChallengeId)
     {
@@ -54,5 +67,15 @@ public class UserModel
     public void setId(int id)
     {
         this.id = id;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
+    }
+
+    public void setTotalPoints(int totalPoints)
+    {
+        this.totalPoints = totalPoints;
     }
 }

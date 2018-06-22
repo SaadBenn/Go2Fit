@@ -11,6 +11,6 @@ public interface UserPersistence
     void      add(final UserModel progress);
     boolean   update(UserModel user);
     UserModel getUser(int userId);
-    HashMap   getAllChallenges();
+    HashMap   getAllUsers();
     void      clearStubDatabase();
 }
