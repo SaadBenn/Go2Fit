@@ -23,6 +23,7 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".PresentationLayer.CurrentChallenge" />
+        <activity android:name=".PresentationLayer.SignUpPage" />
     </application>
 
 </manifest>

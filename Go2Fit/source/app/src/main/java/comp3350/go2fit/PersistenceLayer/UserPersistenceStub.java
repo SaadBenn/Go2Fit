@@ -26,23 +26,25 @@ public class UserPersistenceStub implements UserPersistence
         UserModel tempData4 = new UserModel();
 
 
-        tempData1.setCurrentChallenge(0);
         tempData1.setId(nextId);
+        tempData1.setName("s");
+        tempData1.setPassword("a");
         users.put(tempData1.getId(), tempData1);
         nextId++;
 
-        tempData2.setCurrentChallenge(1);
         tempData2.setId(nextId);
+        tempData2.setName("e");
+        tempData2.setPassword("s");
         users.put(tempData2.getId(), tempData2);
         nextId++;
 
-        tempData3.setCurrentChallenge(2);
         tempData3.setId(nextId);
+        tempData3.setName("Saad");
         users.put(tempData3.getId(), tempData3);
         nextId++;
 
-        tempData4.setCurrentChallenge(3);
         tempData4.setId(nextId);
+        tempData4.setName("Soni");
         users.put(tempData4.getId(), tempData4);
         nextId++;
 
@@ -57,7 +59,7 @@ public class UserPersistenceStub implements UserPersistence
         nextId++;
     }
 
-    public HashMap<Integer, UserModel> getAllChallenges() {
+    public HashMap<Integer, UserModel> getAllUsers() {
         return this.users;
     }
 

@@ -18,18 +18,6 @@ public class TrackProgressPersistenceStub implements TrackProgressPersistence
 
     public void initializeDatabase() {
 
-        TrackProgressModel tempData = new TrackProgressModel();
-
-        tempData.setDistance(21.3);
-        tempData.setCalories(0.65);
-        tempData.setNumSteps(70);
-        tempData.setPercentageComplete(14);
-        tempData.setUserId(0);
-        tempData.setId(nextId);
-        progress.put(tempData.getId(), tempData);
-
-        nextId++;
-
         // print to the console
         System.out.println("Initialized the database of Goal Info.");
     }

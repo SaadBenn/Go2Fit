@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import comp3350.go2fit.Application.CurrentUserService;
 import comp3350.go2fit.Application.PagerAdapter;
 import comp3350.go2fit.BuisnessLayer.DatabaseManagers.UserManager;
 import comp3350.go2fit.BuisnessLayer.TrackProgressService;
@@ -80,7 +81,7 @@ public class CurrentChallenge extends AppCompatActivity
             public void onClick(View view)
             {
                 // click handling code
-                UserModel user = userManager.getUser(2);
+                UserModel user = userManager.getUser(CurrentUserService.getUserId());
                 user.setCurrentChallenge(currentChallenge.getModel().getId());
                 user.setChallengeStarted(true);
                 userManager.updateUser(user);
