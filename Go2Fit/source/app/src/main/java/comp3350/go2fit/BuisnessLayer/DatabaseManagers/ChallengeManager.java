@@ -17,9 +17,9 @@ public class ChallengeManager implements ChallengeManagerInterface
         this.challengesDatabase = Services.getChallengePersistence();
     }
 
-    public LinkedHashMap getAllChallenges() throws NullPointerException
+    public LinkedHashMap<Integer, ChallengesModel> getAllChallenges() throws NullPointerException
     {
-        return this.challengesDatabase.getAllChallenges();
+        return (LinkedHashMap<Integer, ChallengesModel>)this.challengesDatabase.getAllChallenges();
     }
 
     public ChallengesModel getChallenge(int id) throws NullPointerException

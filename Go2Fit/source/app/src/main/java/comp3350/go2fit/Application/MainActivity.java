@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity
 
         TabLayout layout = (TabLayout) findViewById(R.id.tab_layout);
 
-        //layout.addTab(layout.newTab().setText(R.string.home));
+        layout.addTab(layout.newTab().setText(R.string.home));
         layout.addTab(layout.newTab().setText(R.string.challenges));
         layout.addTab(layout.newTab().setText(R.string.current_challenge));
         layout.addTab(layout.newTab().setText("Set Goals"));

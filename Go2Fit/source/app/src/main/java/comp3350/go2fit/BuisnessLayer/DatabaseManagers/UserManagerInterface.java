@@ -1,6 +1,6 @@
 package comp3350.go2fit.BuisnessLayer.DatabaseManagers;
 
-import java.util.HashMap;
+import java.util.Map;
 
 import comp3350.go2fit.Models.UserModel;
 
@@ -9,7 +9,7 @@ public interface UserManagerInterface
 {
     UserModel getUser(int userId);
     boolean updateUser(UserModel user);
-    HashMap getAllUsers();
+    Map<Integer, UserModel> getAllUsers();
     void addUser(UserModel user);
 
 }

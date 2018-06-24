@@ -9,6 +9,8 @@ public class UserModel
     private String  name;
     private String  password;
     private int     totalPoints;
+    private double     totalCalories;
+    private double     totalDistance;
 
     public UserModel()
     {
@@ -49,6 +51,16 @@ public class UserModel
         return this.totalPoints;
     }
 
+    public double getTotalCalories()
+    {
+        return this.totalCalories;
+    }
+
+    public double getTotalDistance()
+    {
+        return this.totalDistance;
+    }
+
     /**Mutators**/
     public void setCurrentChallenge(int currentChallengeId)
     {
@@ -77,5 +89,15 @@ public class UserModel
     public void setTotalPoints(int totalPoints)
     {
         this.totalPoints = totalPoints;
+    }
+
+    public void setTotalCalories(double totalCalories)
+    {
+        this.totalCalories = totalCalories;
+    }
+
+    public void setTotalDistance(double totalDistance)
+    {
+        this.totalDistance = totalDistance;
     }
 }

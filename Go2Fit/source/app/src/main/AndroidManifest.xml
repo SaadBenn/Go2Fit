@@ -25,5 +25,7 @@
         <activity android:name=".PresentationLayer.CurrentChallenge" />
         <activity android:name=".PresentationLayer.SignUpPage" />
     </application>
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:permissionGroup="android.permission-group.STORAGE"
+        android:protectionLevel="dangerous" />
 </manifest>

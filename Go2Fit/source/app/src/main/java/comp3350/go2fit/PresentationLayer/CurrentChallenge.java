@@ -1,21 +1,16 @@
 package comp3350.go2fit.PresentationLayer;
 
 import android.content.Intent;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 //import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import comp3350.go2fit.Application.CurrentUserService;
-import comp3350.go2fit.Application.PagerAdapter;
 import comp3350.go2fit.BuisnessLayer.DatabaseManagers.UserManager;
 import comp3350.go2fit.BuisnessLayer.TrackProgressService;
-import comp3350.go2fit.Models.ChallengesModel;
-import comp3350.go2fit.Models.ChallengesModelParceable;
 import comp3350.go2fit.Models.UserModel;
 import comp3350.go2fit.R;
 

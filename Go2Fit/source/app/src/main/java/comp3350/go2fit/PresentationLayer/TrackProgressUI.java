@@ -111,9 +111,12 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
 
         userModel.setChallengeStarted(false);
         userModel.setTotalPoints(userModel.getTotalPoints() + challengeManager.getChallenge(userModel.getCurrentChallenge()).getPoints());
+        userModel.setTotalCalories(userModel.getTotalCalories() + progressModel.getCalories());
+        userModel.setTotalDistance(userModel.getTotalDistance() + progressModel.getDistance());
 
         Messages.notify(getActivity(), "Awesome Job! You completed the challenge!");
 
+        progressManager.remove(CurrentUserService.getUserId());
         timer.cancel();
         sensorManager.unregisterListener(this);
     }
@@ -126,6 +129,7 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
 
         Messages.notify(getActivity(), "Oops! You didnt complete the challenge on time...");
 
+        progressManager.remove(CurrentUserService.getUserId());
         timer.cancel();
         sensorManager.unregisterListener(this);
     }
