@@ -7,7 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.content.Intent;
 
+import comp3350.go2fit.PresentationLayer.About;
+import comp3350.go2fit.PresentationLayer.MainLeaderBoardsUI;
 import comp3350.go2fit.R;
 
 
@@ -77,8 +80,16 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item)
     {
         int id = item.getItemId();
-        if (id == R.id.action_settings)
+        if (id == R.id.action_aboutGo2Fit)
         {
+            Intent intent = new Intent(this, About.class);
+            startActivity(intent);
+            return true;
+        }
+        else if(id == R.id.action_Leaderboards)
+        {
+            Intent intent2 = new Intent(this, MainLeaderBoardsUI.class);
+            startActivity(intent2);
             return true;
         }
         return super.onOptionsItemSelected(item);

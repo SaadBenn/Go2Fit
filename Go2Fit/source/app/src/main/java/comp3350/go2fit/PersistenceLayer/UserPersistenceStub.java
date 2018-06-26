@@ -29,12 +29,20 @@ public class UserPersistenceStub implements UserPersistence
         tempData1.setId(nextId);
         tempData1.setName("s");
         tempData1.setPassword("a");
+        tempData1.increaseChallengesCompleted();
+        tempData1.increaseChallengesCompleted();
+        tempData1.setTotalPoints(1200);
         users.put(tempData1.getId(), tempData1);
         nextId++;
 
         tempData2.setId(nextId);
         tempData2.setName("e");
         tempData2.setPassword("s");
+        tempData2.increaseChallengesCompleted();
+        tempData2.increaseChallengesCompleted();
+        tempData2.increaseChallengesCompleted();
+        tempData2.increaseChallengesCompleted();
+        tempData2.setTotalDistance(1000);
         users.put(tempData2.getId(), tempData2);
         nextId++;
 
@@ -45,6 +53,7 @@ public class UserPersistenceStub implements UserPersistence
 
         tempData4.setId(nextId);
         tempData4.setName("Soni");
+        tempData4.setTotalDistance(9000);
         users.put(tempData4.getId(), tempData4);
         nextId++;
 

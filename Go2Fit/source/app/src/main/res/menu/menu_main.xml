@@ -2,9 +2,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="comp3350.go2fit.Application.MainActivity">
+    <!--<item-->
+        <!--android:id="@+id/action_settings"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:title="@string/action_settings"-->
+        <!--app:showAsAction="never" />-->
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_Leaderboards"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="Leaderboards"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_aboutGo2Fit"
+        android:orderInCategory="100"
+        android:title="About Go2Fit"
         app:showAsAction="never" />
 </menu>

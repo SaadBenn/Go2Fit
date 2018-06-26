@@ -111,6 +111,8 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
 
         userModel.setChallengeStarted(false);
         userModel.setTotalPoints(userModel.getTotalPoints() + challengeManager.getChallenge(userModel.getCurrentChallenge()).getPoints());
+        userModel.increaseChallengesCompleted();
+        userModel.setTotalDistance(challengeManager.getChallenge(userModel.getCurrentChallenge()).getStepsRequired());
 
         Messages.notify(getActivity(), "Awesome Job! You completed the challenge!");
 

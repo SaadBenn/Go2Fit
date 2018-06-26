@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PresentationLayer.About">
+
+
+    <MultiAutoCompleteTextView
+        android:id="@+id/multiAutoCompleteTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GO2FIT is a tool that allows people to motivate each other into becoming more active, by allowing users to create and complete a variety of fitness challenges for redeemable points and prizes.\n\n
+GO2FIT is a way to change how we motivate people into engaging in a more healthy lifestyle. Humans are social beings so the central idea of GO2FIT is to turn fitness into a social game. Users will be able to complete a variety of fitness challenges, allowing them to earn points and compete against their friends and strangers. The different types of fitness challenges available vary from walking a certain amount of steps in a specific amount of time, to biking from point A to point B. GO2FIT will also be used to track, measure, and store health and workout information, showing each individual how the simple challenges they complete are affecting their overall well being."
+        android:textSize="24sp"
+        android:typeface="monospace" />
+</android.support.constraint.ConstraintLayout>
