@@ -1,5 +1,6 @@
 package comp3350.go2fit.Application;
 
+
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -7,9 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.content.Intent;
 
 import comp3350.go2fit.R;
-
+import comp3350.go2fit.PresentationLayer.RedeemPrizes;
 
 /**
  * This app offers three view fragments and three tabs below the app bar
@@ -77,8 +79,10 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item)
     {
         int id = item.getItemId();
-        if (id == R.id.action_settings)
+        if (id == R.id.action_RedeemPrizes)
         {
+            Intent intent = new Intent(this, RedeemPrizes.class);
+            startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);
