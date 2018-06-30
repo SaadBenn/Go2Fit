@@ -24,6 +24,7 @@ public class CustomList extends ArrayAdapter<String> {
     private final String[] itemname;
     private final Integer[] imgid;
     private final Integer[] pointsList;
+    private Button button;
 
     public CustomList(Activity context, String[] itemname, Integer[] imgid, Integer[] pointsList) {
         super(context, R.layout.list, itemname);
@@ -49,7 +50,7 @@ public class CustomList extends ArrayAdapter<String> {
         pointsText.setText(pointsList[position] + " Points");
         extratxt.setText("Description "+itemname[position]);
 
-        Button button = (Button) rowView.findViewById(R.id.button3);
+        button = (Button) rowView.findViewById(R.id.button3);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,7 +82,7 @@ public class CustomList extends ArrayAdapter<String> {
 
     public void openModalWindow(String title, final int points)
     {
-        UserManager userManager = new UserManager();
+        final UserManager userManager = new UserManager();
         final UserModel userModel = userManager.getUser(CurrentUserService.getUserId());
 
         final Dialog dialog = new Dialog(context);
@@ -92,12 +93,15 @@ public class CustomList extends ArrayAdapter<String> {
         Button button1 = (Button) dialog.findViewById(R.id.button2);
         Button button2 = (Button) dialog.findViewById(R.id.button4);
 
-        textView.setText("Are you sure you want to redeem" + title + "for " + points + " points");
+        textView.setText("Are you sure you want to redeem " + title.substring(0, title.length()-1) + " for " + points + " points?");
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 userModel.setTotalPoints(userModel.getTotalPoints() - points);
+                dialog.cancel();
+                Messages.notify(context, "Congrats, you just redeemed an awesome prize!");
+                button.setEnabled(false);
             }
         });
 
@@ -107,10 +111,10 @@ public class CustomList extends ArrayAdapter<String> {
                 dialog.cancel();
             }
         });
-        dialog.setTitle("Create a challenge!");
+        dialog.setTitle("Redeem Prize!");
         dialog.show();
 
         Window window = dialog.getWindow();
         window.setLayout(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-    }
+        }
 }
