@@ -1,5 +1,6 @@
 package comp3350.go2fit.Application;
 
+
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -12,7 +13,7 @@ import android.content.Intent;
 import comp3350.go2fit.PresentationLayer.About;
 import comp3350.go2fit.PresentationLayer.MainLeaderBoardsUI;
 import comp3350.go2fit.R;
-
+import comp3350.go2fit.PresentationLayer.RedeemPrizes;
 
 /**
  * This app offers three view fragments and three tabs below the app bar
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity
 
         TabLayout layout = (TabLayout) findViewById(R.id.tab_layout);
 
-        //layout.addTab(layout.newTab().setText(R.string.home));
+        layout.addTab(layout.newTab().setText(R.string.home));
         layout.addTab(layout.newTab().setText(R.string.challenges));
         layout.addTab(layout.newTab().setText(R.string.current_challenge));
         layout.addTab(layout.newTab().setText("Set Goals"));
@@ -86,10 +87,14 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
             return true;
         }
-        else if(id == R.id.action_Leaderboards)
-        {
+        else if(id == R.id.action_Leaderboards) {
             Intent intent2 = new Intent(this, MainLeaderBoardsUI.class);
             startActivity(intent2);
+        }
+        else if(id == R.id.action_RedeemPrizes)
+        {
+            Intent intent = new Intent(this, RedeemPrizes.class);
+            startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);

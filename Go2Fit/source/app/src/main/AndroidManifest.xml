@@ -28,6 +28,6 @@
         <activity android:name=".PresentationLayer.ChallengesLeaderBoardUI" />
         <activity android:name=".PresentationLayer.DistanceLeaderBoardUI" />
         <activity android:name=".PresentationLayer.About"></activity>
+        <activity android:name=".PresentationLayer.RedeemPrizes" />
     </application>
-
 </manifest>

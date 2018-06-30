@@ -8,6 +8,7 @@ public interface TrackProgressPersistence
     void    initializeDatabase();
     boolean add(TrackProgressModel userProgress);
     boolean update(TrackProgressModel userProgress);
+    boolean remove(int userId);
 
     TrackProgressModel getProgress(int userId);
 }

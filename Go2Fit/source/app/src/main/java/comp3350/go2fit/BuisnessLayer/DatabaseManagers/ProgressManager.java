@@ -28,4 +28,9 @@ public class ProgressManager implements ProgressManagerInterface
     {
         return this.database.add(progress);
     }
+
+    public boolean remove(int id)
+    {
+        return this.database.remove(id);
+    }
 }

@@ -18,4 +18,10 @@
         android:orderInCategory="100"
         android:title="About Go2Fit"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_RedeemPrizes"
+        android:orderInCategory="100"
+        android:title="action_RedeemPrizes"
+        app:showAsAction="never" />
 </menu>

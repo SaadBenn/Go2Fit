@@ -5,12 +5,13 @@ public class UserModel
 {
     private int     id;
     private int     totalPoints;
-    private int     totalDistance;
+    private double     totalDistance;
     private int     currentChallengeId;
     private int     challengesCompleted;
     private boolean challengeStarted;
     private String  name;
     private String  password;
+    private double  totalCalories;
 
     public UserModel()
     {
@@ -28,7 +29,7 @@ public class UserModel
         return this.challengesCompleted;
     }
 
-    public int getTotalDistance()
+    public double getTotalDistance()
     {
         return this.totalDistance;
     }
@@ -61,6 +62,11 @@ public class UserModel
     public int getTotalPoints()
     {
         return this.totalPoints;
+    }
+
+    public double getTotalCalories()
+    {
+        return this.totalCalories;
     }
 
     /**Mutators**/
@@ -104,10 +110,19 @@ public class UserModel
         this.totalPoints = totalPoints;
     }
 
+
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "name: " + this.name + ", total points: "
                 + this.totalPoints + ", totalDistance: " + this.totalDistance + ", challenges completed: " + this.challengesCompleted + "\n";
+    }
+    public void setTotalCalories(double totalCalories)
+    {
+        this.totalCalories = totalCalories;
+    }
+
+    public void setTotalDistance(double totalDistance)
+    {
+        this.totalDistance = totalDistance;
     }
 }

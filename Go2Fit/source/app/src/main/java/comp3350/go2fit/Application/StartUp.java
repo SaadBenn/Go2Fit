@@ -56,7 +56,7 @@ public class StartUp extends AppCompatActivity
         EditText password = (EditText) findViewById(R.id.password);
 
         UserManager userManager = new UserManager();
-        HashMap users = userManager.getAllUsers();
+        HashMap users = (HashMap)userManager.getAllUsers();
 
         UserService userService = new UserService();
         try {

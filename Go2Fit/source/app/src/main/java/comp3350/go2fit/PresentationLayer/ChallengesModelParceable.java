@@ -1,7 +1,9 @@
-package comp3350.go2fit.Models;
+package comp3350.go2fit.PresentationLayer;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import comp3350.go2fit.Models.ChallengesModel;
 
 public class ChallengesModelParceable implements Parcelable{
 

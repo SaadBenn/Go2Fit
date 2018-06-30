@@ -31,7 +31,7 @@ import comp3350.go2fit.BuisnessLayer.ChallengesLeaderBoardsService;
 import comp3350.go2fit.BuisnessLayer.DatabaseManagers.ChallengeManager;
 import comp3350.go2fit.BuisnessLayer.ChallengesService;
 import comp3350.go2fit.BuisnessLayer.DatabaseManagers.UserManager;
-import comp3350.go2fit.Models.ChallengesModelParceable;
+import comp3350.go2fit.PresentationLayer.ChallengesModelParceable;
 import comp3350.go2fit.Models.UserModel;
 import comp3350.go2fit.PersistenceLayer.UserPersistenceStub;
 import comp3350.go2fit.R;
@@ -50,7 +50,7 @@ public class ChallengesLeaderBoardUI extends AppCompatActivity
 
         this.userManager = new UserManager();
         this.service     = new ChallengesLeaderBoardsService();
-        HashMap users    = userManager.getAllUsers();
+        HashMap users    = (HashMap)userManager.getAllUsers();
 
         Collection<UserModel> values   = users.values();
         ArrayList<UserModel> usersList = new ArrayList<UserModel>(values);

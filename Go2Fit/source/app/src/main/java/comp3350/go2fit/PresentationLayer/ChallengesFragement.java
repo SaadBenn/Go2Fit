@@ -14,8 +14,6 @@ import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.app.Dialog;
 
-import java.util.HashMap;
-
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -25,7 +23,6 @@ import java.util.concurrent.TimeUnit;
 
 import comp3350.go2fit.BuisnessLayer.DatabaseManagers.ChallengeManager;
 import comp3350.go2fit.BuisnessLayer.ChallengesService;
-import comp3350.go2fit.Models.ChallengesModelParceable;
 import comp3350.go2fit.R;
 import comp3350.go2fit.Models.ChallengesModel;
 

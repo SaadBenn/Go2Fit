@@ -1,7 +1,7 @@
 package comp3350.go2fit.PersistenceLayer;
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
+import java.util.Map;
 
 import comp3350.go2fit.Models.ChallengesModel;
 
@@ -13,5 +13,5 @@ public interface ChallengePersistence
     void initializeDatabase();
     boolean add(final ChallengesModel progress);
     ChallengesModel getChallenge(int userId);
-    LinkedHashMap getAllChallenges();
+    Map<Integer, ChallengesModel> getAllChallenges();
 }

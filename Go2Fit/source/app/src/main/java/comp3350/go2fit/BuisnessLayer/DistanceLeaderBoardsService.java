@@ -9,6 +9,6 @@ public class DistanceLeaderBoardsService implements LeaderBoardsServiceInterface
     @Override
     public int compare(UserModel model1, UserModel model2)
     {
-        return model2.getTotalDistance() - model1.getTotalDistance();
+        return (int)(model2.getTotalDistance() - model1.getTotalDistance());
     }
 }

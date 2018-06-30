@@ -40,13 +40,13 @@ public class PagerAdapter extends FragmentStatePagerAdapter
     {
         switch (position)
         {
-//            case 0:
-//                return new HomePageFragement();
             case 0:
-                return new ChallengesFragement();
+                return new HomePageFragement();
             case 1:
-                return new TrackProgressUI();
+                return new ChallengesFragement();
             case 2:
+                return new TrackProgressUI();
+            case 3:
                 return new SetGoalsUI();
             default:
                 return null;

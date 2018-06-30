@@ -7,4 +7,5 @@ public interface ProgressManagerInterface
 {
     TrackProgressModel getProgress(int userId);
     boolean            updateDatabase(TrackProgressModel progress);
+    boolean            remove(int id);
 }

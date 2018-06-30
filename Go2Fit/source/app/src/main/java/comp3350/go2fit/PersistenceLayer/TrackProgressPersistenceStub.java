@@ -45,4 +45,10 @@ public class TrackProgressPersistenceStub implements TrackProgressPersistence
     {
         return this.progress.get(userId);
     }
+
+    public boolean remove(int id)
+    {
+        this.progress.remove(id);
+        return true;
+    }
 }
