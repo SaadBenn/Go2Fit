@@ -144,7 +144,7 @@ public class UserPersistenceHSQLDB implements UserPersistence {
 
 	@Override
 	public boolean update(UserModel user) {
-		boolean result = false;
+		boolean result;
 
 		int id = user.getId();
 		int totalPoints = user.getTotalPoints();
