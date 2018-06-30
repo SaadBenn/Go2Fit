@@ -1,5 +1,7 @@
 package comp3350.go2fit.Application;
 
+import comp3350.go2fit.PersistenceLayer.AchievePersistence;
+import comp3350.go2fit.PersistenceLayer.AchievePersistenceStub;
 import comp3350.go2fit.PersistenceLayer.ChallengePersistence;
 import comp3350.go2fit.PersistenceLayer.ChallengePersistenceStub;
 import comp3350.go2fit.PersistenceLayer.TrackProgressPersistence;
@@ -17,6 +19,7 @@ public class Services
     private static TrackProgressPersistence trackProgressPersistence = null;
     private static UserPersistence userPersistence = null;
     private static SetGoalPersistence setGoalPersistence = null;
+    private static AchievePersistence achievePersistence = null;
 
     public static synchronized ChallengePersistence getChallengePersistence()
     {
@@ -59,5 +62,13 @@ public class Services
         }
 
         return setGoalPersistence;
+    }
+    public  static synchronized AchievePersistence  getAchievePersistence(){
+        if(achievePersistence==null){
+            achievePersistence = new AchievePersistenceStub();
+            achievePersistence.initializeDatabase();
+        }
+
+        return achievePersistence;
     }
 }
