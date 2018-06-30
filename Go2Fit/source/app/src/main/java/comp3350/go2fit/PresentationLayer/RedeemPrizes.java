@@ -18,6 +18,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
 import android.view.View;
 import android.widget.Toast;
+import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,14 +27,6 @@ import java.util.Set;
 
 public class RedeemPrizes extends AppCompatActivity{
     ListView list;
-    String[] itemname ={
-            "Safari",
-            "Camera",
-            "Global",
-            "FireFox",
-            "UC Browser",
-            "Android Folder"
-    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,19 +36,12 @@ public class RedeemPrizes extends AppCompatActivity{
         final HashMap<Integer, PrizesModel> allPrizes = (HashMap)prizesManager.getAllPrizes();
 
         Integer[] imageList = getImages(allPrizes);
+        String[] descriptionList = getDescriptions(allPrizes);
+        Integer[] pointsList = getPoints(allPrizes);
 
-        CustomList adapter=new CustomList(this, itemname, imageList);
+        CustomList adapter=new CustomList(this, descriptionList, imageList, pointsList);
         list=(ListView)findViewById(R.id.list);
         list.setAdapter(adapter);
-
-        list.setOnItemClickListener(new OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                String Slecteditem= itemname[+position];
-            }
-        });
     }
 
     private Integer[] getImages(HashMap map)
@@ -74,5 +60,41 @@ public class RedeemPrizes extends AppCompatActivity{
             images[i] = values.get(i);
         }
         return images;
+    }
+
+    private String[] getDescriptions(HashMap map)
+    {
+        Set<Integer> set = map.keySet();
+        ArrayList<String> values = new ArrayList<>();
+        for(Integer value : set)
+        {
+            PrizesModel model = (PrizesModel) map.get(value);
+            values.add(model.getDescription());
+        }
+
+        String[] descriptions = new String[values.size()];
+        for(int i=0;i<values.size();i++)
+        {
+            descriptions[i] = values.get(i);
+        }
+        return descriptions;
+    }
+
+    private Integer[] getPoints(HashMap map)
+    {
+        Set<Integer> set = map.keySet();
+        ArrayList<Integer> values = new ArrayList<>();
+        for(Integer value : set)
+        {
+            PrizesModel model = (PrizesModel) map.get(value);
+            values.add(model.getPointsRequired());
+        }
+
+        Integer[] points = new Integer[values.size()];
+        for(int i=0;i<values.size();i++)
+        {
+            points[i] = values.get(i);
+        }
+        return points;
     }
 }

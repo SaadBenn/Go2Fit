@@ -2,7 +2,8 @@ package comp3350.go2fit.Models;
 
 public class PrizesModel {
     private int image;
-    private int description;
+    private String description;
+    private int pointsRequired;
     private int id;
 
     public int getImage()
@@ -10,8 +11,13 @@ public class PrizesModel {
         return this.image;
     }
 
-    public int getDescription() {
+    public String getDescription() {
         return this.description;
+    }
+
+    public int getPointsRequired()
+    {
+        return this.pointsRequired;
     }
 
     public int getId() {
@@ -22,8 +28,12 @@ public class PrizesModel {
         this.image = image;
     }
 
-    public void setDescription(int description) {
+    public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setPointsRequired(int pointsRequired) {
+        this.pointsRequired = pointsRequired;
     }
 
     public void setId(int id) {
