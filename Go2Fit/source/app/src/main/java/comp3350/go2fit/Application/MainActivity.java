@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity
         layout.addTab(layout.newTab().setText(R.string.challenges));
         layout.addTab(layout.newTab().setText(R.string.current_challenge));
         layout.addTab(layout.newTab().setText("Set Goals"));
+        layout.addTab(layout.newTab().setText("Achievments"));
 
         layout.setTabGravity(TabLayout.GRAVITY_FILL);
 
