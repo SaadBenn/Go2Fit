@@ -8,6 +8,10 @@ import comp3350.go2fit.PersistenceLayer.UserPersistence;
 import comp3350.go2fit.PersistenceLayer.UserPersistenceStub;
 import comp3350.go2fit.PersistenceLayer.SetGoalPersistence;
 import comp3350.go2fit.PersistenceLayer.SetGoalPersistenceStub;
+import comp3350.go2fit.PersistenceLayer.hsqldb.ChallengePersistenceHSQLDB;
+import comp3350.go2fit.PersistenceLayer.hsqldb.SetGoalPersistenceHSQLDB;
+import comp3350.go2fit.PersistenceLayer.hsqldb.TrackProgressPersistenceHSQLDB;
+import comp3350.go2fit.PersistenceLayer.hsqldb.UserPersistenceHSQLDB;
 
 /**Services Class**/
 
@@ -22,8 +26,9 @@ public class Services
     {
         if (challengePersistence == null)
         {
-            challengePersistence = new ChallengePersistenceStub();
-            challengePersistence.initializeDatabase();
+            //challengePersistence = new ChallengePersistenceStub();
+            //challengePersistence.initializeDatabase();
+            challengePersistence = new ChallengePersistenceHSQLDB(Main.getDBPathName());
         }
 
         return challengePersistence;
@@ -33,8 +38,9 @@ public class Services
     {
         if (trackProgressPersistence == null)
         {
-            trackProgressPersistence = new TrackProgressPersistenceStub();
-            trackProgressPersistence.initializeDatabase();
+            //trackProgressPersistence = new TrackProgressPersistenceStub();
+            //trackProgressPersistence.initializeDatabase();
+            trackProgressPersistence = new TrackProgressPersistenceHSQLDB(Main.getDBPathName());
         }
 
         return trackProgressPersistence;
@@ -44,8 +50,9 @@ public class Services
 {
     if(userPersistence == null)
     {
-        userPersistence = new UserPersistenceStub();
-        userPersistence.initializeDatabase();
+        //userPersistence = new UserPersistenceStub();
+        //userPersistence.initializeDatabase();
+        userPersistence = new UserPersistenceHSQLDB(Main.getDBPathName());
     }
 
     return userPersistence;
@@ -54,8 +61,9 @@ public class Services
     {
         if(setGoalPersistence == null)
         {
-            setGoalPersistence = new SetGoalPersistenceStub();
-            setGoalPersistence.initializeDatabase();
+            //setGoalPersistence = new SetGoalPersistenceStub();
+            //setGoalPersistence.initializeDatabase();
+            setGoalPersistence = new SetGoalPersistenceHSQLDB(Main.getDBPathName());
         }
 
         return setGoalPersistence;
