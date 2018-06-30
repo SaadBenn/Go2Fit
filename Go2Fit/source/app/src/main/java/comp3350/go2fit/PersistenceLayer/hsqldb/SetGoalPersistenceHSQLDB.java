@@ -1,12 +1,13 @@
 package comp3350.go2fit.PersistenceLayer.hsqldb;
 
+import android.support.annotation.NonNull;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.HashMap;
 
 import comp3350.go2fit.Models.SetGoalModel;
 import comp3350.go2fit.PersistenceLayer.SetGoalPersistence;
@@ -25,13 +26,14 @@ public class SetGoalPersistenceHSQLDB implements SetGoalPersistence {
 	} // close SetGoalPersistenceHSQLDB
 
 
-	private setGoalModel fromResultSet(final ResultSet rs) {
-		String mode = rs.getString("mode");
-		Integer steps = rs.getInt("steps");
-		String time = rs.getString("time");
-		String period = rs.getString("period");
+	@NonNull
+	private SetGoalModel fromResultSet(final ResultSet rs) throws SQLException {
+		final String mode = rs.getString("mode");
+		final Integer steps = rs.getInt("steps");
+		final String time = rs.getString("time");
+		final String period = rs.getString("period");
 
-		return new setGoalModel(mode, steps, time, period);
+		return new SetGoalModel(mode, steps, time, period);
 	} // close fromResultSet
 
 
