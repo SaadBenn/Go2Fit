@@ -1,0 +1,40 @@
+package comp3350.go2fit.BuisnessLayer;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+
+import comp3350.go2fit.Models.AchieveModel;
+
+public class AchieveService implements AchieveServiceInterface{
+
+        public boolean verifyDistance(String distance) throws NumberFormatException
+        {
+            Integer.parseInt(distance);
+            return true;
+        }
+
+        public boolean verifyTime(int hours, int minutes)
+        {
+            if(hours <= 0 && minutes <= 0)
+            {
+                throw new IllegalArgumentException("Time cannot be 0!");
+            }
+            return true;
+        }
+
+
+        public ArrayList<String> getAllAchieveNames(LinkedHashMap map)
+        {
+            Set<Integer> set = map.keySet();
+            ArrayList<String> values = new ArrayList<>();
+            for(Integer value : set)
+            {
+                AchieveModel model = (AchieveModel) map.get(value);
+                values.add(model.getAchieveName());
+            }
+            return values;
+        }
+    }
+
