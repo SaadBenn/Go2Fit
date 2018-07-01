@@ -18,9 +18,12 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import comp3350.go2fit.Application.CurrentUserService;
 import comp3350.go2fit.BuisnessLayer.AchieveService;
 import comp3350.go2fit.BuisnessLayer.DatabaseManagers.AchieveManager;
+import comp3350.go2fit.BuisnessLayer.DatabaseManagers.UserManager;
 import comp3350.go2fit.Models.AchieveModel;
+import comp3350.go2fit.Models.UserModel;
 import comp3350.go2fit.R;
 
 public class AchieveUI extends Fragment{
@@ -52,8 +55,11 @@ public class AchieveUI extends Fragment{
             //call the service class and get all the challenges from db
             final LinkedHashMap<Integer, AchieveModel> allAchieve = achieveManager.getAllAchieve();
 
+            UserManager userManager = new UserManager();
+            UserModel userModel = userManager.getUser(CurrentUserService.getUserId());
+
             //get all the challenge types
-            this.achieveName = achieveService.getAllAchieveNames(allAchieve);
+            this.achieveName = userModel.getAchievements();
 
             //populat the list view with the challenges
             ListView listView = (ListView) view.findViewById(R.id.achieve_listview);

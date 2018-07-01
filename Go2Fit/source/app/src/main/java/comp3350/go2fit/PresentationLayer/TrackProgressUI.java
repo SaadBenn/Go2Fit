@@ -14,10 +14,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.os.CountDownTimer;
 
+import java.util.ArrayList;
+
 import comp3350.go2fit.Application.CurrentUserService;
+import comp3350.go2fit.BuisnessLayer.DatabaseManagers.AchieveManager;
 import comp3350.go2fit.BuisnessLayer.DatabaseManagers.ChallengeManager;
 import comp3350.go2fit.BuisnessLayer.DatabaseManagers.ProgressManager;
 import comp3350.go2fit.BuisnessLayer.DatabaseManagers.UserManager;
+import comp3350.go2fit.Models.AchieveModel;
 import comp3350.go2fit.Models.UserModel;
 import comp3350.go2fit.R;
 import comp3350.go2fit.Models.TrackProgressModel;
@@ -35,7 +39,6 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
     private long                 previousTime;
     private long                 time;
     private int                  goalSteps;
-    private CountDownTimer       timer;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -82,7 +85,7 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
             progressModel.setPercentageComplete(progress);
 
             //update distance
-            double distance        = progressService.calculateDistance(numSteps);
+            double distance = progressService.calculateDistance(numSteps);
             String distanceRounded = String.format("%.2f", distance);
 
             distanceText.setText(distanceRounded + "m");
@@ -97,40 +100,9 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
 
             //update the data database after each step recorded
             progressManager.updateDatabase(progressModel);
-
-            if(numSteps == goalSteps+1)
-            {
-                completedChallenge();
-            }
         }
     }
 
-    private void completedChallenge()
-    {
-        UserModel userModel = userManager.getUser(CurrentUserService.getUserId());
-
-        userModel.setChallengeStarted(false);
-        userModel.setTotalPoints(userModel.getTotalPoints() + challengeManager.getChallenge(userModel.getCurrentChallenge()).getPoints());
-        userModel.increaseChallengesCompleted();
-        userModel.setTotalDistance(challengeManager.getChallenge(userModel.getCurrentChallenge()).getStepsRequired());
-
-        Messages.notify(getActivity(), "Awesome Job! You completed the challenge!");
-
-        timer.cancel();
-        sensorManager.unregisterListener(this);
-    }
-
-    private void failedChallenge()
-    {
-        UserModel userModel = userManager.getUser(CurrentUserService.getUserId());
-
-        userModel.setChallengeStarted(false);
-
-        Messages.notify(getActivity(), "Oops! You didnt complete the challenge on time...");
-
-        timer.cancel();
-        sensorManager.unregisterListener(this);
-    }
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {}
 
@@ -141,9 +113,9 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
     {
         super.onResume();
         //If the user is currently in a challenge
-        if(userManager.getUser(CurrentUserService.getUserId()).getChallengeStarted())
+        if(userManager.getUser(0).getChallengeStarted())
         {
-            UserModel user = userManager.getUser(CurrentUserService.getUserId());
+            UserModel user = userManager.getUser(0);
 
             goalSteps = challengeManager.getChallenge(user.getCurrentChallenge()).getStepsRequired();
             time      = challengeManager.getChallenge(user.getCurrentChallenge()).getTime();
@@ -169,7 +141,7 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
 
             final TextView timerText = (TextView) getView().findViewById(R.id.timer_text);
 
-            timer = new CountDownTimer(time, 1000) { //Sets 10 second remaining
+            new CountDownTimer(time, 1000) { //Sets 10 second remaining
 
                 public void onTick(long milliseconds)
                 {
@@ -183,7 +155,6 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
                 public void onFinish()
                 {
                     timerText.setText("Challenge Over!");
-                    failedChallenge();
                 }
             }.start();
         }
@@ -221,6 +192,22 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
         {
             numSteps++;
             previousTime = actualTime;
+
+            AchieveManager achieveManager = new AchieveManager();
+            UserManager userManager = new UserManager();
+
+            UserModel userModel = userManager.getUser(CurrentUserService.getUserId());
+            AchieveModel achieveModel = achieveManager.getAchieve(userModel.getNextAchievementId());
+
+            if(numSteps >= achieveModel.getStepsRequired())
+            {
+                ArrayList list = userModel.getAchievements();
+                list.add(achieveModel.getAchieveName());
+                userModel.setAchievements(list);
+                userModel.setNextAchievementId(userModel.getNextAchievementId() + 1);
+
+                Messages.notify(getActivity(), "Congrats! You just completed an achievement! Keep it up!");
+            }
         }
         return numSteps;
     }

@@ -20,7 +20,7 @@ public class AchieveManager implements AchieveManagerInterface {
 
     public LinkedHashMap getAllAchieve() throws NullPointerException
     {
-        return this.achieveDatabase.getAllAchieve();
+        return (LinkedHashMap)this.achieveDatabase.getAllAchieve();
     }
     public boolean addChallenge(AchieveModel challengesModel)
     {

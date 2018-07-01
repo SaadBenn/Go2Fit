@@ -1,5 +1,8 @@
 package comp3350.go2fit.Models;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 /**User model**/
 public class UserModel
 {
@@ -11,6 +14,8 @@ public class UserModel
     private boolean challengeStarted;
     private String  name;
     private String  password;
+    private int     nextAchievementId;
+    private ArrayList achievements;
 
     public UserModel()
     {
@@ -20,6 +25,8 @@ public class UserModel
         this.totalDistance       = 0;
         this.id                  = 0;
         this.challengeStarted    = false;
+        achievements = new ArrayList();
+        this.nextAchievementId   = 0;
     }
 
     /**Accessors**/
@@ -63,6 +70,14 @@ public class UserModel
         return this.totalPoints;
     }
 
+    public ArrayList getAchievements() {
+        return this.achievements;
+    }
+
+    public int getNextAchievementId() {
+        return this.nextAchievementId;
+    }
+
     /**Mutators**/
     public void increaseChallengesCompleted()
     {
@@ -102,6 +117,14 @@ public class UserModel
     public void setTotalPoints(int totalPoints)
     {
         this.totalPoints = totalPoints;
+    }
+
+    public void setNextAchievementId(int nextAchievementId) {
+        this.nextAchievementId = nextAchievementId;
+    }
+
+    public void setAchievements(ArrayList achievements) {
+        this.achievements = achievements;
     }
 
     @Override

@@ -1,7 +1,7 @@
 package comp3350.go2fit.BuisnessLayer.DatabaseManagers;
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
+import java.util.Map;
 
 import comp3350.go2fit.Models.AchieveModel;
 import comp3350.go2fit.Models.ChallengesModel;
@@ -11,6 +11,6 @@ public interface AchieveManagerInterface
 {
     AchieveModel getAchieve(int id);
 
-    LinkedHashMap getAllAchieve();
+    Map getAllAchieve();
     boolean addAchieve(AchieveModel achieveModel);
 }
