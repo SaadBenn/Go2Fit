@@ -10,5 +10,5 @@ public interface UserPersistence
     void      add(final UserModel progress);
     boolean   update(UserModel user);
     UserModel getUser(int userId);
-    HashMap   getAllUsers();
+    HashMap<Integer, UserModel>   getAllUsers();
 }

@@ -1,4 +1,4 @@
-package comp3350.go2fit.objects;
+package comp3350.go2fit.tests.objects;
 import junit.framework.TestCase;
 import comp3350.go2fit.Models.UserModel;
 import org.junit.Test;

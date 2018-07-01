@@ -33,7 +33,7 @@ import comp3350.go2fit.BuisnessLayer.ChallengesService;
 import comp3350.go2fit.BuisnessLayer.DatabaseManagers.UserManager;
 import comp3350.go2fit.Models.ChallengesModelParceable;
 import comp3350.go2fit.Models.UserModel;
-import comp3350.go2fit.PersistenceLayer.UserPersistenceStub;
+//import comp3350.go2fit.PersistenceLayer.UserPersistenceStub;
 import comp3350.go2fit.R;
 import comp3350.go2fit.Models.ChallengesModel;
 

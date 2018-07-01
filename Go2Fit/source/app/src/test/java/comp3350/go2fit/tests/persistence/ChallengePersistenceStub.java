@@ -1,6 +1,6 @@
+package comp3350.go2fit.tests.persistence;
 
-package comp3350.go2fit.PersistenceLayer;
-
+import comp3350.go2fit.PersistenceLayer.ChallengePersistence;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 

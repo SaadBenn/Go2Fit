@@ -22,10 +22,10 @@ public class UserPersistenceHSQLDB implements UserPersistence {
 		} catch (final SQLException e) {
 			throw new PersistenceException(e);
 		}
-	} // close SetGoalPersistenceHSQLDB
+	} // close UserPersistenceHSQLDB
 
 
-	private UserModel fromResultSet(final ResultSet rs) {
+	private UserModel fromResultSet(final ResultSet rs) throws SQLException {
 		return new UserModel();
 
 	} // close fromResultSet
@@ -44,7 +44,7 @@ public class UserPersistenceHSQLDB implements UserPersistence {
 		String pass = user.getPassword();
 
 		try {
-			String cmdString = "INSERT INTO User_Model_TBL VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+			String cmdString = "INSERT INTO USERMODEL VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 			final PreparedStatement st = c.prepareStatement(cmdString);
 			st.setInt(1, id);
 			st.setInt(2, totalPoints);
@@ -69,7 +69,7 @@ public class UserPersistenceHSQLDB implements UserPersistence {
 		UserModel user;
 
 		try {
-			final PreparedStatement st = c.prepareStatement("SELECT * FROM User_Model_TBL WHERE id= ?");
+			final PreparedStatement st = c.prepareStatement("SELECT * FROM USERMODEL WHERE id= ?");
 			st.setInt(1, userId);
 
 			final ResultSet rs = st.executeQuery();
@@ -109,7 +109,7 @@ public class UserPersistenceHSQLDB implements UserPersistence {
 
 		try {
 			final Statement st = c.createStatement();
-			final ResultSet rs = st.executeQuery("SELECT * FROM User_Model_TBL");
+			final ResultSet rs = st.executeQuery("SELECT * FROM USERMODEL");
 
 			while (rs.next()) {
 				final UserModel user = fromResultSet(rs);
@@ -156,7 +156,7 @@ public class UserPersistenceHSQLDB implements UserPersistence {
 		String pass = user.getPassword();
 
 		try {	
-			final PreparedStatement st = c.prepareStatement("UPDATE User_Model_TBL SET totalPoints = ?, totalDistance = ?, currentChallengeId = ?, challengeStarted = ?, challengesCompleted = ?, name = ?, pass = ? WHERE id = ?");
+			final PreparedStatement st = c.prepareStatement("UPDATE USERMODEL SET totalPoints = ?, totalDistance = ?, currentChallengeId = ?, challengeStarted = ?, challengesCompleted = ?, name = ?, pass = ? WHERE id = ?");
 			st.setInt(8, id);
 			st.setInt(1, totalPoints);
 			st.setInt(2, totalDistance);

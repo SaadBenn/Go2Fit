@@ -130,7 +130,6 @@ public class StartUp extends AppCompatActivity
 
         } catch (final IOException ioe) {
             Messages.warning(this, "Unable to access application data: " + ioe.getMessage());
-
         }
     }
 

@@ -1,5 +1,7 @@
 package comp3350.go2fit.PersistenceLayer.hsqldb;
 
+import android.util.Log;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -20,6 +22,7 @@ public class ChallengePersistenceHSQLDB implements ChallengePersistence {
         try {
             this.c = DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath, "SA", "");
         } catch (final SQLException e) {
+            Log.e("Connect SQL", e.getMessage() + e.getSQLState());
             throw new PersistenceException(e);
         }
     } // close ChallengePersistenceHSQLDB
@@ -37,7 +40,7 @@ public class ChallengePersistenceHSQLDB implements ChallengePersistence {
         int Id = progress.getId();
 
         try {
-            String cmdString = "INSERT INTO Challenges_TBL VALUES(?, ?, ?, ?, ?, ?)";
+            String cmdString = "INSERT INTO Challenges VALUES(?, ?, ?, ?, ?, ?)";
             final PreparedStatement st = c.prepareStatement(cmdString);
 
             st.setInt(1, Id);
@@ -73,7 +76,7 @@ public class ChallengePersistenceHSQLDB implements ChallengePersistence {
         final ChallengesModel challenge;
 
         try {
-            final PreparedStatement st = c.prepareStatement("SELECT * FROM Challenges_TBL WHERE Id= ?");
+            final PreparedStatement st = c.prepareStatement("SELECT * FROM Challenges WHERE Id= ?");
             st.setInt(1, userId);
 
             final ResultSet rs = st.executeQuery();
@@ -96,11 +99,12 @@ public class ChallengePersistenceHSQLDB implements ChallengePersistence {
 
         try {
             final Statement st = c.createStatement();
-            final ResultSet rs = st.executeQuery("SELECT * FROM Challenges_TBL");
+            final ResultSet rs = st.executeQuery("SELECT * FROM Challenges");
+
             while (rs.next()) {
                 final ChallengesModel challenge = fromResultSet(rs);
                 //++nextId;
-                challenge.setId(nextId);
+                //challenge.setId(nextId);
 
                 challenges_List.put(challenge.getId(), challenge);
             } // while

@@ -45,7 +45,7 @@ public class TrackProgressPersistenceHSQLDB implements TrackProgressPersistence 
         int percentageComplete = userProgress.getPercentageComplete();
 
         try {
-            String cmdString = "INSERT INTO Track_Progress_TBL VALUES(?, ?, ?, ?, ?)";
+            String cmdString = "INSERT INTO TrackProgress VALUES(?, ?, ?, ?, ?)";
             final PreparedStatement st = c.prepareStatement(cmdString);
 
             st.setInt(1, nextId);
@@ -76,7 +76,7 @@ public class TrackProgressPersistenceHSQLDB implements TrackProgressPersistence 
         int percentageComplete = userProgress.getPercentageComplete();
 
         try {
-            final PreparedStatement st = c.prepareStatement("UPDATE Track_Progress_TBL SET distance= ?, calories= ?, numSteps = ?, percentageComplete = ? WHERE id = ?");
+            final PreparedStatement st = c.prepareStatement("UPDATE TrackProgress SET distance= ?, calories= ?, numSteps = ?, percentageComplete = ? WHERE id = ?");
             st.setInt(5, id);
             st.setDouble(1, distance);
             st.setDouble(2, calories);
@@ -100,7 +100,7 @@ public class TrackProgressPersistenceHSQLDB implements TrackProgressPersistence 
         TrackProgressModel trackProgress;
 
         try {
-            final PreparedStatement st = c.prepareStatement("SELECT * FROM Track_Progress_TBL WHERE Id=?");
+            final PreparedStatement st = c.prepareStatement("SELECT * FROM TrackProgress WHERE Id=?");
             st.setInt(1, userId);
 
             final ResultSet rs = st.executeQuery();
@@ -110,7 +110,7 @@ public class TrackProgressPersistenceHSQLDB implements TrackProgressPersistence 
             double distance = rs.getDouble("distance");
             Integer calories = rs.getInt("calories");
             int numSteps = rs.getInt("numSteps");
-            int percentageComplete = rs.getInt("percenatgeComplete");
+            int percentageComplete = rs.getInt("percentageComplete");
 
             trackProgress.setId(userId);
             trackProgress.setDistance(distance);

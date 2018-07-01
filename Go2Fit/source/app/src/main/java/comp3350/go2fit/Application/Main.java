@@ -2,7 +2,7 @@ package comp3350.go2fit.Application;
 
 public class Main
 {
-    private static String dbName="SC";
+    private static String dbName="Go2Fit";
 
     public static void setDBPathName(final String name) {
         try {

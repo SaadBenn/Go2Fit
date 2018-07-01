@@ -48,7 +48,7 @@ public class SetGoalPersistenceHSQLDB implements SetGoalPersistence {
 		model.setId(nextId);
 
 		try {
-			String cmdString = "INSERT INTO Goals_TBL VALUES(?, ?, ?, ?, ?)";
+			String cmdString = "INSERT INTO Goals VALUES(?, ?, ?, ?, ?)";
 			final PreparedStatement st = c.prepareStatement(cmdString);
 			
 			st.setInt(1, nextId);
@@ -74,7 +74,7 @@ public class SetGoalPersistenceHSQLDB implements SetGoalPersistence {
 		SetGoalModel setGoal;
 
 		try {
-			final PreparedStatement st = c.prepareStatement("SELECT * FROM Goals_TBL WHERE Id=?");
+			final PreparedStatement st = c.prepareStatement("SELECT * FROM Goals WHERE Id=?");
 			st.setInt(1, id);
 
 			final ResultSet rs = st.executeQuery();

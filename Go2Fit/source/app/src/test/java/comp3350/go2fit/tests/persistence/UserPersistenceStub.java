@@ -1,8 +1,9 @@
-package comp3350.go2fit.PersistenceLayer;
+package comp3350.go2fit.tests.persistence;
 
 import java.util.HashMap;
 
 import comp3350.go2fit.Models.UserModel;
+import comp3350.go2fit.PersistenceLayer.UserPersistence;
 
 /**user persistence stub**/
 public class UserPersistenceStub implements UserPersistence

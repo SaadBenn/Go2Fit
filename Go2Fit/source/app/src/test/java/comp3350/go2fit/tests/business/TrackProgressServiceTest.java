@@ -1,4 +1,4 @@
-package comp3350.go2fit.business;
+package comp3350.go2fit.tests.business;
 
 import junit.framework.TestCase;
 

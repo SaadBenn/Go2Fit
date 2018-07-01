@@ -1,6 +1,7 @@
-package comp3350.go2fit.PersistenceLayer;
+package comp3350.go2fit.tests.persistence;
 
 import comp3350.go2fit.Models.SetGoalModel;
+import comp3350.go2fit.PersistenceLayer.SetGoalPersistence;
 
 import java.sql.Time;
 import java.util.ArrayList;

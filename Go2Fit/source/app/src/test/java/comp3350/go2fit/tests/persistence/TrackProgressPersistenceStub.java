@@ -1,8 +1,9 @@
-package comp3350.go2fit.PersistenceLayer;
+package comp3350.go2fit.tests.persistence;
 
 import java.util.HashMap;
 
 import comp3350.go2fit.Models.TrackProgressModel;
+import comp3350.go2fit.PersistenceLayer.TrackProgressPersistence;
 
 /**track progress persistence stub**/
 public class TrackProgressPersistenceStub implements TrackProgressPersistence
