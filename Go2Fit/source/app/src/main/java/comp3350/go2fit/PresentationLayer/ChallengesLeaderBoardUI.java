@@ -15,7 +15,7 @@ import comp3350.go2fit.BuisnessLayer.ChallengesLeaderBoardsService;
 import comp3350.go2fit.BuisnessLayer.DatabaseManagers.UserManager;
 import comp3350.go2fit.Models.UserModel;
 import comp3350.go2fit.R;
-import comp3350.go2fit.BuisnessLayer.ChallengesLeaderBoardAdapter;
+import comp3350.go2fit.PresentationLayer.Adapters.ChallengesLeaderBoardAdapter;
 
 public class ChallengesLeaderBoardUI extends AppCompatActivity
 {

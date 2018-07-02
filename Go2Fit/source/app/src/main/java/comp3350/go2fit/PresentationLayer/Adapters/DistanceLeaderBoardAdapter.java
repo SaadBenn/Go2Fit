@@ -1,4 +1,4 @@
-package comp3350.go2fit.BuisnessLayer;
+package comp3350.go2fit.PresentationLayer.Adapters;
 
 import android.widget.ArrayAdapter;
 
@@ -17,14 +17,15 @@ import java.util.ArrayList;
 import comp3350.go2fit.Models.UserModel;
 import comp3350.go2fit.R;
 
-public class PointsLeaderBoardAdapter extends ArrayAdapter<UserModel>
+public class DistanceLeaderBoardAdapter extends ArrayAdapter<UserModel>
 {
-    private static final String TAG = "PointsLeaderBoardAdapter";
+
+    private static final String TAG = "DistanceLeaderBoardAdapter";
 
     private Context context;
     private int     resource;
 
-    public PointsLeaderBoardAdapter(@NonNull Context context, int resource, @NonNull ArrayList<UserModel> objects)
+    public DistanceLeaderBoardAdapter(@NonNull Context context, int resource, @NonNull ArrayList<UserModel> objects)
     {
         super(context, resource, objects);
         this.context    = context;
@@ -37,17 +38,17 @@ public class PointsLeaderBoardAdapter extends ArrayAdapter<UserModel>
     {
         String name          = getItem(position).getName();
         int    pos           = position + 1;
-        int    numPoints     = getItem(position).getTotalPoints();
+        double distance      = getItem(position).getTotalDistance();
 
         LayoutInflater inflater = LayoutInflater.from(context);
         convertView             = inflater.inflate(this.resource, parent, false);
 
-        TextView tvName       = (TextView) convertView.findViewById(R.id.textView1);
-        TextView tvPoints     = (TextView) convertView.findViewById(R.id.textView2);
-        TextView tvPos        = (TextView) convertView.findViewById(R.id.textView3);
+        TextView tvName         = (TextView) convertView.findViewById(R.id.textView1);
+        TextView tvDistance     = (TextView) convertView.findViewById(R.id.textView2);
+        TextView tvPos          = (TextView) convertView.findViewById(R.id.textView3);
 
         tvName.setText(name);
-        tvPoints.setText("Total points: " + Integer.toString(numPoints));
+        tvDistance.setText("Total distance traveled: " + Double.toString(distance));
         tvPos.setText("Rank: " + Integer.toString(pos));
 
         return convertView;

@@ -1,4 +1,4 @@
-package comp3350.go2fit.BuisnessLayer;
+package comp3350.go2fit.PresentationLayer.Adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

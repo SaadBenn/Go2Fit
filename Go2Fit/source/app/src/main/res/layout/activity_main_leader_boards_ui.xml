@@ -28,17 +28,6 @@
         app:layout_constraintTop_toBottomOf="@+id/points" />
 
     <Button
-        android:id="@+id/friends"
-        android:layout_width="250dp"
-        android:layout_height="71dp"
-        android:layout_marginTop="48dp"
-        android:text="friends leaderboard"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/challenges" />
-
-    <Button
         android:id="@+id/distance"
         android:layout_width="250dp"
         android:layout_height="71dp"
@@ -46,6 +35,6 @@
         android:text="distance leaderboard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/friends" />
+        app:layout_constraintTop_toBottomOf="@+id/challenges" />
 
 </android.support.constraint.ConstraintLayout>
