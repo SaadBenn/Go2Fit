@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.concurrent.TimeUnit;
 
+import comp3350.go2fit.BuisnessLayer.PointsLeaderBoardAdapter;
 import comp3350.go2fit.BuisnessLayer.ChallengesLeaderBoardsService;
 import comp3350.go2fit.BuisnessLayer.DatabaseManagers.ChallengeManager;
 import comp3350.go2fit.BuisnessLayer.ChallengesService;
@@ -57,11 +58,10 @@ public class PointsLeaderBoardUI extends AppCompatActivity
 
         Collections.sort(usersList, new PointsLeaderBoardsService());
 
+
         ListView listView = (ListView)findViewById(R.id.points_leader_board);
 
-        ArrayAdapter<UserModel> adapter = new ArrayAdapter<UserModel>(this,
-                android.R.layout.simple_list_item_1, usersList);
-
+        PointsLeaderBoardAdapter adapter = new PointsLeaderBoardAdapter(this, R.layout.adapter_view_points_leaderboard, usersList);
         listView.setAdapter(adapter);
     }
 }

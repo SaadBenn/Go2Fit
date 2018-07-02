@@ -133,7 +133,8 @@ public class UserModel
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "name: " + this.name + ", total points: "
                 + this.totalPoints + ", totalDistance: " + this.totalDistance + ", challenges completed: " + this.challengesCompleted + "\n";
     }

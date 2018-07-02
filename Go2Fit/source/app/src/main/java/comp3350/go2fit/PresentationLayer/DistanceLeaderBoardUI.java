@@ -32,6 +32,7 @@ import comp3350.go2fit.BuisnessLayer.DatabaseManagers.ChallengeManager;
 import comp3350.go2fit.BuisnessLayer.ChallengesService;
 import comp3350.go2fit.BuisnessLayer.DatabaseManagers.UserManager;
 import comp3350.go2fit.BuisnessLayer.DistanceLeaderBoardsService;
+import comp3350.go2fit.BuisnessLayer.DistanceLeaderBoardAdapter;
 import comp3350.go2fit.PresentationLayer.ChallengesModelParceable;
 import comp3350.go2fit.Models.UserModel;
 import comp3350.go2fit.R;
@@ -57,11 +58,16 @@ public class DistanceLeaderBoardUI extends AppCompatActivity
 
         Collections.sort(usersList, new DistanceLeaderBoardsService());
 
+//        ListView listView = (ListView) findViewById(R.id.distance_leader_board);
+//
+//        ArrayAdapter<UserModel> adapter = new ArrayAdapter<UserModel>(this,
+//                android.R.layout.simple_list_item_1, usersList);
+//
+//        listView.setAdapter(adapter);
+
         ListView listView = (ListView) findViewById(R.id.distance_leader_board);
 
-        ArrayAdapter<UserModel> adapter = new ArrayAdapter<UserModel>(this,
-                android.R.layout.simple_list_item_1, usersList);
-
+        DistanceLeaderBoardAdapter adapter = new DistanceLeaderBoardAdapter(this, R.layout.adapter_view_distance_leaderboard, usersList);
         listView.setAdapter(adapter);
     }
 }
