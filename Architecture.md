@@ -62,9 +62,9 @@ models for each of those.
 ![](architecture1.png)
 
 ## Current Fucntionality of the App
-The app currently has 10 pages, namely Login, Sign up, Home, Challenges, Current Challenge, Set Goals, Achivements, Leader Board, About Go2Fit, Redeem Points.The login page gets the username and password from the user  
-and the Sign in buttton signs in the user to the app, there is a sign up link on the bottom of the login page which takes the new user to sign up page to create a new account.The menu button on the top of the screen shows three options 
-first one is the Leader Board which opens up the Leader Board page,which has three buttons namely PointsLeaderBoard,ChallengeLeaderBoard,DistanceLeaderBoard .When the PointsLeaderBoard button is pressed it shows a page with the list of users with the highest points.
+The app currently has 10 pages, namely Login, Sign up, Home, Challenges, Current Challenge, Set Goals, Achivements, Leader Board, About Go2Fit, Redeem Points.The login page gets the username and password from the user and the Sign in buttton signs in the user to the app, 
+there is a sign up link on the bottom of the login page which takes the new user to sign up page to create a new account.The menu button on the top of the screen shows three options, 
+First one is the Leader Board which opens up the Leader Board page,which has three buttons namely PointsLeaderBoard,ChallengeLeaderBoard,DistanceLeaderBoard .When the PointsLeaderBoard button is pressed it shows a page with the list of users with the highest points.
 When the ChallengeLeaderBoard button is pressed it shows a page with the list of users with the highest challenge completed.When the DistanceLeaderBoard button is pressed it shows a page with the list of users with the highest Distance covered.
 The Second option in the menu is the About Go2Fit, which gives information about the app.
 The Third option in the menu button is Redeem Points which opens up the Redeem Points page which has a list of options to redeem users points for.Each offer has a Redeem button,when clicked asks the user for confirmation to redeem their points.
