@@ -60,7 +60,7 @@ models for each of those.
 
 ![](ArchitctureDrawing.png)
 
-## Current Fucntionality of the App
+## Current Functionality of the App
 The app currently has 5 pages, namely Home,Challenges, Current Challenge, Set Goals and Achivements.The Home page displays the User details like its username,number of achivements,points,user ranking in the leader 
 board and total calories burned and distance covered by the user.The challenges page displays a list of currently avaialble challenges, which can be clicked on to see more details.
 The details page is fully functional, but will later get some TLC to improve its looks a bit more. The details page allows users to then start a challenge, and once its started it cannot be undone, 
