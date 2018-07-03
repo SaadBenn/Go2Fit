@@ -71,7 +71,7 @@ public class SetGoalPersistenceHSQLDB implements SetGoalPersistence {
 
 	@Override
 	public SetGoalModel getGoal(int id) {
-		SetGoalModel setGoal;
+		SetGoalModel setGoal = null;
 
 		try {
 			final PreparedStatement st = c.prepareStatement("SELECT * FROM Goals WHERE Id=?");
@@ -79,12 +79,12 @@ public class SetGoalPersistenceHSQLDB implements SetGoalPersistence {
 
 			final ResultSet rs = st.executeQuery();
 
-			setGoal = fromResultSet(rs);
-			setGoal.setId(id);
-
+			while (rs.next()) {
+				setGoal = fromResultSet(rs);
+				setGoal.setId(id);
+			}
 			rs.close();
 			st.close();
-
 			return setGoal;
 
 		} catch (final SQLException e) {

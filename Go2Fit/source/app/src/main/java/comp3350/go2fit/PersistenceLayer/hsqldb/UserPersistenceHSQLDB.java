@@ -18,6 +18,7 @@ public class UserPersistenceHSQLDB implements UserPersistence {
 
 	public UserPersistenceHSQLDB(final String dbPath) {
 		try {
+			System.out.println(dbPath);
 			this.c = DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath, "SA", "");
 		} catch (final SQLException e) {
 			throw new PersistenceException(e);
@@ -34,7 +35,7 @@ public class UserPersistenceHSQLDB implements UserPersistence {
 	@Override
 	public void add(UserModel user) {
 
-		int id = user.getId();
+		int id = 0;
 		int totalPoints = user.getTotalPoints();
 		int totalDistance = user.getTotalDistance();
 		int currentChallengeId = user.getCurrentChallenge();
@@ -44,15 +45,31 @@ public class UserPersistenceHSQLDB implements UserPersistence {
 		String pass = user.getPassword();
 
 		try {
+			final PreparedStatement maxId = c.prepareStatement("SELECT TOP 1 Id FROM USERMODEL ORDER BY Id DESC");
+
+			final ResultSet rs = maxId.executeQuery();
+			while (rs.next()) {
+				id = rs.getInt("Id");
+			}
+
 			String cmdString = "INSERT INTO USERMODEL VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 			final PreparedStatement st = c.prepareStatement(cmdString);
-			st.setInt(1, id);
+			st.setInt(1, id+1);
 			st.setInt(2, totalPoints);
 			st.setInt(3, totalDistance);
 			st.setInt(4, currentChallengeId);
-			st.setBoolean(5, challengeStarted);
-			st.setString(6, name);
-			st.setString(7, pass);
+
+			if(challengeStarted) {
+				st.setInt(5, 1);
+			}
+			else
+			{
+				st.setInt(5, 0);
+
+			}
+			st.setInt(6, challengesCompleted);
+			st.setString(7, name);
+			st.setString(8, pass);
 
 			st.executeUpdate();
 
@@ -66,31 +83,36 @@ public class UserPersistenceHSQLDB implements UserPersistence {
 	@Override
 	public UserModel getUser(int userId) {
 
-		UserModel user;
+		UserModel user = null;
 
 		try {
 			final PreparedStatement st = c.prepareStatement("SELECT * FROM USERMODEL WHERE id= ?");
 			st.setInt(1, userId);
 
 			final ResultSet rs = st.executeQuery();
-			user = fromResultSet(rs);
+			while (rs.next()) {
+				user = fromResultSet(rs);
 
-			int id = rs.getInt("challengesCompleted");
-			int totalPoints = rs.getInt("totalPoints");
-			int totalDistance = rs.getInt("totalDistance");
-			int currentChallengeId = rs.getInt("currentChallengeId");
-			int challengesCompleted = rs.getInt("challengesCompleted");
-			boolean challengeStarted = rs.getBoolean("challengeStarted");
-			String name = rs.getString("name");
-			String pass = rs.getString("pass");
-
-			user.setId(id);
-			user.setTotalPoints(totalPoints);
-			user.setTotalDistance(totalDistance);
-			user.setCurrentChallenge(currentChallengeId);
-			user.setName(name);
-			user.setPassword(pass);
-
+				int id = rs.getInt("id");
+				int totalPoints = rs.getInt("totalPoints");
+				int totalDistance = rs.getInt("totalDistance");
+				int currentChallengeId = rs.getInt("currentChallengeId");
+				int challengesCompleted = rs.getInt("challengesCompleted");
+				String name = rs.getString("name");
+				String pass = rs.getString("pass");
+				boolean challengeStarted = false;
+				if(rs.getInt("challengeStarted") == 1)
+				{
+					challengeStarted = true;
+				}
+				user.setId(id);
+				user.setTotalPoints(totalPoints);
+				user.setTotalDistance(totalDistance);
+				user.setCurrentChallenge(currentChallengeId);
+				user.setChallengeStarted(challengeStarted);
+				user.setName(name);
+				user.setPassword(pass);
+			}
 			rs.close();
 			st.close();
 
@@ -113,12 +135,17 @@ public class UserPersistenceHSQLDB implements UserPersistence {
 
 			while (rs.next()) {
 				final UserModel user = fromResultSet(rs);
-				int id = rs.getInt("challengesCompleted");
+				int id = rs.getInt("id");
 				int totalPoints = rs.getInt("totalPoints");
 				int totalDistance = rs.getInt("totalDistance");
 				int currentChallengeId = rs.getInt("currentChallengeId");
 				int challengesCompleted = rs.getInt("challengesCompleted");
-				boolean challengeStarted = rs.getBoolean("challengeStarted");
+				boolean challengeStarted = false;
+				if(rs.getInt("challengeStarted") == 1)
+				{
+					challengeStarted = true;
+				}
+
 				String name = rs.getString("name");
 				String pass = rs.getString("pass");
 
@@ -126,9 +153,10 @@ public class UserPersistenceHSQLDB implements UserPersistence {
 				user.setTotalPoints(totalPoints);
 				user.setTotalDistance(totalDistance);
 				user.setCurrentChallenge(currentChallengeId);
+				user.setChallengeStarted(challengeStarted);
 				user.setName(name);
 				user.setPassword(pass);
-				
+
 				users.put(user.getId(), user);
 			} // while
 
@@ -161,7 +189,14 @@ public class UserPersistenceHSQLDB implements UserPersistence {
 			st.setInt(1, totalPoints);
 			st.setInt(2, totalDistance);
 			st.setInt(3, currentChallengeId);
-			st.setBoolean(4, challengeStarted);
+			if(challengeStarted) {
+				st.setInt(4, 1);
+			}
+			else
+			{
+				st.setInt(4, 0);
+
+			}
 			st.setInt(5, challengesCompleted);
 			st.setString(6, name);
 			st.setString(7, pass);

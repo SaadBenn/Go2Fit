@@ -127,7 +127,6 @@ public class StartUp extends AppCompatActivity
             copyAssetsToDirectory(assetNames, dataDirectory);
 
             Main.setDBPathName(dataDirectory.toString() + "/" + Main.getDBPathName());
-
         } catch (final IOException ioe) {
             Messages.warning(this, "Unable to access application data: " + ioe.getMessage());
         }

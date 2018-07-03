@@ -141,6 +141,7 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
     {
         super.onResume();
         //If the user is currently in a challenge
+        System.out.println("CHALLENGESTARTED: "+ userManager.getUser(CurrentUserService.getUserId()).getCurrentChallenge());
         if(userManager.getUser(CurrentUserService.getUserId()).getChallengeStarted())
         {
             UserModel user = userManager.getUser(CurrentUserService.getUserId());

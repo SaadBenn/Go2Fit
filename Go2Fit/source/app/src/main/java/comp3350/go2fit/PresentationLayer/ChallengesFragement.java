@@ -77,7 +77,8 @@ public class ChallengesFragement extends Fragment
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     if (position >= 0) {
                         Intent intent = new Intent(getActivity(), CurrentChallenge.class);
-                        ChallengesModelParceable parceable = new ChallengesModelParceable(allChallenges.get(position));
+                        final LinkedHashMap<Integer, ChallengesModel> tempList = challengeManager.getAllChallenges();
+                        ChallengesModelParceable parceable = new ChallengesModelParceable(tempList.get(position));
                         intent.putExtra("Current Challenge", parceable);
 
                         startActivity(intent);

@@ -20,6 +20,7 @@ public class UserService {
         for(Integer value : set)
         {
             UserModel model = (UserModel) map.get(value);
+
             if(model.getName().equals(username))
             {
                 index = value;
@@ -29,6 +30,7 @@ public class UserService {
         {
             throw new NoUserFoundException("This username doesnt exist!");
         }
+        System.out.println("ADSADADFADSDASDASAD"+ index + "\n\n\n\n\n\n");
         return index;
     }
 

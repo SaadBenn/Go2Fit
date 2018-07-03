@@ -97,7 +97,7 @@ public class TrackProgressPersistenceHSQLDB implements TrackProgressPersistence 
 
     @Override
     public TrackProgressModel getProgress(int userId) {
-        TrackProgressModel trackProgress;
+        TrackProgressModel trackProgress = null;
 
         try {
             final PreparedStatement st = c.prepareStatement("SELECT * FROM TrackProgress WHERE Id=?");
@@ -105,19 +105,20 @@ public class TrackProgressPersistenceHSQLDB implements TrackProgressPersistence 
 
             final ResultSet rs = st.executeQuery();
 
-            trackProgress = fromResultSet(rs);
+            while(rs.next()) {
+                trackProgress = fromResultSet(rs);
 
-            double distance = rs.getDouble("distance");
-            Integer calories = rs.getInt("calories");
-            int numSteps = rs.getInt("numSteps");
-            int percentageComplete = rs.getInt("percentageComplete");
+                double distance = rs.getDouble("distance");
+                Integer calories = rs.getInt("calories");
+                int numSteps = rs.getInt("numSteps");
+                int percentageComplete = rs.getInt("percentageComplete");
 
-            trackProgress.setId(userId);
-            trackProgress.setDistance(distance);
-            trackProgress.setCalories(calories);
-            trackProgress.setNumSteps(numSteps);
-            trackProgress.setPercentageComplete(percentageComplete);
-
+                trackProgress.setId(userId);
+                trackProgress.setDistance(distance);
+                trackProgress.setCalories(calories);
+                trackProgress.setNumSteps(numSteps);
+                trackProgress.setPercentageComplete(percentageComplete);
+            }
             rs.close();
             st.close();
 

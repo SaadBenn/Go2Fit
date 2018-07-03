@@ -37,13 +37,20 @@ public class ChallengePersistenceHSQLDB implements ChallengePersistence {
         long time = progress.getTime();
         int points = progress.getPoints();
         progress.setId(nextId);
-        int Id = progress.getId();
+        int id = 0;
 
         try {
             String cmdString = "INSERT INTO Challenges VALUES(?, ?, ?, ?, ?, ?)";
             final PreparedStatement st = c.prepareStatement(cmdString);
 
-            st.setInt(1, Id);
+            final PreparedStatement maxId = c.prepareStatement("SELECT TOP 1 Id FROM Challenges ORDER BY Id DESC");
+
+            final ResultSet rs = maxId.executeQuery();
+            while (rs.next()) {
+                id = rs.getInt("Id");
+            }
+
+            st.setInt(1, id+1);
             st.setString(2, cName);
             st.setString(3, cType);
             st.setInt(4, steps);
@@ -62,27 +69,31 @@ public class ChallengePersistenceHSQLDB implements ChallengePersistence {
 
 
     private ChallengesModel fromResultSet(final ResultSet rs) throws SQLException {
+        final int id = rs.getInt("Id");
         final String challengeName = rs.getString("CName");
         final String challengeType = rs.getString("CType");
         final int stepsRequired = rs.getInt("steps");
         final long time = rs.getLong("time");
         final int points = rs.getInt("points");
-        return new ChallengesModel(challengeName, challengeType, stepsRequired, time, points);
+        ChallengesModel challengesModel = new ChallengesModel(challengeName, challengeType, stepsRequired, time, points);
+        challengesModel.setId(id);
+        return challengesModel;
     } // close fromResultSet
 
 
     @Override
     public ChallengesModel getChallenge(int userId) {
-        final ChallengesModel challenge;
+        ChallengesModel challenge = null;
 
         try {
             final PreparedStatement st = c.prepareStatement("SELECT * FROM Challenges WHERE Id= ?");
             st.setInt(1, userId);
 
             final ResultSet rs = st.executeQuery();
-            challenge = fromResultSet(rs);
-            challenge.setId(userId);
-
+            while (rs.next()) {
+                challenge = fromResultSet(rs);
+                challenge.setId(userId);
+            }
             rs.close();
             st.close();
 
