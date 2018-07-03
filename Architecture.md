@@ -19,7 +19,9 @@ Finally, the PresentationLayer contain all of our classes that strictly deal wit
 
 ## Source Code 
 
-In the presentation layer, we have 3 main files. 
+In the presentation layer, we have 11 main files, 5 of which are the core focus of the app, the rest are side pages accessible through the hamburger menu. 
+
+From the fragments:
 
 The first is called TrackProgressUI. This class deals with presenting current progress 
 to a user by showing them a progress bar, steps taken, calories burned and distance. This class makes use of the ProgressManager class for 
@@ -34,14 +36,26 @@ in the database, and the ChallengesService class in order to perform verificatio
 
 The third class is called SetGoalsUI, which allows a user to set a specific goal the want to achieve. It makes use of the SetGoalManager class which adds the goal to the stub database. 
 
-Our persistence layer has 4 stub databases and 4 database interfaces. The stub databases are ChallengePersistenceStub which stores all 
-available challenges, SetGoalPersistenceStub which stores the goals for a user, TrackProgressPersistenceStub which tracks the progress 
-for a users current challenge, and UserPersistenceStub which stores users. Each has a respective interface.
+The forth is called HomepageFragments. It is the first page the user sees after they login, and it displays all of their current stats. It makes
+use of the UserManager class.
 
-Our Business layer has 4 classes that stricltly deal with managing the database. They pass our model objects to it and retrieve model objects from it. We also have two more classes that deal
-with logic, and all the logic in those classes are related. For example, our TrackProgressService class has logic related to tracking a challenge.
+The fifth and final fragment is the achievements fragment. When a user first starts, their achivements page will be blank because they have not yet unlocked any achievements.
+Once achievements are unlocked, they will be displayed in the achievements page in list form. The first achievement is simple walking 5 steps, so start a challenge and take 5 steps!
+This class makes use of the user manager class.
 
-Finally, our Models package contails classes that represent the domain specific information we need. We need information for challenges, the current progress, the user and the users goals, so we have
+The other UI classes are a login/sign up screen, which makes use of the UserManager, UserService and PasswordService classes, and also a redeem prize and leaderboard page, which make use
+of logic and DB classes of the same names.
+
+
+Our persistence layer has 6 stub databases/HSQLDB and 6 database interfaces. The stub databases/HSQLDB are ChallengePersistence which stores all 
+available challenges, SetGoalPersistence which stores the goals for a user, TrackProgressPersistence which tracks the progress 
+for a users current challenge, UserPersistence which stores users, PrizePersistence which stores the available prizes, and AchievePersistence, which stores 
+The available achievements. Each has a respective interface.
+
+Our Business layer has 6 classes that stricltly deal with managing the database. They pass our model objects to it and retrieve model objects from it. We also have 7 more classes that deal
+with logic, and all the logic in those classes are related. For example, our TrackProgressService class has logic related to tracking a challenge. We also have 5 exception classes that throw custom exceptions.
+
+Finally, our Models package contails classes that represent the domain specific information we need. We need information for challenges, the current progress, the user, the users goals, prizes and achievements so we have
 models for each of those.
 
 ![](ArchitctureDrawing.png)
