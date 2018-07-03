@@ -60,8 +60,14 @@ models for each of those.
 
 ![](ArchitctureDrawing.png)
 
-## Current Functionality of the App
-The app currently has 5 pages, namely Home,Challenges, Current Challenge, Set Goals and Achivements.The Home page displays the User details like its username,number of achivements,points,user ranking in the leader 
+## Current Fucntionality of the App
+The app currently has 10 pages, namely Login, Sign up, Home, Challenges, Current Challenge, Set Goals, Achivements, Leader Board, About Go2Fit, Redeem Points.The login page gets the username and password from the user  
+and the Sign in buttton signs in the user to the app, there is a sign up link on the bottom of the login page which takes the new user to sign up page to create a new account.The menu button on the top of the screen shows three options 
+first one is the Leader Board which opens up the Leader Board page,which has three buttons namely PointsLeaderBoard,ChallengeLeaderBoard,DistanceLeaderBoard .When the PointsLeaderBoard button is pressed it shows a page with the list of users with the highest points.
+When the ChallengeLeaderBoard button is pressed it shows a page with the list of users with the highest challenge completed.When the DistanceLeaderBoard button is pressed it shows a page with the list of users with the highest Distance covered.
+The Second option in the menu is the About Go2Fit, which gives information about the app.
+The Third option in the menu button is Redeem Points which opens up the Redeem Points page which has a list of options to redeem users points for.Each offer has a Redeem button,when clicked asks the user for confirmation to redeem their points.
+The Home page displays the User details like its username,number of achivements,points,user ranking in the leader board.
 board and total calories burned and distance covered by the user.The challenges page displays a list of currently avaialble challenges, which can be clicked on to see more details.
 The details page is fully functional, but will later get some TLC to improve its looks a bit more. The details page allows users to then start a challenge, and once its started it cannot be undone, 
 and another challenge cannot be started until this one is finished. If you go back to the challenges page, there is a create challenge button that opens a dialog window, where you can create a custom
