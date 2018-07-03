@@ -58,8 +58,8 @@ with logic, and all the logic in those classes are related. For example, our Tra
 Finally, our Models package contails classes that represent the domain specific information we need. We need information for challenges, the current progress, the user, the users goals, prizes and achievements so we have
 models for each of those.
 
-![](arcbjtecture0.png)
-![](arcbjtecture1.png)
+![](architecture0.png)
+![](architecture1.png)
 
 ## Current Fucntionality of the App
 The app currently has 10 pages, namely Login, Sign up, Home, Challenges, Current Challenge, Set Goals, Achivements, Leader Board, About Go2Fit, Redeem Points.The login page gets the username and password from the user  
