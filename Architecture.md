@@ -61,10 +61,11 @@ models for each of those.
 ![](ArchitctureDrawing.png)
 
 ## Current Fucntionality of the App
-The app currently has 3 pages, namely Challenges, Current Progress and Set Goals. The challenges page displays a list of currently avaialble challenges, which can be clicked on to see more details.
+The app currently has 5 pages, namely Home,Challenges, Current Challenge, Set Goals and Achivements.The Home page displays the User details like its username,number of achivements,points,user ranking in the leader 
+board and total calories burned and distance covered by the user.The challenges page displays a list of currently avaialble challenges, which can be clicked on to see more details.
 The details page is fully functional, but will later get some TLC to improve its looks a bit more. The details page allows users to then start a challenge, and once its started it cannot be undone, 
-and another challenge cannot be started until this one is finished. If you go back to the challenges page, there is a create challenge button that opens a dialog window, where you can createa  custom
-challenge. That challenge will be added to the list of challenges and can be completed. The Current Progress page initially shows nothing but an empty progress bar and 0 values. This is because no challenge
+and another challenge cannot be started until this one is finished. If you go back to the challenges page, there is a create challenge button that opens a dialog window, where you can create a custom
+challenge. That challenge will be added to the list of challenges and can be completed. The Current Challenge page initially shows nothing but an empty progress bar and 0 values. This is because no challenge
 has been started. Once you start a challenge, go back to the Current Progress page, which will start tracking your steps(just move the phone around), showing you the distance youve travelled, calories burned, 
 and the time remaining. The set goals page allows you to set your own personal goals. This page currently just takes the user input and stores the goal in the database when the button is pressed. **This page will
-be worked on more in iteration 2.**
+be worked on more in iteration 3.**The Achivements page gets update with the details of the challenge or a goal each time a challenge or a goal is compeleted by the user.
