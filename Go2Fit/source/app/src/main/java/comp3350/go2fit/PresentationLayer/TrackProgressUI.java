@@ -101,6 +101,13 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
 
             //update the data database after each step recorded
             progressManager.updateDatabase(progressModel);
+
+            if(numSteps == goalSteps+1)
+            {
+                completedChallenge();
+            }
+
+
         }
 
     }
@@ -119,6 +126,7 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
         Messages.notify(getActivity(), "Awesome Job! You completed the challenge!");
 
         progressManager.remove(CurrentUserService.getUserId());
+        userManager.updateUser(userModel);
         timer.cancel();
         sensorManager.unregisterListener(this);
     }
@@ -129,9 +137,10 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
 
         userModel.setChallengeStarted(false);
 
-        Messages.notify(getActivity(), "Oops! You didnt complete the challenge on time...");
+        //Messages.notify(getActivity(), "Oops! You didnt complete the challenge on time...");
 
         progressManager.remove(CurrentUserService.getUserId());
+        userManager.updateUser(userModel);
         timer.cancel();
         sensorManager.unregisterListener(this);
     }
@@ -146,7 +155,6 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
     {
         super.onResume();
         //If the user is currently in a challenge
-        System.out.println("CHALLENGESTARTED: "+ userManager.getUser(CurrentUserService.getUserId()).getCurrentChallenge());
         if(userManager.getUser(CurrentUserService.getUserId()).getChallengeStarted())
         {
             UserModel user = userManager.getUser(CurrentUserService.getUserId());
@@ -157,6 +165,8 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
             //now starting challenge
             if(progressManager.getProgress(user.getId()) == null)
             {
+                System.out.println("CHALLENGESTARTED: "+ userManager.getUser(CurrentUserService.getUserId()).getCurrentChallenge());
+
                 progressModel = new TrackProgressModel();
                 progressModel.setUserId(user.getId());
 
@@ -189,6 +199,7 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
                 public void onFinish()
                 {
                     timerText.setText("Challenge Over!");
+                    failedChallenge();
                 }
             }.start();
         }
@@ -233,6 +244,8 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
             UserModel userModel = userManager.getUser(CurrentUserService.getUserId());
             AchieveModel achieveModel = achieveManager.getAchieve(userModel.getNextAchievementId());
 
+            System.out.println(achieveModel.getAchieveName());
+            System.out.println(achieveModel.getStepsRequired());
             if(numSteps >= achieveModel.getStepsRequired())
             {
                 ArrayList list = userModel.getAchievements();

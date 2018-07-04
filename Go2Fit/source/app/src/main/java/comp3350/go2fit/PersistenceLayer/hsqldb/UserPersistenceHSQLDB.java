@@ -16,17 +16,17 @@ import comp3350.go2fit.PersistenceLayer.UserPersistence;
 
 public class UserPersistenceHSQLDB implements UserPersistence {
 
-	private final Connection c;
+	private final String dbPath;
+	//private final Connection c;
 	private Integer nextId = 0;
 
 	public UserPersistenceHSQLDB(final String dbPath) {
-		try {
-			System.out.println(dbPath);
-			this.c = DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath, "SA", "");
-		} catch (final SQLException e) {
-			throw new PersistenceException(e);
-		}
+		this.dbPath = dbPath;
 	} // close UserPersistenceHSQLDB
+
+	private Connection connection() throws SQLException {
+		return DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath + ";shutdown=true", "SA", "");
+	}
 
 
 	private UserModel fromResultSet(final ResultSet rs) throws SQLException {
@@ -49,7 +49,7 @@ public class UserPersistenceHSQLDB implements UserPersistence {
 		int nextAchievement = 0;
 		String listAchievements = "";
 
-		try {
+		try(final Connection c = connection()) {
 			final PreparedStatement maxId = c.prepareStatement("SELECT TOP 1 Id FROM USERMODEL ORDER BY Id DESC");
 
 			final ResultSet rs = maxId.executeQuery();
@@ -94,7 +94,7 @@ public class UserPersistenceHSQLDB implements UserPersistence {
 
 		UserModel user = null;
 
-		try {
+		try(final Connection c = connection()) {
 			final PreparedStatement st = c.prepareStatement("SELECT * FROM USERMODEL WHERE id= ?");
 			st.setInt(1, userId);
 
@@ -137,6 +137,7 @@ public class UserPersistenceHSQLDB implements UserPersistence {
 				user.setChallengeStarted(challengeStarted);
 				user.setName(name);
 				user.setPassword(pass);
+				user.setNextAchievementId(nextAchieve);
 				user.setAchievements(list);
 			}
 			rs.close();
@@ -155,7 +156,7 @@ public class UserPersistenceHSQLDB implements UserPersistence {
 	public HashMap<Integer, UserModel> getAllUsers() {
 		final HashMap<Integer, UserModel> users = new HashMap<>();
 
-		try {
+		try(final Connection c = connection()) {
 			final Statement st = c.createStatement();
 			final ResultSet rs = st.executeQuery("SELECT * FROM USERMODEL");
 
@@ -208,10 +209,11 @@ public class UserPersistenceHSQLDB implements UserPersistence {
 		int challengesCompleted = user.getChallengesCompleted();
 		String name = user.getName();
 		String pass = user.getPassword();
+		int nextAchiement = user.getNextAchievementId();
 		ArrayList list = user.getAchievements();
 		String json = new Gson().toJson(list);
 
-		try {	
+		try(final Connection c = connection()) {
 			final PreparedStatement st = c.prepareStatement("UPDATE USERMODEL SET totalPoints = ?, totalDistance = ?, currentChallengeId = ?, challengeStarted = ?, challengesCompleted = ?, name = ?, pass = ?, nextAchieve = ?, achieveList = ? WHERE id = ?");
 			st.setInt(10, id);
 			st.setInt(1, totalPoints);
@@ -228,7 +230,7 @@ public class UserPersistenceHSQLDB implements UserPersistence {
 			st.setInt(5, challengesCompleted);
 			st.setString(6, name);
 			st.setString(7, pass);
-			st.setInt(8, 1);
+			st.setInt(8, nextAchiement);
 			st.setString(9, json);
 
 			st.executeUpdate();

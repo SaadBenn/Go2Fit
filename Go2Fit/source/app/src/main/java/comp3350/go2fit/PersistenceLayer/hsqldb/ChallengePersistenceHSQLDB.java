@@ -15,18 +15,19 @@ import comp3350.go2fit.PersistenceLayer.ChallengePersistence;
 
 public class ChallengePersistenceHSQLDB implements ChallengePersistence {
 
-    private final Connection c;
+    private final String dbPath;
+
+    //private final Connection c;
     private Integer nextId = 0;
 
     public ChallengePersistenceHSQLDB(final String dbPath) {
-        try {
-            this.c = DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath, "SA", "");
-        } catch (final SQLException e) {
-            Log.e("Connect SQL", e.getMessage() + e.getSQLState());
-            throw new PersistenceException(e);
-        }
+        this.dbPath = dbPath;
     } // close ChallengePersistenceHSQLDB
 
+
+    private Connection connection() throws SQLException {
+        return DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath + ";shutdown=true", "SA", "");
+    }
 
     @Override
     public boolean add(final ChallengesModel progress) {
@@ -39,7 +40,7 @@ public class ChallengePersistenceHSQLDB implements ChallengePersistence {
         progress.setId(nextId);
         int id = 0;
 
-        try {
+        try(final Connection c = connection()) {
             String cmdString = "INSERT INTO Challenges VALUES(?, ?, ?, ?, ?, ?)";
             final PreparedStatement st = c.prepareStatement(cmdString);
 
@@ -85,7 +86,7 @@ public class ChallengePersistenceHSQLDB implements ChallengePersistence {
     public ChallengesModel getChallenge(int userId) {
         ChallengesModel challenge = null;
 
-        try {
+        try(final Connection c = connection()) {
             final PreparedStatement st = c.prepareStatement("SELECT * FROM Challenges WHERE Id= ?");
             st.setInt(1, userId);
 
@@ -108,7 +109,7 @@ public class ChallengePersistenceHSQLDB implements ChallengePersistence {
     public LinkedHashMap<Integer, ChallengesModel> getAllChallenges() {
         final LinkedHashMap<Integer, ChallengesModel> challenges_List = new LinkedHashMap<>();
 
-        try {
+        try(final Connection c = connection()) {
             final Statement st = c.createStatement();
             final ResultSet rs = st.executeQuery("SELECT * FROM Challenges");
 

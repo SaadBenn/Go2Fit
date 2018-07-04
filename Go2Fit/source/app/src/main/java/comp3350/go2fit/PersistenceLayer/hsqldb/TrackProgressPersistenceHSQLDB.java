@@ -43,12 +43,19 @@ public class TrackProgressPersistenceHSQLDB implements TrackProgressPersistence 
         double calories = userProgress.getCalories();
         int numSteps = userProgress.getNumSteps();
         int percentageComplete = userProgress.getPercentageComplete();
+        int id = 0;
 
         try {
+            final PreparedStatement maxId = c.prepareStatement("SELECT TOP 1 Id FROM TRACKPROGRESS ORDER BY Id DESC");
+
+            final ResultSet rs = maxId.executeQuery();
+            while (rs.next()) {
+                id = rs.getInt("Id");
+            }
             String cmdString = "INSERT INTO TrackProgress VALUES(?, ?, ?, ?, ?)";
             final PreparedStatement st = c.prepareStatement(cmdString);
 
-            st.setInt(1, nextId);
+            st.setInt(1, id+1);
             st.setDouble(2, distance);
             st.setDouble(3, calories);
             st.setInt(4, numSteps);
