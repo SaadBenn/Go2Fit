@@ -4,7 +4,6 @@ import junit.framework.TestCase;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.concurrent.TimeUnit;
 
@@ -15,24 +14,38 @@ public class ChallengesServiceTest extends TestCase {
 
     private ChallengesService challengeService = new ChallengesService();
     private boolean result;
-    //private ArrayList<String> aList = new ArrayList<>();
-   // private HashMap dict = new HashMap();
 
 
-     @Test
-     public void testVerification()
-     {
+    @Test
+    public void testVerification()
+    {
 
-     	System.out.println("\nStarting testChallengeServices: verification");
+        System.out.println("\nStarting testChallengeServices: verification");
 
-     	result = challengeService.verifyDistance("20");
-     	assertTrue(result);
+        result = challengeService.verifyDistance("20");
+        assertTrue(result);
 
-     	result = challengeService.verifyTime(2, 20);
-     	assertTrue(result);
+        result = challengeService.verifyTime(2, 20);
+        assertTrue(result);
 
-     	System.out.println("Finished testChallengeServices: verification");
-     }
+        System.out.println("Finished testChallengeServices: verification");
+    }
+
+
+    @Test (expected = IllegalArgumentException.class)
+    public void testForVerifyTime() {
+
+        System.out.println("\nStarting testChallengeServices: check for IllegalArgumentException");
+        try {
+            result = challengeService.verifyTime(0, -20);
+        } catch (IllegalArgumentException e) {
+            assert true;
+        }
+
+        System.out.println("Finished testChallengeServices: check for IllegalArgumentException");
+
+    }
+
 
     @Test
     public void testPointsLogic() {

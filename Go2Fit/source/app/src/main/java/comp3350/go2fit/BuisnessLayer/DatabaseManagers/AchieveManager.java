@@ -13,6 +13,11 @@ public class AchieveManager implements AchieveManagerInterface {
         this.achieveDatabase = Services.getAchievePersistence();
     }
 
+    public AchieveManager(final AchievePersistence achievePersistence) {
+        this();
+        this.achieveDatabase = achievePersistence;
+    }
+
     public AchieveModel getAchieve(int id) throws NullPointerException
     {
         return this.achieveDatabase.getAchieve(id);

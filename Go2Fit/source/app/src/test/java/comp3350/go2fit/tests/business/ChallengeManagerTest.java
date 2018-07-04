@@ -6,9 +6,10 @@ import java.util.HashMap;
 
 import comp3350.go2fit.BuisnessLayer.DatabaseManagers.ChallengeManager;
 import comp3350.go2fit.Models.ChallengesModel;
+import comp3350.go2fit.tests.persistence.ChallengePersistenceStub;
 
 public class ChallengeManagerTest extends TestCase {
-    private ChallengeManager challengeManager = new ChallengeManager();
+    private ChallengeManager challengeManager = new ChallengeManager(new ChallengePersistenceStub());
     private HashMap dict;
     private ChallengesModel model;
 
@@ -16,7 +17,7 @@ public class ChallengeManagerTest extends TestCase {
     public void testForNull() {
         System.out.println("\nStarting ChallengeManagerTest: null database");
 
-        challengeManager = new ChallengeManager();
+        challengeManager = new ChallengeManager(new ChallengePersistenceStub());
         assertNotNull(challengeManager);
 
         System.out.println("Finished ChallengeManagerTest: null database");

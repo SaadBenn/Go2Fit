@@ -1,14 +1,11 @@
 package comp3350.go2fit.Application;
 
 import comp3350.go2fit.PersistenceLayer.AchievePersistence;
-import comp3350.go2fit.PersistenceLayer.AchievePersistenceStub;
 import comp3350.go2fit.PersistenceLayer.ChallengePersistence;
 import comp3350.go2fit.PersistenceLayer.SetGoalPersistence;
 import comp3350.go2fit.PersistenceLayer.TrackProgressPersistence;
 import comp3350.go2fit.PersistenceLayer.UserPersistence;
-import comp3350.go2fit.PersistenceLayer.SetGoalPersistence;
 import comp3350.go2fit.PersistenceLayer.PrizesPersistence;
-import comp3350.go2fit.PersistenceLayer.PrizesPersistenceStub;
 import comp3350.go2fit.PersistenceLayer.hsqldb.ChallengePersistenceHSQLDB;
 import comp3350.go2fit.PersistenceLayer.hsqldb.SetGoalPersistenceHSQLDB;
 import comp3350.go2fit.PersistenceLayer.hsqldb.TrackProgressPersistenceHSQLDB;
@@ -77,16 +74,16 @@ public class Services
 
     public static synchronized PrizesPersistence getPrizesPersistence() {
         if (prizesPersistence == null) {
-            prizesPersistence = new PrizesPersistenceStub();
-            prizesPersistence.initializeDatabase();
+            //prizesPersistence = new PrizesPersistenceStub();
+            //prizesPersistence.initializeDatabase();
         }
 
         return prizesPersistence;
     }
     public  static synchronized AchievePersistence  getAchievePersistence(){
         if(achievePersistence==null){
-            achievePersistence = new AchievePersistenceStub();
-            achievePersistence.initializeDatabase();
+            //achievePersistence = new AchievePersistenceStub();
+            //achievePersistence.initializeDatabase();
         }
 
         return achievePersistence;

@@ -36,8 +36,8 @@ public class UserPersistenceHSQLDB implements UserPersistence {
 
 
 	@Override
-	public void add(UserModel user) {
-
+	public boolean add(UserModel user) {
+		boolean result;
 		int id = 0;
 		int totalPoints = user.getTotalPoints();
 		double totalDistance = user.getTotalDistance();
@@ -79,11 +79,13 @@ public class UserPersistenceHSQLDB implements UserPersistence {
 			st.setString(10, listAchievements);
 
 			st.executeUpdate();
+			result = true;
 
 		} catch (final SQLException e) {
 			throw new PersistenceException(e);
 		}
 		nextId++;
+		return result;
 	} // close add
 
 

@@ -13,5 +13,11 @@ public class PrizesManager {
     {
         this.prizesDatabase = Services.getPrizesPersistence();
     }
+
+    public PrizesManager(final PrizesPersistence prizesPersistence) {
+        this();
+        this.prizesDatabase = prizesPersistence;
+    }
+
     public Map<Integer, PrizesModel> getAllPrizes(){ return this.prizesDatabase.getAllPrizes(); }
 }

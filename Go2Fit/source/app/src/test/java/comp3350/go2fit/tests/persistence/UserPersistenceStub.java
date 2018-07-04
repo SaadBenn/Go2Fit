@@ -15,6 +15,7 @@ public class UserPersistenceStub implements UserPersistence
     {
         users = new HashMap<Integer, UserModel>();
         nextId = 0;
+        initializeDatabase();
     }
 
     public void initializeDatabase()
@@ -62,11 +63,15 @@ public class UserPersistenceStub implements UserPersistence
         System.out.println("Initialized the database of Goal Info.");
     }
 
-    public void add(UserModel userModel)
+    public boolean add(UserModel userModel)
     {
+        boolean result;
         userModel.setId(nextId);
         this.users.put(userModel.getId(), userModel);
+        result = true;
         nextId++;
+        return result;
+
     }
 
     public HashMap<Integer, UserModel> getAllUsers() {

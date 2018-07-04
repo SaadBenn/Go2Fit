@@ -16,6 +16,7 @@ public class SetGoalPersistenceStub implements SetGoalPersistence
     public SetGoalPersistenceStub()
     {
         this.setGoals = new HashMap<>();
+        initializeDatabase();
     }
 
     public void initializeDatabase()

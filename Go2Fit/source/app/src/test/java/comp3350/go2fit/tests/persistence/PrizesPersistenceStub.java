@@ -1,8 +1,9 @@
-package comp3350.go2fit.PersistenceLayer;
+package comp3350.go2fit.tests.persistence;
 
 import java.util.HashMap;
 
 import comp3350.go2fit.Models.PrizesModel;
+import comp3350.go2fit.PersistenceLayer.PrizesPersistence;
 import comp3350.go2fit.R;
 
 public class PrizesPersistenceStub implements PrizesPersistence {
@@ -12,6 +13,7 @@ public class PrizesPersistenceStub implements PrizesPersistence {
     public PrizesPersistenceStub()
     {
         this.prizes = new HashMap<>();
+        initializeDatabase();
     }
 
     public void initializeDatabase()

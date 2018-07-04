@@ -14,6 +14,10 @@ public class SetGoalManager implements SetGoalManagerInterface
         this.db = Services.getSetGoalPersistence();
     }
 
+    public SetGoalManager(final SetGoalPersistence setGoalPersistence) {
+        this.db = setGoalPersistence;
+    }
+
     public boolean setGoal(SetGoalModel model)
     {
         return this.db.addGoal(model);

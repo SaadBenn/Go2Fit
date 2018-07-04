@@ -15,11 +15,20 @@ public class TrackProgressPersistenceStub implements TrackProgressPersistence
     public TrackProgressPersistenceStub()
     {
         progress= new HashMap<Integer, TrackProgressModel>();
+        this.initializeDatabase();
     }
 
     public void initializeDatabase() {
 
         // print to the console
+        TrackProgressModel data = new TrackProgressModel();
+        data.setDistance(100);
+        data.setCalories(20);
+        data.setNumSteps(10);
+        data.setPercentageComplete(2);
+        data.setUserId(0);
+        data.setId(0);
+        progress.put(data.getId(), data);
         System.out.println("Initialized the database of Goal Info.");
     }
 

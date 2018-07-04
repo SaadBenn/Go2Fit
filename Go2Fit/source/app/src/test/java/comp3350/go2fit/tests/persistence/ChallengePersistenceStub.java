@@ -16,6 +16,7 @@ public class ChallengePersistenceStub implements ChallengePersistence
     {
         this.challenge = new LinkedHashMap<>();
         this.nextId = 0;
+        initializeDatabase();
     }
 
     public void initializeDatabase()

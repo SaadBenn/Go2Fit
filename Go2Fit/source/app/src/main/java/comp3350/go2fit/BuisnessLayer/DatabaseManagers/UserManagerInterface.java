@@ -10,6 +10,6 @@ public interface UserManagerInterface
     UserModel getUser(int userId);
     boolean updateUser(UserModel user);
     Map<Integer, UserModel> getAllUsers();
-    void addUser(UserModel user);
+    boolean addUser(UserModel user);
 
 }
