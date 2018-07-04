@@ -25,6 +25,7 @@ import comp3350.go2fit.BuisnessLayer.DatabaseManagers.ChallengeManager;
 import comp3350.go2fit.BuisnessLayer.ChallengesService;
 import comp3350.go2fit.R;
 import comp3350.go2fit.Models.ChallengesModel;
+import comp3350.go2fit.PresentationLayer.Validators.ChallengeModelValidator;
 
 
 /**
@@ -142,41 +143,22 @@ public class ChallengesFragement extends Fragment
         String text = spinner.getSelectedItem().toString();
 
         EditText steps = (EditText) dialog.findViewById(R.id.edittext);
-        String stepsValue = steps.getText().toString();
-
-        //ensure the distance entered is valid
-        int allValid = 0;
-
-        try
-        {
-            challengesService.verifyDistance(stepsValue);
-            allValid++;
-        }
-        catch(NumberFormatException e) {
-
-            steps.setError("You must enter a valid number!");
-        }
 
         NumberPicker numberPickerHours = (NumberPicker) dialog.findViewById(R.id.timePicker1);
         NumberPicker numberPickerMinutes = (NumberPicker) dialog.findViewById(R.id.timePicker);
 
-        int hours = numberPickerHours.getValue();
-        int minutes = numberPickerMinutes.getValue();
+        boolean allValid = ChallengeModelValidator.validateSteps(steps, numberPickerHours, numberPickerMinutes, this.getActivity());
 
-        long milliseconds = 0;
-        try
-        {
-            challengesService.verifyTime(minutes, hours);
-            milliseconds = TimeUnit.MINUTES.toMillis(minutes) + TimeUnit.HOURS.toMillis(hours);
-            allValid++;
-        }
-        catch(IllegalArgumentException e)
-        {
-            Messages.warning(this.getActivity(), "You cannot have a time of 0!");
-        }
 
-        if(allValid == 2)
+        if(allValid)
         {
+            String stepsValue = steps.getText().toString();
+
+            int hoursValue = numberPickerHours.getValue();
+            int minutesValue = numberPickerMinutes.getValue();
+            long milliseconds = TimeUnit.MINUTES.toMillis(minutesValue) + TimeUnit.HOURS.toMillis(hoursValue);
+
+
             int points = challengesService.determinePoints(Integer.parseInt(stepsValue), milliseconds);
 
             ChallengesModel model = new ChallengesModel(name, text, Integer.parseInt(stepsValue), milliseconds, points);
