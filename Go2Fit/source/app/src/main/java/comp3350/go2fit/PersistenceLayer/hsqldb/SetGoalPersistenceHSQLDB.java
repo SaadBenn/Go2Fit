@@ -14,17 +14,17 @@ import comp3350.go2fit.PersistenceLayer.SetGoalPersistence;
 
 public class SetGoalPersistenceHSQLDB implements SetGoalPersistence {
 
-	private final Connection c;
+	private String dbPath;
+	//private final Connection c;
 	private Integer nextId = 1;
 
 	public SetGoalPersistenceHSQLDB(final String dbPath) {
-		try {
-			this.c = DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath, "SA", "");
-		} catch (final SQLException e) {
-			throw new PersistenceException(e);
-		}
+		this.dbPath = dbPath;
 	} // close SetGoalPersistenceHSQLDB
 
+	private Connection connection() throws SQLException {
+		return DriverManager.getConnection("jdbc:hsqldb:file:" + dbPath + ";shutdown=true", "SA", "");
+	}
 
 	@NonNull
 	private SetGoalModel fromResultSet(final ResultSet rs) throws SQLException {
@@ -47,7 +47,7 @@ public class SetGoalPersistenceHSQLDB implements SetGoalPersistence {
 		String period = model.getPeriod();
 		model.setId(nextId);
 
-		try {
+		try(final Connection c = connection()) {
 			String cmdString = "INSERT INTO Goals VALUES(?, ?, ?, ?, ?)";
 			final PreparedStatement st = c.prepareStatement(cmdString);
 			
@@ -73,7 +73,7 @@ public class SetGoalPersistenceHSQLDB implements SetGoalPersistence {
 	public SetGoalModel getGoal(int id) {
 		SetGoalModel setGoal = null;
 
-		try {
+		try(final Connection c = connection()) {
 			final PreparedStatement st = c.prepareStatement("SELECT * FROM Goals WHERE Id=?");
 			st.setInt(1, id);
 

@@ -101,6 +101,13 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
 
             //update the data database after each step recorded
             progressManager.updateDatabase(progressModel);
+
+            if(numSteps == goalSteps+1)
+            {
+                completedChallenge();
+            }
+
+
         }
 
     }
@@ -119,6 +126,7 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
         Messages.notify(getActivity(), "Awesome Job! You completed the challenge!");
 
         progressManager.remove(CurrentUserService.getUserId());
+        userManager.updateUser(userModel);
         timer.cancel();
         sensorManager.unregisterListener(this);
     }
@@ -132,6 +140,7 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
         Messages.notify(getActivity(), "Oops! You didnt complete the challenge on time...");
 
         progressManager.remove(CurrentUserService.getUserId());
+        userManager.updateUser(userModel);
         timer.cancel();
         sensorManager.unregisterListener(this);
     }
@@ -189,6 +198,7 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
                 public void onFinish()
                 {
                     timerText.setText("Challenge Over!");
+                    failedChallenge();
                 }
             }.start();
         }
