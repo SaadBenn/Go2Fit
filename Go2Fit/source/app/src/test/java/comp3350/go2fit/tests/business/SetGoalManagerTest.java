@@ -6,9 +6,10 @@ import org.junit.Test;
 
 import comp3350.go2fit.BuisnessLayer.DatabaseManagers.SetGoalManager;
 import comp3350.go2fit.Models.SetGoalModel;
+import comp3350.go2fit.tests.persistence.SetGoalPersistenceStub;
 
 public class SetGoalManagerTest extends TestCase {
-    private SetGoalManager setGoalManager = new SetGoalManager();
+    private SetGoalManager setGoalManager = new SetGoalManager(new SetGoalPersistenceStub());
     private SetGoalModel setGoalModel;
 
     @Test

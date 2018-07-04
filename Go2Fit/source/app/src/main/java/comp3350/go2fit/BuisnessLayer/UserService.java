@@ -1,12 +1,9 @@
 package comp3350.go2fit.BuisnessLayer;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
-import comp3350.go2fit.BuisnessLayer.Exceptions.NoPasswordFoundException;
 import comp3350.go2fit.BuisnessLayer.Exceptions.NoUserFoundException;
-import comp3350.go2fit.BuisnessLayer.Exceptions.PasswordsDontMatchException;
 import comp3350.go2fit.BuisnessLayer.Exceptions.UserExistsException;
 import comp3350.go2fit.Models.UserModel;
 

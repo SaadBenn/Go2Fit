@@ -14,6 +14,10 @@ public class ProgressManager implements ProgressManagerInterface
         this.database = Services.getTrackProgressPersistence();
     }
 
+    public ProgressManager(final TrackProgressPersistence trackProgressPersistence) {
+        this.database = trackProgressPersistence;
+    }
+
     public TrackProgressModel getProgress(int userId) throws NullPointerException
     {
         return this.database.getProgress(userId);

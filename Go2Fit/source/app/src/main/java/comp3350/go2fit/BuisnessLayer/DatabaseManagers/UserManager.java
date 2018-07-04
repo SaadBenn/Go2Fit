@@ -1,6 +1,5 @@
 package comp3350.go2fit.BuisnessLayer.DatabaseManagers;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import comp3350.go2fit.Application.Services;
@@ -16,6 +15,11 @@ public class UserManager implements UserManagerInterface
     {
         this.userDatabase = Services.getUserPersistence();
     }
+
+    public UserManager(final UserPersistence userPersistence) {
+        this.userDatabase = userPersistence;
+    }
+
     public UserModel getUser(int userId)
     {
         return this.userDatabase.getUser(userId);
@@ -25,5 +29,5 @@ public class UserManager implements UserManagerInterface
         return this.userDatabase.update(user);
     }
     public Map<Integer, UserModel> getAllUsers(){ return this.userDatabase.getAllUsers(); }
-    public void addUser(UserModel user){ this.userDatabase.add(user);}
+    public boolean addUser(UserModel user){ return this.userDatabase.add(user);}
 }
