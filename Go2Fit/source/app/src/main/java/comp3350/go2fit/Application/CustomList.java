@@ -48,7 +48,7 @@ public class CustomList extends ArrayAdapter<String> {
         txtTitle.setText(itemname[position]);
         imageView.setImageResource(imgid[position]);
         pointsText.setText(pointsList[position] + " Points");
-        extratxt.setText("Description "+itemname[position]);
+        extratxt.setText("You get "+itemname[position]);
 
         button = (Button) rowView.findViewById(R.id.button3);
         button.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +99,7 @@ public class CustomList extends ArrayAdapter<String> {
             @Override
             public void onClick(View view) {
                 userModel.setTotalPoints(userModel.getTotalPoints() - points);
+                userManager.updateUser(userModel);
                 dialog.cancel();
                 Messages.notify(context, "Congrats, you just redeemed an awesome prize!");
                 button.setEnabled(false);

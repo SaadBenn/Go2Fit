@@ -27,6 +27,7 @@ public class HomePageFragement extends Fragment {
     {
         View view = inflater.inflate(R.layout.fragment_home_page_fragement, container, false);
 
+        System.out.println(R.drawable.footsteps_icon);
         TextView textView = (TextView) view.findViewById(R.id.username_text);
         TextView points = (TextView) view.findViewById(R.id.textView17);
         TextView calories = (TextView) view.findViewById(R.id.textView22);
