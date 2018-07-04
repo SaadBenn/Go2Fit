@@ -50,13 +50,11 @@ public class CurrentChallenge extends AppCompatActivity
         TextView points = (TextView) findViewById(R.id.points);
         points.setText(points.getText() + Integer.toString(numPoints));
 
-        TrackProgressService service = new TrackProgressService();
-        String hours = service.determineHours(time);
-        String minutes = service.determineMinutes(time);
-        String seconds = service.determineSeconds(time);
+        String timeInHMS = TimeUI.convertToHMS(time);
+
 
         TextView timeAmount = (TextView) findViewById(R.id.time);
-        timeAmount.setText(hours + ":" + minutes + ":" + seconds);
+        timeAmount.setText(timeInHMS);
 
 
         /** Called when the user touches the button */

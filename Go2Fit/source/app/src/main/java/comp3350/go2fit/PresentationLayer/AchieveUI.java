@@ -80,34 +80,4 @@ public class AchieveUI extends Fragment{
 
         return view;
     }
-
-    class CustomAdapter extends BaseAdapter {
-
-        @Override
-        public int getCount() {
-            return 0;
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int position, View view, ViewGroup parent) {
-            view = getLayoutInflater().inflate(R.layout.activity_achievement, null);
-            ImageView imageView = (ImageView) view.findViewById(R.id.achieve_badge);
-            TextView textView_name = (TextView) view.findViewById(R.id.achieve_name);
-            TextView textView_type = (TextView) view.findViewById(R.id.achieve_type);
-
-            imageView.setImageResource(IMAGES);
-            textView_name.setText(NAMES[position]);
-            return view;
-        }
-    }
 }

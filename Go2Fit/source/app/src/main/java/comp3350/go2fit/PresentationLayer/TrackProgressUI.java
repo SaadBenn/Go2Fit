@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.os.CountDownTimer;
 
+import java.sql.Time;
 import java.util.ArrayList;
 
 import comp3350.go2fit.Application.CurrentUserService;
@@ -189,11 +190,8 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
 
                 public void onTick(long milliseconds)
                 {
-                    String hours   = progressService.determineHours(milliseconds);
-                    String minutes = progressService.determineMinutes(milliseconds);
-                    String seconds = progressService.determineSeconds(milliseconds);
-
-                    timerText.setText("Time Remaining: " + hours + ":" + minutes + ":" + seconds);
+                    String timeInHMS = TimeUI.convertToHMS(milliseconds);
+                    timerText.setText("Time Remaining: " + timeInHMS);
                 }
 
                 public void onFinish()

@@ -28,39 +28,6 @@ public class TrackProgressService implements TrackProgressServiceInterface
         return (int)(percentage * 100);
     }
 
-    public String determineHours(long milliseconds)
-    {
-        String hours = Integer.toString((int)((milliseconds / (1000*60*60)) % 24));
-
-        if(hours.length() == 1)
-        {
-            hours = "0" + hours;
-        }
-        return hours;
-    }
-
-    public String determineMinutes(long milliseconds)
-    {
-        String minutes = Integer.toString((int)((milliseconds / (1000*60)) % 60));
-
-        if(minutes.length() == 1)
-        {
-            minutes = "0" + minutes;
-        }
-        return minutes;
-    }
-
-    public String determineSeconds(long milliseconds)
-    {
-        String seconds = Integer.toString((int)(milliseconds / 1000) % 60);
-
-        if(seconds.length() == 1)
-        {
-            seconds = "0" + seconds;
-        }
-        return seconds;
-    }
-
     public double calculateDistance(int numSteps)
     {
         double distanceFeet = numSteps * 2.3; //number of steps * 2.3 feet per step
