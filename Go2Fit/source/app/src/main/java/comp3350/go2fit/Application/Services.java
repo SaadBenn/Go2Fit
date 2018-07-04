@@ -9,6 +9,7 @@ import comp3350.go2fit.PersistenceLayer.UserPersistence;
 import comp3350.go2fit.PersistenceLayer.SetGoalPersistence;
 import comp3350.go2fit.PersistenceLayer.PrizesPersistence;
 import comp3350.go2fit.PersistenceLayer.PrizesPersistenceStub;
+import comp3350.go2fit.PersistenceLayer.hsqldb.AchievePersistenceHSQLDB;
 import comp3350.go2fit.PersistenceLayer.hsqldb.ChallengePersistenceHSQLDB;
 import comp3350.go2fit.PersistenceLayer.hsqldb.PrizesPersistenceHSQLDB;
 import comp3350.go2fit.PersistenceLayer.hsqldb.SetGoalPersistenceHSQLDB;
@@ -87,8 +88,9 @@ public class Services
     }
     public  static synchronized AchievePersistence  getAchievePersistence(){
         if(achievePersistence==null){
-            achievePersistence = new AchievePersistenceStub();
-            achievePersistence.initializeDatabase();
+            //achievePersistence = new AchievePersistenceStub();
+            //achievePersistence.initializeDatabase();
+            achievePersistence = new AchievePersistenceHSQLDB(Main.getDBPathName());
         }
 
         return achievePersistence;
