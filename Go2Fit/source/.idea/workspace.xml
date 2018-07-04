@@ -6,53 +6,24 @@
   <component name="ChangeListManager">
 <<<<<<< HEAD
     <list default="true" id="08204eef-891f-4e6e-b0c8-28e38555ec9f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/BuisnessLayer/DistanceLeaderBoardAdapter.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/adapter_view_distance_leaderboard.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/Adapters/PointsLeaderBoardAdapter.java" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_1_0.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_0.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_0.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_viewmodel_1_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_viewmodel_1_1_0.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_animated_vector_drawable_27_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_animated_vector_drawable_27_1_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_27_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_27_1_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_0.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_design_27_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_design_27_1_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_recyclerview_v7_27_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_recyclerview_v7_27_1_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_27_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_27_1_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_ui_27_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_ui_27_1_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_27_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_27_1_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_27_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_27_1_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_media_compat_27_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_media_compat_27_1_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_v4_27_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_v4_27_1_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_vector_drawable_27_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_vector_drawable_27_1_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_core_3_0_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_core_3_0_2.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_idling_resource_3_0_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_idling_resource_3_0_2.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_monitor_1_0_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_monitor_1_0_2.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_runner_1_0_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_runner_1_0_2.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_transition_27_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_transition_27_1_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/Models/UserModel.java" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/Models/UserModel.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/BuisnessLayer/ChallengesLeaderBoardAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/Adapters/ChallengesLeaderBoardAdapter.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/BuisnessLayer/DistanceLeaderBoardAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/Adapters/DistanceLeaderBoardAdapter.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/BuisnessLayer/PointsLeaderBoardAdapter.java" afterPath="" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/ChallengesLeaderBoardUI.java" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/ChallengesLeaderBoardUI.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/DistanceLeaderBoardUI.java" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/DistanceLeaderBoardUI.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/MainLeaderBoardsUI.java" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/MainLeaderBoardsUI.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/PointsLeaderBoardUI.java" afterPath="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/PointsLeaderBoardUI.java" />
-      <change beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
-      <change beforePath="$PROJECT_DIR$/source.iml" afterPath="$PROJECT_DIR$/source.iml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main_leader_boards_ui.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main_leader_boards_ui.xml" />
     </list>
 =======
     <list default="true" id="fe3108c0-9672-45c5-8f4f-1df381be7ffa" name="Default" comment="" />
@@ -75,6 +46,7 @@
       <file leaf-file-name="DistanceLeaderBoardUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/DistanceLeaderBoardUI.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="470">
               <caret line="69" column="75" lean-forward="false" selection-start-line="69" selection-start-column="49" selection-end-line="69" selection-end-column="75" />
               <folding>
@@ -87,11 +59,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="93">
               <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+=======
+            <state relative-caret-position="375">
+              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="77" />
+>>>>>>> c1631f6ba1fe4908c9f241e8adf72d0283daf43d
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="SetGoalsUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/SetGoalsUI.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -116,11 +93,19 @@
             <state relative-caret-position="60">
               <caret line="4" column="93" lean-forward="false" selection-start-line="4" selection-start-column="93" selection-end-line="4" selection-end-column="93" />
 >>>>>>> HSQLDB
+=======
+      <file leaf-file-name="PointsLeaderBoardUI.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/PointsLeaderBoardUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-272">
+              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+>>>>>>> c1631f6ba1fe4908c9f241e8adf72d0283daf43d
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <file leaf-file-name="DistanceLeaderBoardAdapter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/BuisnessLayer/DistanceLeaderBoardAdapter.java">
@@ -196,6 +181,13 @@
             <state relative-caret-position="-103">
               <caret line="58" column="63" lean-forward="false" selection-start-line="58" selection-start-column="63" selection-end-line="58" selection-end-column="63" />
 >>>>>>> HSQLDB
+=======
+      <file leaf-file-name="MainLeaderBoardsUI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/MainLeaderBoardsUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="900">
+              <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+>>>>>>> c1631f6ba1fe4908c9f241e8adf72d0283daf43d
               <folding />
             </state>
           </provider>
@@ -218,6 +210,7 @@
       <find>getv</find>
       <find>adap</find>
       <find>mRes</find>
+      <find>PointsLeaderBoardAdapter</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -2248,11 +2241,10 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/adapter_view_points_leaderboard.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/BuisnessLayer/PointsLeaderBoardAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/BuisnessLayer/ChallengesLeaderBoardAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/PointsLeaderBoardUI.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/ChallengesLeaderBoardUI.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/DistanceLeaderBoardUI.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/adapter_view_distance_leaderboard.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/BuisnessLayer/DistanceLeaderBoardAdapter.java" />
+<<<<<<< HEAD
 =======
         <option value="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/Application/Main.java" />
         <option value="$PROJECT_DIR$/app/src/main/assets/SC.script" />
@@ -2268,6 +2260,13 @@
         <option value="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/ChallengesFragement.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PersistenceLayer/hsqldb/UserPersistenceHSQLDB.java" />
 >>>>>>> HSQLDB
+=======
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main_leader_boards_ui.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/MainLeaderBoardsUI.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/DistanceLeaderBoardUI.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/Adapters/PointsLeaderBoardAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/PointsLeaderBoardUI.java" />
+>>>>>>> c1631f6ba1fe4908c9f241e8adf72d0283daf43d
       </list>
     </option>
   </component>
@@ -2369,7 +2368,19 @@
             <path>
               <item name="source" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
+<<<<<<< HEAD
               <item name="assets" type="edd41e36:AndroidSourceTypeNode" />
+=======
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="go2fit" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="PresentationLayer" type="462c0819:PsiDirectoryNode" />
+              <item name="Adapters" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="source" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+>>>>>>> c1631f6ba1fe4908c9f241e8adf72d0283daf43d
             </path>
             <path>
               <item name="source" type="1abcf292:AndroidViewProjectNode" />
@@ -2399,6 +2410,11 @@
 =======
     <property name="device.picker.selection" value="0a82f118" />
 >>>>>>> HSQLDB
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="comp3350.go2fit.PresentationLayer.Adapters" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -2574,11 +2590,15 @@
   </component>
   <component name="ToolWindowManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="7" />
 =======
     <frame x="0" y="23" width="1280" height="738" extended-state="6" />
     <editor active="true" />
 >>>>>>> HSQLDB
+=======
+    <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
+>>>>>>> c1631f6ba1fe4908c9f241e8adf72d0283daf43d
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -2595,6 +2615,7 @@
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Build" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.101553164" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
 =======
@@ -2605,6 +2626,11 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
 >>>>>>> HSQLDB
+=======
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2762162" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Build" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0692951" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+>>>>>>> c1631f6ba1fe4908c9f241e8adf72d0283daf43d
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -2616,7 +2642,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -2788,6 +2813,7 @@
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/MainLeaderBoardsUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
@@ -2803,6 +2829,8 @@
       </provider>
     </entry>
 <<<<<<< HEAD
+=======
+>>>>>>> c1631f6ba1fe4908c9f241e8adf72d0283daf43d
     <entry file="file://$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/ChallengesLeaderBoardUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -2839,19 +2867,28 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/DistanceLeaderBoardUI.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/Adapters/ChallengesLeaderBoardAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="69" column="75" lean-forward="false" selection-start-line="69" selection-start-column="49" selection-end-line="69" selection-end-column="75" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1530516309320" expanded="false" signature="2210:2221" ph="&lt;~&gt;" />
-          </folding>
+        <state relative-caret-position="325">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/PointsLeaderBoardUI.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main_leader_boards_ui.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/BuisnessLayer/PointsLeaderBoardAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="-8">
           <caret line="33" column="66" lean-forward="false" selection-start-line="33" selection-start-column="66" selection-end-line="33" selection-end-column="66" />
 =======
@@ -2865,10 +2902,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
           <caret line="144" column="85" lean-forward="false" selection-start-line="144" selection-start-column="85" selection-end-line="144" selection-end-column="85" />
+=======
+        <state relative-caret-position="100">
+          <caret line="4" column="31" lean-forward="true" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
+>>>>>>> c1631f6ba1fe4908c9f241e8adf72d0283daf43d
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PersistenceLayer/hsqldb/TrackProgressPersistenceHSQLDB.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6">
@@ -2888,20 +2930,24 @@
     </entry>
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/BuisnessLayer/DistanceLeaderBoardAdapter.java">
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/Adapters/DistanceLeaderBoardAdapter.java">
+>>>>>>> c1631f6ba1fe4908c9f241e8adf72d0283daf43d
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="28" column="5" lean-forward="false" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+        <state relative-caret-position="1025">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/BuisnessLayer/PointsLeaderBoardAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/Adapters/PointsLeaderBoardAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="53" column="5" lean-forward="false" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
+        <state relative-caret-position="475">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
           <folding>
+<<<<<<< HEAD
             <element signature="imports" expanded="true" />
 =======
     <entry file="file://$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PersistenceLayer/hsqldb/SetGoalPersistenceHSQLDB.java">
@@ -2919,10 +2965,14 @@
           <folding>
             <element signature="e#2996#2997#0" expanded="false" />
 >>>>>>> HSQLDB
+=======
+            <element signature="imports" expanded="false" />
+>>>>>>> c1631f6ba1fe4908c9f241e8adf72d0283daf43d
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/BuisnessLayer/ChallengesLeaderBoardAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -2998,6 +3048,28 @@
         <state relative-caret-position="126">
           <caret line="204" column="0" lean-forward="true" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
 >>>>>>> HSQLDB
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/MainLeaderBoardsUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/DistanceLeaderBoardUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/comp3350/go2fit/PresentationLayer/PointsLeaderBoardUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-272">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+>>>>>>> c1631f6ba1fe4908c9f241e8adf72d0283daf43d
           <folding />
         </state>
       </provider>

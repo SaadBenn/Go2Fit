@@ -45,9 +45,6 @@ public class MainLeaderBoardsUI extends AppCompatActivity  implements View.OnCli
         Button two = (Button) findViewById(R.id.challenges);
         two.setOnClickListener(this);
 
-        Button three = (Button) findViewById(R.id.friends);
-        three.setOnClickListener(this);
-
         Button four = (Button) findViewById(R.id.distance);
         four.setOnClickListener(this);
     }
@@ -65,10 +62,6 @@ public class MainLeaderBoardsUI extends AppCompatActivity  implements View.OnCli
             case R.id.challenges:
                 Intent intent2 = new Intent(this, ChallengesLeaderBoardUI.class);
                 startActivity(intent2);
-                break;
-
-            case R.id.friends:
-                System.out.println("three");
                 break;
 
             case R.id.distance:
