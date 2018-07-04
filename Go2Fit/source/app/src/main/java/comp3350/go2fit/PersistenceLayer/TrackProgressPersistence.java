@@ -5,10 +5,8 @@ import comp3350.go2fit.Models.TrackProgressModel;
 /**track progress persistence interface**/
 public interface TrackProgressPersistence
 {
-    void    initializeDatabase();
     boolean add(TrackProgressModel userProgress);
     boolean update(TrackProgressModel userProgress);
-    boolean remove(int userId);
-
+    boolean remove(int id);
     TrackProgressModel getProgress(int userId);
 }

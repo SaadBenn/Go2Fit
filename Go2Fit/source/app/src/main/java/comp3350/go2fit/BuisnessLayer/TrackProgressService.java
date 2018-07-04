@@ -7,7 +7,7 @@ import comp3350.go2fit.Models.ChallengesModel;
 import comp3350.go2fit.Models.TrackProgressModel;
 import comp3350.go2fit.Models.UserModel;
 import comp3350.go2fit.PersistenceLayer.ChallengePersistence;
-import comp3350.go2fit.PersistenceLayer.ChallengePersistenceStub;
+//import comp3350.go2fit.PersistenceLayer.ChallengePersistenceStub;
 import comp3350.go2fit.PersistenceLayer.TrackProgressPersistence;
 import comp3350.go2fit.Application.Services;
 import comp3350.go2fit.PersistenceLayer.UserPersistence;

@@ -62,7 +62,7 @@ public class CurrentChallenge extends AppCompatActivity
         /** Called when the user touches the button */
         final Button button= (Button)findViewById(R.id.button);
 
-        if(!userManager.getUser(2).getChallengeStarted())
+        if(!userManager.getUser(CurrentUserService.getUserId()).getChallengeStarted())
         {
             button.setEnabled(true);
         }

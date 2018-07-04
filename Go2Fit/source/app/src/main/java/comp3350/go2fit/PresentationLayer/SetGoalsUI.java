@@ -1,5 +1,6 @@
 package comp3350.go2fit.PresentationLayer;
 
+import comp3350.go2fit.Application.CurrentUserService;
 import comp3350.go2fit.BuisnessLayer.DatabaseManagers.SetGoalManager;
 import comp3350.go2fit.BuisnessLayer.DatabaseManagers.UserManager;
 import comp3350.go2fit.Models.SetGoalModel;
@@ -64,8 +65,8 @@ public class SetGoalsUI extends Fragment implements CompoundButton.OnCheckedChan
             public void onClick(View view)
             {
                 UserManager userManager = new UserManager();
-                UserModel model = userManager.getUser(2);
-                setGoalManager.setGoal(setmodel);
+                UserModel model = userManager.getUser(CurrentUserService.getUserId());
+                //setGoalManager.setGoal(setmodel);
 
                 Messages.notify(getActivity(), "Your goal has been set!" +
                         "");

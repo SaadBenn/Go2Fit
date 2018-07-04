@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.content.Intent;
+import android.content.Context;
+import android.content.res.AssetManager;
 import android.view.View;
 import android.os.Process;
 import android.widget.EditText;
@@ -18,8 +20,15 @@ import comp3350.go2fit.BuisnessLayer.PasswordService;
 import comp3350.go2fit.BuisnessLayer.UserService;
 import comp3350.go2fit.Models.UserModel;
 import comp3350.go2fit.BuisnessLayer.DatabaseManagers.UserManager;
+import comp3350.go2fit.PresentationLayer.Messages;
 import comp3350.go2fit.PresentationLayer.SignUpPage;
 import comp3350.go2fit.R;
+
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 
 /**The start up to the application**/
@@ -32,6 +41,7 @@ public class StartUp extends AppCompatActivity
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_start_up);
+        copyDatabaseToDevice();
 
         startButton = findViewById(R.id.start_button);
         startButton.setOnClickListener(new View.OnClickListener() {
@@ -97,4 +107,57 @@ public class StartUp extends AppCompatActivity
         Process.killProcess(Process.myPid());
         System.exit(1);
     }
+
+
+    private void copyDatabaseToDevice() {
+        final String DB_PATH = "db";
+
+        String[] assetNames;
+        Context context = getApplicationContext();
+        File dataDirectory = context.getDir(DB_PATH, Context.MODE_PRIVATE);
+        AssetManager assetManager = getAssets();
+
+        try {
+
+            assetNames = assetManager.list(DB_PATH);
+            for (int i = 0; i < assetNames.length; i++) {
+                assetNames[i] = DB_PATH + "/" + assetNames[i];
+            }
+
+            copyAssetsToDirectory(assetNames, dataDirectory);
+
+            Main.setDBPathName(dataDirectory.toString() + "/" + Main.getDBPathName());
+        } catch (final IOException ioe) {
+            Messages.warning(this, "Unable to access application data: " + ioe.getMessage());
+        }
+    }
+
+    public void copyAssetsToDirectory(String[] assets, File directory) throws IOException {
+        AssetManager assetManager = getAssets();
+
+        for (String asset : assets) {
+            String[] components = asset.split("/");
+            String copyPath = directory.toString() + "/" + components[components.length - 1];
+
+            char[] buffer = new char[1024];
+            int count;
+
+            File outFile = new File(copyPath);
+
+            if (!outFile.exists()) {
+                InputStreamReader in = new InputStreamReader(assetManager.open(asset));
+                FileWriter out = new FileWriter(outFile);
+
+                count = in.read(buffer);
+                while (count != -1) {
+                    out.write(buffer, 0, count);
+                    count = in.read(buffer);
+                }
+
+                out.close();
+                in.close();
+            }
+        }
+    }
+
 }

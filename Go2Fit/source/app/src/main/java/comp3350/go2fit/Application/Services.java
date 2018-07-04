@@ -3,15 +3,16 @@ package comp3350.go2fit.Application;
 import comp3350.go2fit.PersistenceLayer.AchievePersistence;
 import comp3350.go2fit.PersistenceLayer.AchievePersistenceStub;
 import comp3350.go2fit.PersistenceLayer.ChallengePersistence;
-import comp3350.go2fit.PersistenceLayer.ChallengePersistenceStub;
-import comp3350.go2fit.PersistenceLayer.TrackProgressPersistence;
-import comp3350.go2fit.PersistenceLayer.TrackProgressPersistenceStub;
-import comp3350.go2fit.PersistenceLayer.UserPersistence;
-import comp3350.go2fit.PersistenceLayer.UserPersistenceStub;
 import comp3350.go2fit.PersistenceLayer.SetGoalPersistence;
-import comp3350.go2fit.PersistenceLayer.SetGoalPersistenceStub;
+import comp3350.go2fit.PersistenceLayer.TrackProgressPersistence;
+import comp3350.go2fit.PersistenceLayer.UserPersistence;
+import comp3350.go2fit.PersistenceLayer.SetGoalPersistence;
 import comp3350.go2fit.PersistenceLayer.PrizesPersistence;
 import comp3350.go2fit.PersistenceLayer.PrizesPersistenceStub;
+import comp3350.go2fit.PersistenceLayer.hsqldb.ChallengePersistenceHSQLDB;
+import comp3350.go2fit.PersistenceLayer.hsqldb.SetGoalPersistenceHSQLDB;
+import comp3350.go2fit.PersistenceLayer.hsqldb.TrackProgressPersistenceHSQLDB;
+import comp3350.go2fit.PersistenceLayer.hsqldb.UserPersistenceHSQLDB;
 
 /**Services Class**/
 
@@ -29,8 +30,9 @@ public class Services
     {
         if (challengePersistence == null)
         {
-            challengePersistence = new ChallengePersistenceStub();
-            challengePersistence.initializeDatabase();
+            //challengePersistence = new ChallengePersistenceStub();
+            //challengePersistence.initializeDatabase();
+            challengePersistence = new ChallengePersistenceHSQLDB(Main.getDBPathName());
         }
 
         return challengePersistence;
@@ -40,29 +42,34 @@ public class Services
     {
         if (trackProgressPersistence == null)
         {
-            trackProgressPersistence = new TrackProgressPersistenceStub();
-            trackProgressPersistence.initializeDatabase();
+            //trackProgressPersistence = new TrackProgressPersistenceStub();
+            //trackProgressPersistence.initializeDatabase();
+            trackProgressPersistence = new TrackProgressPersistenceHSQLDB(Main.getDBPathName());
         }
 
         return trackProgressPersistence;
     }
 
     public static synchronized UserPersistence getUserPersistence()
-{
-    if(userPersistence == null)
     {
-        userPersistence = new UserPersistenceStub();
-        userPersistence.initializeDatabase();
+        if(userPersistence == null)
+        {
+            //userPersistence = new UserPersistenceStub();
+            //userPersistence.initializeDatabase();
+            userPersistence = new UserPersistenceHSQLDB(Main.getDBPathName());
+        }
+
+        return userPersistence;
     }
 
-    return userPersistence;
-}
+
     public static synchronized SetGoalPersistence getSetGoalPersistence()
     {
         if(setGoalPersistence == null)
         {
-            setGoalPersistence = new SetGoalPersistenceStub();
-            setGoalPersistence.initializeDatabase();
+            //setGoalPersistence = new SetGoalPersistenceStub();
+            //setGoalPersistence.initializeDatabase();
+            setGoalPersistence = new SetGoalPersistenceHSQLDB(Main.getDBPathName());
         }
 
         return setGoalPersistence;
