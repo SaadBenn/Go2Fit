@@ -30,4 +30,8 @@ dependencies {
     implementation 'com.android.support:support-v4:27.0.1'
     implementation group: 'org.hsqldb', name: 'hsqldb', version: '2.4.1'
     implementation 'com.google.code.gson:gson:2.8.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestCompile 'com.android.support.test:rules:0.5'
+    androidTestCompile 'com.android.support.test:runner:0.5'
+
 }
