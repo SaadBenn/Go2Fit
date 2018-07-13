@@ -11,4 +11,10 @@ As a group we only have so much control over the effort of individual members, w
 but there is only so much we can do. So, the only concrete way to ensure that work gets completed is to assign more work to the dependable
 members, even though this means putting them under more stress. In the real world, members who don’t contribute to the project don’t get the
 same luxury as the members of our group. If in the work place a developer was seen as not putting in any effort they would be approached and
-told to change. Then if they continue in the same fashion they would simply be fired. 
+told to change. Then if they continue in the same fashion they would simply be fired.
+
+A more realistic approach to solving group issues would have been to bring on board more dependable people to help with the group work,
+swapping them out with the less than ideal members. Objectively this would have been seen as more successful because the work load would have
+been more evenly distributed, this would have lead to less stress being put on all the group members overall. Measurably this would have also
+been a success since the project velocity would have been greatly increased. More work being completed by having more members actively
+participate in the project.
