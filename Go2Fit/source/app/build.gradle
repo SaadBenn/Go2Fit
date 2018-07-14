@@ -33,5 +33,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     androidTestCompile 'com.android.support.test:rules:0.5'
     androidTestCompile 'com.android.support.test:runner:0.5'
-
+    testImplementation group: 'com.google.guava', name: 'guava', version: '25.1-jre'
 }
