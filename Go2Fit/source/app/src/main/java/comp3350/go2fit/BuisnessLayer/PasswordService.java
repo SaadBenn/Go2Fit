@@ -9,7 +9,7 @@ public class PasswordService {
     public void validatePassword(String userModelPassword, String entryPassword) throws NoPasswordFoundException
     {
         if(!userModelPassword.equals(entryPassword)){
-            throw new NoPasswordFoundException("The password is wrong!");
+            throw new NoPasswordFoundException();
         }
     }
 
@@ -17,7 +17,7 @@ public class PasswordService {
     {
         if(!password1.equals(password2))
         {
-            throw new PasswordsDontMatchException("The passwords do not match!");
+            throw new PasswordsDontMatchException();
         }
     }
 
@@ -25,7 +25,7 @@ public class PasswordService {
     {
         if(password.length() < 7)
         {
-            throw new PasswordToShortException("Password must be 7 characters long");
+            throw new PasswordToShortException();
         }
     }
 }

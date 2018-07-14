@@ -11,5 +11,8 @@ public interface UserManagerInterface
     boolean updateUser(UserModel user);
     Map<Integer, UserModel> getAllUsers();
     boolean addUser(UserModel user);
+    void startChallenge(int id);
+    boolean validatePoints(int pointsRequired);
+
 
 }

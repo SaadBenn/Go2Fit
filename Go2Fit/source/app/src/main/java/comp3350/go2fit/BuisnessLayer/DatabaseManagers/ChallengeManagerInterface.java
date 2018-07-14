@@ -9,5 +9,5 @@ public interface ChallengeManagerInterface
 {
     Map<Integer, ChallengesModel>         getAllChallenges();
     ChallengesModel getChallenge(int id);
-    boolean         addChallenge(ChallengesModel challengesModel);
+    boolean         addChallenge(ChallengesModel challengesModel,String stepsValue, long milliseconds);
 }

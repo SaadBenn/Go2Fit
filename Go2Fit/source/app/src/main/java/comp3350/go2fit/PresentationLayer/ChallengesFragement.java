@@ -158,18 +158,15 @@ public class ChallengesFragement extends Fragment
             int minutesValue = numberPickerMinutes.getValue();
             long milliseconds = TimeUnit.MINUTES.toMillis(minutesValue) + TimeUnit.HOURS.toMillis(hoursValue);
 
+            ChallengesModel model = new ChallengesModel(name, text, Integer.parseInt(stepsValue), milliseconds, 0);
 
-            int points = challengesService.determinePoints(Integer.parseInt(stepsValue), milliseconds);
-
-            ChallengesModel model = new ChallengesModel(name, text, Integer.parseInt(stepsValue), milliseconds, points);
-
-            challengeManager.addChallenge(model);
+            challengeManager.addChallenge(model, stepsValue, milliseconds);
             challengeTypes.add(name);
             listViewAdapter.notifyDataSetChanged();
 
             dialog.dismiss();
 
-            Messages.notify(this.getActivity(), "You created a challenge worth " + points + " points!");
+            Messages.notify(this.getActivity(), "You created a challenge worth " + model.getPoints() + " points!");
         }
     }
 }

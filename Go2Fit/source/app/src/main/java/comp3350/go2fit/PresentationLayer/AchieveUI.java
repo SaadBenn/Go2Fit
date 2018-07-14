@@ -75,7 +75,7 @@ public class AchieveUI extends Fragment{
         }
         catch(NullPointerException e)
         {
-            Messages.fatalError(this.getActivity(), e.getMessage());
+            Messages.fatalError(this.getActivity(), "Oops, something went wrong!");
         }
 
         return view;

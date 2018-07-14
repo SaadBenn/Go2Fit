@@ -50,11 +50,13 @@ public class CustomList extends ArrayAdapter<String> {
         pointsText.setText(pointsList[position] + " Points");
         extratxt.setText("You get "+itemname[position]);
 
+        final UserManager userManager = new UserManager();
+
         button = (Button) rowView.findViewById(R.id.button3);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!validatePoints(pointsList[position]))
+                if(!userManager.validatePoints(pointsList[position]))
                 {
                     Messages.notify(context, "Sorry, you dont have enough points to redeem this prize");
                 }
@@ -66,18 +68,6 @@ public class CustomList extends ArrayAdapter<String> {
         });
         return rowView;
 
-    }
-
-    private boolean validatePoints(int pointsRequired)
-    {
-        UserManager userManager = new UserManager();
-        UserModel userModel = userManager.getUser(CurrentUserService.getUserId());
-
-        if(userModel.getTotalPoints() >= pointsRequired)
-        {
-            return true;
-        }
-        return false;
     }
 
     public void openModalWindow(String title, final int points)

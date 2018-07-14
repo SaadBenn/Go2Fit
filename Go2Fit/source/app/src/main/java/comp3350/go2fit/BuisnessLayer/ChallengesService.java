@@ -23,7 +23,7 @@ public class ChallengesService implements ChallengesServiceInterface
     {
         if(hours <= 0 && minutes <= 0)
         {
-            throw new IllegalArgumentException("Time cannot be 0!");
+            throw new IllegalArgumentException();
         }
         return true;
     }

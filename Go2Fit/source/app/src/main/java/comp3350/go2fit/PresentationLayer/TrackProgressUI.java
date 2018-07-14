@@ -105,7 +105,10 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
 
             if(numSteps == goalSteps+1)
             {
-                completedChallenge();
+                progressManager.completedChallenge(progressModel);
+                Messages.notify(getActivity(), "Awesome Job! You completed the challenge!");
+                timer.cancel();
+                sensorManager.unregisterListener(this);
             }
 
 
@@ -113,36 +116,10 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
 
     }
 
-    private void completedChallenge()
+
+    public void failedChallenge()
     {
-        UserModel userModel = userManager.getUser(CurrentUserService.getUserId());
-
-        userModel.setChallengeStarted(false);
-        userModel.setTotalPoints(userModel.getTotalPoints() + challengeManager.getChallenge(userModel.getCurrentChallenge()).getPoints());
-        userModel.increaseChallengesCompleted();
-
-        userModel.setTotalCalories(userModel.getTotalCalories() + progressModel.getCalories());
-        userModel.setTotalDistance(userModel.getTotalDistance() + progressModel.getDistance());
-
-        Messages.notify(getActivity(), "Awesome Job! You completed the challenge!");
-
-        progressManager.remove(CurrentUserService.getUserId());
-        userManager.updateUser(userModel);
-        timer.cancel();
-        sensorManager.unregisterListener(this);
-    }
-
-    private void failedChallenge()
-    {
-        UserModel userModel = userManager.getUser(CurrentUserService.getUserId());
-
-        userModel.setChallengeStarted(false);
-
-        //Messages.notify(getActivity(), "Oops! You didnt complete the challenge on time...");
-
-        progressManager.remove(CurrentUserService.getUserId());
-        userManager.updateUser(userModel);
-        timer.cancel();
+        progressManager.failedChallenge();
         sensorManager.unregisterListener(this);
     }
 
@@ -185,6 +162,7 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
                     SensorManager.SENSOR_DELAY_NORMAL);
 
             final TextView timerText = (TextView) getView().findViewById(R.id.timer_text);
+
 
             timer = new CountDownTimer(time, 1000) { //Sets 10 second remaining
 

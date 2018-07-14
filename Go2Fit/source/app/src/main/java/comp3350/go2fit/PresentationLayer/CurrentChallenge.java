@@ -74,10 +74,7 @@ public class CurrentChallenge extends AppCompatActivity
             public void onClick(View view)
             {
                 // click handling code
-                UserModel user = userManager.getUser(CurrentUserService.getUserId());
-                user.setCurrentChallenge(currentChallenge.getModel().getId());
-                user.setChallengeStarted(true);
-                userManager.updateUser(user);
+                userManager.startChallenge(currentChallenge.getModel().getId());
 
                 Messages.notify(CurrentChallenge.this,"You have just started a challenge! " +
                                         "Head over to the progress page to see your current progress!");

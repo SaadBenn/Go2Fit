@@ -85,13 +85,13 @@ public class StartUp extends AppCompatActivity
             }
             catch(NoPasswordFoundException e)
             {
-                password.setError(e.getMessage());
+                password.setError("The password is wrong!");
             }
 
         }
         catch(NoUserFoundException e)
         {
-            username.setError(e.getMessage());
+            username.setError("This username doesnt exist!");
         }
     }
 

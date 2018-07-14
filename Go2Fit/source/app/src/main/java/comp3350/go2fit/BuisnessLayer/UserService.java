@@ -25,7 +25,7 @@ public class UserService {
         }
         if(index == -1)
         {
-            throw new NoUserFoundException("This username doesnt exist!");
+            throw new NoUserFoundException();
         }
         System.out.println("ADSADADFADSDASDASAD"+ index + "\n\n\n\n\n\n");
         return index;
@@ -40,7 +40,7 @@ public class UserService {
             UserModel model = (UserModel) users.get(value);
             if(model.getName().equals(username))
             {
-                throw new UserExistsException("This username is already taken!");
+                throw new UserExistsException();
             }
         }
     }
