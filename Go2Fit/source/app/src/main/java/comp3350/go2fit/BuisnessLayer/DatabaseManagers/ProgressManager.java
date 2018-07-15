@@ -55,12 +55,8 @@ public class ProgressManager implements ProgressManagerInterface
         userModel.setTotalCalories(userModel.getTotalCalories() + progressModel.getCalories());
         userModel.setTotalDistance(userModel.getTotalDistance() + progressModel.getDistance());
 
-        //Messages.notify(getActivity(), "Awesome Job! You completed the challenge!");
-
         progressManager.remove(CurrentUserService.getUserId());
         userManager.updateUser(userModel);
-        //timer.cancel();
-        //sensorManager.unregisterListener(this);
     }
 
     public void failedChallenge()
