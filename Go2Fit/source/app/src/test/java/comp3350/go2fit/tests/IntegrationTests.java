@@ -32,7 +32,6 @@ import comp3350.go2fit.tests.business.UserServiceIT;
         ProgressManagerIT.class,
         SetGoalManagerIT.class,
         TrackProgressServiceIT.class,
-        UserManagerIT.class,
         UserServiceIT.class
 })
 public class IntegrationTests {}
