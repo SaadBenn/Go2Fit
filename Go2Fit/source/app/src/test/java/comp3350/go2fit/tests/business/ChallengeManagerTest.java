@@ -46,6 +46,7 @@ public class ChallengeManagerTest extends TestCase {
     public void testAddChallenge() {
         model = new ChallengesModel("challengeName", "challengeType", 20, 1, 10);
         boolean result = challengeManager.addChallenge(model, "100", 10000);
+
         assertTrue(result);
     }
 }

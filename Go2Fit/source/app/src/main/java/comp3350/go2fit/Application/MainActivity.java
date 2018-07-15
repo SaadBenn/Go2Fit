@@ -12,6 +12,7 @@ import android.content.Intent;
 
 import comp3350.go2fit.PresentationLayer.About;
 import comp3350.go2fit.PresentationLayer.MainLeaderBoardsUI;
+import comp3350.go2fit.PresentationLayer.UpdateProfilePage;
 import comp3350.go2fit.R;
 import comp3350.go2fit.PresentationLayer.RedeemPrizes;
 
@@ -96,6 +97,12 @@ public class MainActivity extends AppCompatActivity
         else if(id == R.id.action_RedeemPrizes)
         {
             Intent intent = new Intent(this, RedeemPrizes.class);
+            startActivity(intent);
+            return true;
+        }
+        else if(id == R.id.action_UpdateProfile)
+        {
+            Intent intent = new Intent(this, UpdateProfilePage.class);
             startActivity(intent);
             return true;
         }

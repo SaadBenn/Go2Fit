@@ -1,15 +1,32 @@
 package comp3350.go2fit.tests.business;
 
 import junit.framework.TestCase;
+
+import org.hsqldb.rights.User;
+import org.junit.Before;
 import org.junit.Test;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import comp3350.go2fit.BuisnessLayer.DatabaseManagers.ProgressManager;
 import comp3350.go2fit.Models.TrackProgressModel;
+import comp3350.go2fit.PersistenceLayer.TrackProgressPersistence;
+import comp3350.go2fit.PersistenceLayer.UserPersistence;
 import comp3350.go2fit.tests.persistence.TrackProgressPersistenceStub;
 
 public class ProgressManagerTest extends TestCase {
     private ProgressManager progressManager;
+    private ProgressManager progressManager1;
     private TrackProgressModel trackProgress;
+    private TrackProgressPersistence trackProgressPersistence;
+
+    @Before
+    public void setUp() {
+        trackProgressPersistence = mock(TrackProgressPersistence.class);
+        progressManager1 = new ProgressManager(trackProgressPersistence);
+    }
 
     @Test
     public void testForNull() {

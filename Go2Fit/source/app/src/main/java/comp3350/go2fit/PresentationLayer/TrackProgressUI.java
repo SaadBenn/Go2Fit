@@ -105,7 +105,7 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
 
             if(numSteps == goalSteps+1)
             {
-                progressManager.completedChallenge(progressModel);
+                userManager.completedChallenge(progressModel);
                 Messages.notify(getActivity(), "Awesome Job! You completed the challenge!");
                 timer.cancel();
                 sensorManager.unregisterListener(this);
@@ -119,7 +119,7 @@ public class TrackProgressUI extends Fragment implements SensorEventListener
 
     public void failedChallenge()
     {
-        progressManager.failedChallenge();
+        userManager.failedChallenge();
         sensorManager.unregisterListener(this);
     }
 

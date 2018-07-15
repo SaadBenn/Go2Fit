@@ -24,4 +24,10 @@
         android:orderInCategory="100"
         android:title="Redeem Prizes"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_UpdateProfile"
+        android:orderInCategory="100"
+        android:title="Update Profile"
+        app:showAsAction="never" />
 </menu>

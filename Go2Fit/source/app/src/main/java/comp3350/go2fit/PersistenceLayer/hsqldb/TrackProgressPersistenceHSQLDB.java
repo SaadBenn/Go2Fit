@@ -138,7 +138,16 @@ public class TrackProgressPersistenceHSQLDB implements TrackProgressPersistence 
 
     public boolean remove(int id)
     {
+        try {
+            final Statement st = c.createStatement();
+            st.executeUpdate("DELETE FROM TrackProgress WHERE Id="+id);
+
+            st.close();
         return true;
+
+        } catch (final SQLException e) {
+            throw new PersistenceException(e);
+        }
     }
 
 } // close class

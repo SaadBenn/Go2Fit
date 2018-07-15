@@ -40,40 +40,4 @@ public class ProgressManager implements ProgressManagerInterface
     {
         return this.database.remove(id);
     }
-
-    public void completedChallenge(TrackProgressModel progressModel)
-    {
-        UserManager userManager = new UserManager();
-        ChallengeManager challengeManager = new ChallengeManager();
-        ProgressManager progressManager = new ProgressManager();
-        UserModel userModel = userManager.getUser(CurrentUserService.getUserId());
-
-        userModel.setChallengeStarted(false);
-        userModel.setTotalPoints(userModel.getTotalPoints() + challengeManager.getChallenge(userModel.getCurrentChallenge()).getPoints());
-        userModel.increaseChallengesCompleted();
-
-        userModel.setTotalCalories(userModel.getTotalCalories() + progressModel.getCalories());
-        userModel.setTotalDistance(userModel.getTotalDistance() + progressModel.getDistance());
-
-        progressManager.remove(CurrentUserService.getUserId());
-        userManager.updateUser(userModel);
-    }
-
-    public void failedChallenge()
-    {
-        UserManager userManager = new UserManager();
-        ProgressManager progressManager = new ProgressManager();
-
-        UserModel userModel = userManager.getUser(CurrentUserService.getUserId());
-
-        userModel.setChallengeStarted(false);
-
-        //Messages.notify(getActivity(), "Oops! You didnt complete the challenge on time...");
-
-        progressManager.remove(CurrentUserService.getUserId());
-        userManager.updateUser(userModel);
-        //timer.cancel();
-        //sensorManager.unregisterListener(this);
-    }
-
 }
