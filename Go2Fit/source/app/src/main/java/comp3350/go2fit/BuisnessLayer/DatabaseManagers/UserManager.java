@@ -1,20 +1,11 @@
 package comp3350.go2fit.BuisnessLayer.DatabaseManagers;
 
-import android.widget.EditText;
-
-import java.util.HashMap;
 import java.util.Map;
 
 import comp3350.go2fit.Application.CurrentUserService;
 import comp3350.go2fit.Application.Services;
-import comp3350.go2fit.BuisnessLayer.Exceptions.PasswordToShortException;
-import comp3350.go2fit.BuisnessLayer.Exceptions.PasswordsDontMatchException;
-import comp3350.go2fit.BuisnessLayer.Exceptions.UserExistsException;
-import comp3350.go2fit.BuisnessLayer.PasswordService;
-import comp3350.go2fit.BuisnessLayer.UserService;
 import comp3350.go2fit.Models.UserModel;
 import comp3350.go2fit.PersistenceLayer.UserPersistence;
-import comp3350.go2fit.PresentationLayer.Messages;
 
 /**User manager**/
 public class UserManager implements UserManagerInterface

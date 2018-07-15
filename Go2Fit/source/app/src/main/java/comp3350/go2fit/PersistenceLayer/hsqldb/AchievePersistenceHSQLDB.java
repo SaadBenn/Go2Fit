@@ -45,7 +45,7 @@ public class AchievePersistenceHSQLDB implements AchievePersistence {
         long   time = model.getTime();
         int    stepsRequired = model.getStepsRequired();
         int    calories = model.getCalories();
-        model.setId(nextId);
+        //model.setId(nextId);
         int    id = model.getId();
 
         try(final Connection c = connection()) {

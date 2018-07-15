@@ -1,7 +1,5 @@
 package comp3350.go2fit.Models;
 
-import android.os.Parcelable;
-import android.os.Parcel;
 
 /**Challenges Model**/
 public class AchieveModel
