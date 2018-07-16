@@ -18,3 +18,10 @@ swapping them out with the less than ideal members. Objectively this would have 
 been more evenly distributed, this would have lead to less stress being put on all the group members overall. Measurably this would have also
 been a success since the project velocity would have been greatly increased. More work being completed by having more members actively
 participate in the project.
+
+All things considered, the number of features completed by the active members of our group was impressive. When needed to be done certain
+members of our group stepped up and made up for the lack of effort by others. This project could have ended up being a disaster in more ways
+than one. But for the time allowed for each iteration, total work done in that time, and quality of the project, As a group I would consider
+the application to be successful. As it stands now, the application is at a good starting point and shows lots of potential to be further
+developed. We as a group consider that the idea behind the application show real potential to be successful in the real world if further
+developed and refined.
