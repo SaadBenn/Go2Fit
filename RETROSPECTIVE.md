@@ -25,3 +25,5 @@ than one. But for the time allowed for each iteration, total work done in that t
 the application to be successful. As it stands now, the application is at a good starting point and shows lots of potential to be further
 developed. We as a group consider that the idea behind the application show real potential to be successful in the real world if further
 developed and refined.
+
+![](Project Velocity Chart.png)
