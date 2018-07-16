@@ -44,7 +44,7 @@ Once achievements are unlocked, they will be displayed in the achievements page 
 This class makes use of the user manager class.
 
 The other UI classes are a login/sign up screen, which makes use of the UserManager, UserService and PasswordService classes, and also a redeem prize and leaderboard page, which make use
-of logic and DB classes of the same names.
+of logic and DB classes of the same names. In the third iteration, an update profile page has been added, where users can change their username, password or both.
 
 
 Our persistence layer has 6 stub databases/HSQLDB and 6 database interfaces. The stub databases/HSQLDB are ChallengePersistence which stores all 
