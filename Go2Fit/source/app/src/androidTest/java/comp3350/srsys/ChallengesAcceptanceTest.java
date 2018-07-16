@@ -61,8 +61,8 @@ public class ChallengesAcceptanceTest
     public void ViewChallenges() throws Exception
     {
         //logging into Go2Fit
-        onView(withId(R.id.username)).perform(typeText("s"));
-        onView(withId(R.id.password)).perform(typeText("a"));
+        onView(withId(R.id.username)).perform(typeText("e"));
+        onView(withId(R.id.password)).perform(typeText("s"));
         closeSoftKeyboard();
         onView(withId(R.id.start_button)).perform(click());
 
@@ -78,6 +78,7 @@ public class ChallengesAcceptanceTest
         pressBack();
         pressBack();
 
+        SystemClock.sleep(400);
         //selecting challenges
         onView(withText("CURRENT CHALLENGE")).perform(click());
     }
@@ -87,8 +88,8 @@ public class ChallengesAcceptanceTest
     {
 
         //logging into Go2Fit
-        onView(withId(R.id.username)).perform(typeText("s"));
-        onView(withId(R.id.password)).perform(typeText("a"));
+        onView(withId(R.id.username)).perform(typeText("e"));
+        onView(withId(R.id.password)).perform(typeText("s"));
         closeSoftKeyboard();
         onView(withId(R.id.start_button)).perform(click());
 

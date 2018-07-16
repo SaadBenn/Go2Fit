@@ -37,11 +37,12 @@ public class SetGoalAcceptanceTest
     public void setGoal()
     {
         //logging into Go2Fit
-        onView(withId(R.id.username)).perform(typeText("s"));
-        onView(withId(R.id.password)).perform(typeText("a"));
+        onView(withId(R.id.username)).perform(typeText("testuser1"));
+        onView(withId(R.id.password)).perform(typeText("7654321"));
         closeSoftKeyboard();
         onView(withId(R.id.start_button)).perform(click());
 
+        SystemClock.sleep(800);
         //selecting challenges
         onView(withText("SET GOALS")).perform(click());
 

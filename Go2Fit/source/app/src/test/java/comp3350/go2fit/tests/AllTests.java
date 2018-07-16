@@ -20,7 +20,6 @@ import comp3350.go2fit.tests.business.UserServiceTest;
 import comp3350.go2fit.tests.objects.ChallengesModelTest;
 import comp3350.go2fit.tests.objects.TrackProgressModelTest;
 import comp3350.go2fit.tests.objects.UserModelTest;
-
 // import your test classes
 
 
